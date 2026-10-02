@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Platform-Harvest%20Harbor-10b981?style=for-the-badge&logo=leaf&logoColor=white" alt="Platform" />
+  <a href="https://github.com/gouravdutta2004/Harvest-Harbor"><img src="https://img.shields.io/badge/GitHub-Harvest--Harbor-10b981?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Repository" /></a>
   <img src="https://img.shields.io/badge/Backend-FastAPI%20%7C%20Python%203.11-009688?style=for-the-badge&logo=fastapi&logoColor=white" alt="Backend" />
   <img src="https://img.shields.io/badge/Frontend-React%2018%20%7C%20Vite%20%7C%20Tailwind-61dafb?style=for-the-badge&logo=react&logoColor=black" alt="Frontend" />
   <img src="https://img.shields.io/badge/AI%20Models-EfficientNet%20%2B%20U--Net-ff6f00?style=for-the-badge&logo=tensorflow&logoColor=white" alt="AI Models" />
@@ -74,7 +74,7 @@ Harvest Harbor is architected with a decoupled frontend client and a high-perfor
 │               HARVEST HARBOR FRONTEND (React 18 + Vite)                │
 │  - Crop Intelligence Dashboard (Live Evidence Chain Metrics & Activity)│
 │  - Diagnostic Workspace (Dropzone, Camera Capture, 4-Crop Field Suite) │
-│  - Multi-Branch Results (Grad-CAM Slider, U-Net Mask, Knowledge Base) │
+│  - Multi-Branch Results (Grad-CAM Slider, U-Net Mask, Knowledge Base)  │
 │  - Severity Threshold Simulator (Presets + Project-Defined Cutoffs)    │
 │  - Human Review Queue (Triaging, UUID Tracking, Resolution Notes)      │
 │  - AI-Assisted Assessment Report & JSON Audit Dossier Export          │
@@ -88,12 +88,12 @@ Harvest Harbor is architected with a decoupled frontend client and a high-perfor
 │  ├── Health Screening: EfficientNet-B0 (Binary Health Classifier)      │
 │  ├── Botanical Classifier: EfficientNet-B0 (14 Crop Species)           │
 │  ├── Multi-Class Classifier: PlantWild v2 (115 Disease Categories)    │
-│  ├── Visual Explainability: Grad-CAM (Convolutional Gradients)        │
+│  ├── Visual Explainability: Grad-CAM (Convolutional Gradients)         │
 │  ├── Lesion Segmentation: U-Net (TensorFlow SavedModel Runtime)        │
-│  ├── Quantitative Severity Engine: Leaf vs. Disease Pixel Geometry    │
+│  ├── Quantitative Severity Engine: Leaf vs. Disease Pixel Geometry     │
 │  ├── Human Review Queue: Thread-safe, UUID-indexed Resolution Engine   │
 │  ├── Pathology Knowledge Base: Etiology & Management Guidance          │
-│  └── Evidence Chain: Local SHA-256 Tamper-Evident Hash Chain          │
+│  └── Evidence Chain: Local SHA-256 Tamper-Evident Hash Chain           │
 └────────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -171,7 +171,7 @@ The Harvest Harbor frontend is a responsive, single-page application built with 
 | :--- | :--- | :--- |
 | **Dashboard** | `/` | Real-time platform metrics, health-to-disease ratios, active model status, and chronological diagnostic activity feed. |
 | **Diagnostic Lab** | `/analyze` | Primary inference workspace with drag-and-drop file upload, field camera trigger, 4 sample test leaves, interactive Grad-CAM opacity slider, U-Net mask visualizer, and dynamic severity simulator. |
-| **Review Queue** | `/reviews` | Human-in-the-loop triaging dashboard. Displays pending reviews with globally unique IDs (`REV-UUID12`), confidence levels, uncertainty flags, inspector notes, and resolution actions. |
+| **Review Queue** | `/reviews` | Human-in-the-loop triaging dashboard. Displays pending reviews with globally unique IDs (`REV-XXXXXXXXXXXX`), confidence levels, uncertainty flags, inspector notes, and resolution actions. |
 | **Diagnostic Reports** | `/report` | Formal diagnostic dossier viewer. Features report search by ID (`CR-...`), persistent authenticated asset reconstruction, `@media print` styling, and full JSON audit export. |
 | **Evidence Ledger** | `/traceability` | Cryptographic audit explorer. Search records by Report ID or Image SHA-256, and trigger 1-click end-to-end mathematical chain verification. |
 | **Platform Info** | `/about` | Technical architecture walkthrough, dataset provenance details, operational pillars, and scientific disclaimers. |
@@ -242,8 +242,8 @@ In development mode, the platform provides pre-configured personas with default 
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/crop-disease-ai.git
-cd crop-disease-ai
+git clone https://github.com/gouravdutta2004/Harvest-Harbor.git
+cd Harvest-Harbor
 
 # Create and activate Python virtual environment
 python3 -m venv .venv
@@ -276,7 +276,7 @@ python -m uvicorn app:app --host 127.0.0.1 --port 8000 --reload
 Open a second terminal window:
 
 ```bash
-cd crop-disease-ai/frontend
+cd Harvest-Harbor/frontend
 
 # Install dependencies (only required on first setup)
 npm install
@@ -351,7 +351,7 @@ Deep-dive architectural specifications, model lineage, and operations manuals ar
 ## Repository Structure
 
 ```
-crop-disease-ai/
+Harvest-Harbor/
 ├── README.md                                  # Platform Documentation
 ├── LICENSE                                    # MIT License
 ├── package.json                               # Workspace Root Package Configuration
@@ -385,14 +385,17 @@ crop-disease-ai/
 │   │
 │   ├── model/                                 # 115-Class Weights & Labels
 │   │   ├── plantwild_v2_efficientnetb0.keras
+│   │   ├── plantwild_v2_efficientnetb0.h5
 │   │   └── plantwild_v2_class_names.json
 │   │
 │   ├── crop_model/                            # 14-Class Crop Identification Weights
 │   │   ├── crop_efficientnetb0.keras
+│   │   ├── crop_efficientnetb0.h5
 │   │   └── crop_class_names.json
 │   │
 │   ├── health_model/                          # Binary Health Classifier Weights
 │   │   ├── health_disease_efficientnetb0.keras
+│   │   ├── health_disease_efficientnetb0.h5
 │   │   └── health_disease_class_names.json
 │   │
 │   ├── segmentation_model/                    # Production U-Net Segmentation Engine
@@ -432,7 +435,7 @@ crop-disease-ai/
 │   │   ├── favicon.png                        # Browser Favicon
 │   │   └── samples/                           # Field Test Leaves
 │   │
-│   └── src/
+│   └── src/                                   # Frontend React Source
 │       ├── main.jsx                           # Application Mount Point
 │       ├── App.jsx                            # Router & Master Layout
 │       ├── context/                           # Auth & RBAC State Provider
