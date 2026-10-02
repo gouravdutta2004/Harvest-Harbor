@@ -1,0 +1,564 @@
+{
+  "apple_scab": {
+    "crop": "Apple",
+    "disease": "Apple Scab",
+    "symptoms": [
+      "Olive-green to dark brown or black velvety spots on leaves.",
+      "Lesions may cause leaf distortion, curling, and premature defoliation.",
+      "Scabby, cracked lesions on developing fruit surfaces."
+    ],
+    "causes": [
+      "Associated with the ascomycete fungus Venturia inaequalis.",
+      "Overwinters in fallen infected leaves on the orchard floor."
+    ],
+    "environment": [
+      "Cool, wet spring weather (55°F to 75°F / 13°C to 24°C)",
+      "Extended periods of leaf wetness (>6 hours)",
+      "High relative humidity"
+    ],
+    "spread": [
+      "Primary ascospores released from overwintered leaves via rain splash and wind.",
+      "Secondary conidia spread during summer rain events."
+    ],
+    "immediate_actions": [
+      "Inspect orchard canopy for new velvety foliar lesions.",
+      "Remove or shred fallen leaves to accelerate decomposition.",
+      "Prune dense canopy branches to improve air circulation and sunlight penetration."
+    ],
+    "prevention": [
+      "Plant scab-resistant cultivars (e.g., Liberty, Enterprise, GoldRush).",
+      "Apply protective fungicides prior to projected spring wetting events according to Mills infection periods.",
+      "Practice orchard floor sanitation through autumn flail mowing or urea application to fallen leaves."
+    ],
+    "treatment_note": "Apply locally approved protectant or systemic fungicides timed with weather-based disease forecasting models. Alternate FRAC groups to prevent resistance development."
+  },
+
+  "apple_black_rot": {
+    "crop": "Apple",
+    "disease": "Black Rot (Frogeye Leaf Spot)",
+    "symptoms": [
+      "Small purple flecks enlarging into circular 'frogeye' spots with tan centers and purple margins.",
+      "Firm, dark rotting areas with concentric rings on fruit.",
+      "Cankers forming on limbs and branches."
+    ],
+    "causes": [
+      "Fungal pathogen Botryosphaeria obtusa.",
+      "Pathogen infects through natural openings, wounds, or dead tissue."
+    ],
+    "environment": [
+      "Warm, humid conditions (68°F to 80°F / 20°C to 27°C)",
+      "Frequent precipitation and canopy shading"
+    ],
+    "spread": [
+      "Rain splash and air currents dispersing conidia from branch cankers and mummified fruit."
+    ],
+    "immediate_actions": [
+      "Prune out dead wood, cankered limbs, and fire blight strikes at least 6-8 inches below visible symptoms.",
+      "Collect and destroy mummified fruit clinging to trees or on the ground."
+    ],
+    "prevention": [
+      "Maintain tree vigor with balanced nutrition and proper pruning.",
+      "Prevent mechanical and insect injury to bark and fruit."
+    ],
+    "treatment_note": "Apply approved broad-spectrum fungicides from petal fall through cover sprays in conjunction with rigorous cultural sanitation."
+  },
+
+  "apple_cedar_apple_rust": {
+    "crop": "Apple",
+    "disease": "Cedar Apple Rust",
+    "symptoms": [
+      "Bright yellow-orange circular spots on the upper leaf surface.",
+      "Small raised tubelike fungal structures (aecia) protruding from the lower leaf surface.",
+      "Yellow spots with raised margins on the calyx end of fruit."
+    ],
+    "causes": [
+      "Gymnosporangium juniperi-virginianae (obligate heteroecious fungus requiring both apple and eastern red cedar/juniper hosts)."
+    ],
+    "environment": [
+      "Wet spring weather (50°F to 75°F / 10°C to 24°C)",
+      "Presence of galls on nearby juniper trees during rainy periods"
+    ],
+    "spread": [
+      "Windborne teliospores from juniper galls travel up to several miles to infect apple foliage."
+    ],
+    "immediate_actions": [
+      "Document infection severity across the orchard block.",
+      "Identify and eradicate nearby wild eastern red cedar trees within a 1-2 mile radius if feasible."
+    ],
+    "prevention": [
+      "Select rust-resistant apple varieties (e.g., Enterprise, Freedom, Priscilla).",
+      "Prune cedar galls from ornamental junipers before orange gelatinous horns emerge in spring."
+    ],
+    "treatment_note": "Apply sterol inhibitor (DMI) or strobilurin (QoI) fungicides starting at tight cluster through petal fall when wet weather coincides with gall sporulation."
+  },
+
+  "corn_common_rust": {
+    "crop": "Corn",
+    "disease": "Common Rust",
+    "symptoms": [
+      "Oval to elongate cinnamon-brown powdery pustules on both upper and lower leaf surfaces.",
+      "Pustules rupture the epidermis releasing rust-colored urediniospores.",
+      "Severe infections lead to chlorosis, necrosis, and premature leaf drying."
+    ],
+    "causes": [
+      "Fungal pathogen Puccinia sorghi."
+    ],
+    "environment": [
+      "Moderate temperatures (60°F to 77°F / 16°C to 25°C)",
+      "High relative humidity (>95%) and extended dew periods"
+    ],
+    "spread": [
+      "Spores carried long distances on southerly wind currents from subtropical regions."
+    ],
+    "immediate_actions": [
+      "Scout upper canopy leaves (especially ear leaf and adjacent leaves) during early reproductive stages.",
+      "Determine threshold: fungicide application may be warranted if pustules cover >5-10% of ear leaf area before blister/milk stage."
+    ],
+    "prevention": [
+      "Plant corn hybrids with specific (Rp) or general multi-gene resistance.",
+      "Time planting to avoid peak regional spore flights."
+    ],
+    "treatment_note": "Apply registered dual-mode fungicides (e.g. triazole + strobilurin) if disease reaches economic threshold on susceptible hybrids before grain fill."
+  },
+
+  "corn_gray_leaf_spot": {
+    "crop": "Corn",
+    "disease": "Gray Leaf Spot",
+    "symptoms": [
+      "Small, tan spots with yellow halos expanding into long, narrow, rectangular gray-to-tan lesions.",
+      "Lesion margins strictly bordered by leaf veins.",
+      "Extensive blighting of upper canopy during grain fill."
+    ],
+    "causes": [
+      "Fungal pathogen Cercospora zeae-maydis.",
+      "Survives in corn crop residue on the soil surface."
+    ],
+    "environment": [
+      "Warm temperatures (75°F to 86°F / 24°C to 30°C)",
+      "High humidity and prolonged dew (>12 hours)"
+    ],
+    "spread": [
+      "Wind and splashing rain transport conidia from residue to lower leaves, progressing upward."
+    ],
+    "immediate_actions": [
+      "Scout lower leaves before tassel (VT) stage; monitor progression toward the ear leaf.",
+      "Assess hybrid susceptibility rating."
+    ],
+    "prevention": [
+      "Select high-tolerance corn hybrids.",
+      "Rotate crops with non-host species (e.g. soybean) for at least one year.",
+      "Manage crop residue in high-risk continuous corn fields."
+    ],
+    "treatment_note": "Apply labeled foliar fungicides between VT and R2 stages if disease is present on third leaf below ear leaf or higher on susceptible hybrids."
+  },
+
+  "corn_northern_leaf_blight": {
+    "crop": "Corn",
+    "disease": "Northern Corn Leaf Blight",
+    "symptoms": [
+      "Large, long, elliptical/cigar-shaped grayish-green to tan lesions (1 to 6 inches long).",
+      "Dark fungal sporulation visible within lesions under humid conditions."
+    ],
+    "causes": [
+      "Fungal pathogen Exserohilum turcicum (Setosphaeria turcica)."
+    ],
+    "environment": [
+      "Moderate temperatures (65°F to 80°F / 18°C to 27°C)",
+      "Frequent rain, heavy dews, and persistent leaf wetness"
+    ],
+    "spread": [
+      "Conidia dislodged from residue by rain and wind."
+    ],
+    "immediate_actions": [
+      "Scout field from mid-whorl to silking stage.",
+      "Evaluate disease pressure on ear leaf and leaves above ear."
+    ],
+    "prevention": [
+      "Plant hybrids carrying Ht resistance genes.",
+      "Implement crop rotation and residue management practices."
+    ],
+    "treatment_note": "Treat with approved triazole or strobilurin fungicides when threshold is reached prior to soft dough stage on high-yield potential crops."
+  },
+
+  "grape_black_rot": {
+    "crop": "Grape",
+    "disease": "Black Rot",
+    "symptoms": [
+      "Small, circular reddish-brown spots on leaves surrounded by dark brown margins and tiny black pycnidia.",
+      "Fruit berries turn soft, brown, and then shrivel into hard, black, wrinkled mummies."
+    ],
+    "causes": [
+      "Fungal pathogen Guignardia bidwellii (Phyllosticta ampelicida)."
+    ],
+    "environment": [
+      "Warm, wet weather (70°F to 85°F / 21°C to 29°C)",
+      "Rainfall and extended canopy wetness (6 to 24 hours)"
+    ],
+    "spread": [
+      "Ascospores and conidia dispersed by rain splash from overwintered mummies and cane lesions."
+    ],
+    "immediate_actions": [
+      "Remove and destroy mummified grape clusters from vines and ground.",
+      "Prune infected canes during dormant season."
+    ],
+    "prevention": [
+      "Canopy management (hedging, leaf pulling) to enhance rapid drying.",
+      "Apply protective fungicides from early shoot growth through 4-5 weeks post-bloom."
+    ],
+    "treatment_note": "Protect flower clusters and young fruit from early bloom through verasion using labeled DMI, QoI, or protectant fungicides (mancozeb, captan)."
+  },
+
+  "grape_esca": {
+    "crop": "Grape",
+    "disease": "Esca (Black Measles / Trunk Disease)",
+    "symptoms": [
+      "'Tiger-stripe' leaf pattern: chlorotic and necrotic areas between main leaf veins.",
+      "Small dark spots ('measles') on white and red grape berries.",
+      "Spongy white heartwood rot in mature trunks."
+    ],
+    "causes": [
+      "Complex of vascular fungi including Phaeomoniella chlamydospora, Phaeoacremonium minimum, and Fomitiporia mediterranea."
+    ],
+    "environment": [
+      "Hot summer temperatures triggering sudden apoplexy or chronic foliar decline.",
+      "Infection occurs through large pruning wounds during wet winter periods."
+    ],
+    "spread": [
+      "Airborne and waterborne spores entering open pruning wounds on perennial wood."
+    ],
+    "immediate_actions": [
+      "Mark symptomatic vines in summer for targeted dormant remediation.",
+      "Prune dead cordons back to clean, white, symptom-free wood."
+    ],
+    "prevention": [
+      "Delay winter pruning until late dormant season (sap flow helps push out spores).",
+      "Treat all large pruning wounds with pruning sealant or biocontrol (Trichoderma) paste."
+    ],
+    "treatment_note": "No curative chemical cure exists for internal trunk decay; preventive wound protection and trunk renewal/grafting are standard management practices."
+  },
+
+  "grape_leaf_blight": {
+    "crop": "Grape",
+    "disease": "Leaf Blight (Isariopsis Clavispora)",
+    "symptoms": [
+      "Irregular brown to dark reddish-brown foliar spots with distinct margins.",
+      "Lesions may coalesce causing broad marginal leaf necrosis and defoliation."
+    ],
+    "causes": [
+      "Pseudocercospora vitis (Isariopsis clavispora)."
+    ],
+    "environment": [
+      "Warm, humid conditions late in the growing season.",
+      "Overcrowded vine canopies with poor ventilation."
+    ],
+    "spread": [
+      "Wind and splash-dispersed fungal conidia."
+    ],
+    "immediate_actions": [
+      "Facilitate canopy airflow by selective leaf removal around fruiting zones."
+    ],
+    "prevention": [
+      "Standard post-harvest vineyard sanitation.",
+      "Maintain fungicide spray programs through late summer in high-humidity regions."
+    ],
+    "treatment_note": "Apply registered copper or broad-spectrum vineyard fungicides according to regional extension calendars."
+  },
+
+  "potato_early_blight": {
+    "crop": "Potato",
+    "disease": "Early Blight",
+    "symptoms": [
+      "Small dark brown to black spots on older leaves.",
+      "Lesions enlarge with characteristic 'target-board' concentric rings.",
+      "Affected leaves yellow, dry up, and drop prematurely."
+    ],
+    "causes": [
+      "Fungal pathogen Alternaria solani.",
+      "Favored by crop stress, low soil fertility, and frequent wetting cycles."
+    ],
+    "environment": [
+      "Warm temperatures (75°F to 85°F / 24°C to 29°C)",
+      "Alternating wet and dry periods (dew/overhead irrigation followed by warm sunshine)"
+    ],
+    "spread": [
+      "Windblown and splash-dispersed conidia from infected crop debris and solanaceous weeds."
+    ],
+    "immediate_actions": [
+      "Inspect lower canopy foliage.",
+      "Avoid excess overhead irrigation late in the afternoon to minimize nighttime leaf wetness."
+    ],
+    "prevention": [
+      "Implement 3-year crop rotation away from solanaceous crops.",
+      "Maintain adequate plant nitrogen and potassium nutrition.",
+      "Destroy volunteer potato plants and nightshade weeds."
+    ],
+    "treatment_note": "Apply protectant fungicides (chlorothalonil, mancozeb) starting before canopy closure, alternating with FRAC 7, 9, or 11 products."
+  },
+
+  "potato_late_blight": {
+    "crop": "Potato",
+    "disease": "Late Blight",
+    "symptoms": [
+      "Large, irregular water-soaked pale-to-dark green lesions that turn purplish-brown to black.",
+      "Delicate white fungal-like growth visible on leaf undersides during moist mornings.",
+      "Tuber decay with brown, granular dry rot beneath the skin."
+    ],
+    "causes": [
+      "Oomycete pathogen Phytophthora infestans (highly aggressive water mold)."
+    ],
+    "environment": [
+      "Cool, damp weather (60°F to 70°F / 15°C to 21°C)",
+      "Relative humidity >90% and continuous leaf wetness"
+    ],
+    "spread": [
+      "Airborne sporangia can travel tens of miles on cloudy, humid days; zoospores swim in free water films."
+    ],
+    "immediate_actions": [
+      "URGENT: Isolate affected field sections immediately to prevent catastrophic epidemic spread.",
+      "Destroy and bag heavily infected plants without shaking spores onto healthy rows.",
+      "Notify regional agricultural extension alert services."
+    ],
+    "prevention": [
+      "Plant only certified disease-free seed tubers.",
+      "Eliminate cull piles and volunteer potatoes before planting season.",
+      "Monitor blight forecasting systems (e.g. Blitecast)."
+    ],
+    "treatment_note": "Apply targeted oomycete fungicides (mandipropamid, cyazofamid, fluopicolide) on strict 5-7 day intervals during high-risk weather. Use preventive protectants prior to infection."
+  },
+
+  "tomato_early_blight": {
+    "crop": "Tomato",
+    "disease": "Early Blight",
+    "symptoms": [
+      "Dark brown to black lesions with concentric rings ('target' pattern) on lower foliage.",
+      "Yellow halos surrounding maturing spots.",
+      "Stem cankers and dark, sunken leathery rot at the stem end of fruit."
+    ],
+    "causes": [
+      "Fungal pathogen Alternaria solani / Alternaria linariae."
+    ],
+    "environment": [
+      "Warm, humid conditions (75°F to 85°F / 24°C to 30°C)",
+      "Frequent overhead watering, rain, and heavy dew"
+    ],
+    "spread": [
+      "Conidia transported by wind, rain splash, tools, and workers."
+    ],
+    "immediate_actions": [
+      "Prune off lower infected leaves touching the soil surface.",
+      "Stake and cage plants to keep foliage elevated off wet ground."
+    ],
+    "prevention": [
+      "Apply organic or plastic mulch beneath plants to create a barrier against soilborne spores.",
+      "Use drip irrigation rather than overhead sprinklers.",
+      "Rotate out of solanaceous crops for 2-3 years."
+    ],
+    "treatment_note": "Use registered copper, chlorothalonil, or bio-fungicides on a preventative schedule starting at first sign of lower foliar spotting."
+  },
+
+  "tomato_late_blight": {
+    "crop": "Tomato",
+    "disease": "Late Blight",
+    "symptoms": [
+      "Rapidly expanding water-soaked greasy gray-green lesions on leaves and stems.",
+      "White fuzzy sporulation on the underside of leaves in high humidity.",
+      "Firm, greasy, golden-brown to dark lesions on green and ripening fruit."
+    ],
+    "causes": [
+      "Oomycete pathogen Phytophthora infestans."
+    ],
+    "environment": [
+      "Cool, rainy, overcast weather (60°F to 75°F / 15°C to 24°C)",
+      "Prolonged humidity >90%"
+    ],
+    "spread": [
+      "Microscopic sporangia carried on wind currents and splashing water."
+    ],
+    "immediate_actions": [
+      "Remove and bag infected plants during dry midday conditions to prevent spore dispersion.",
+      "Do not compost infected tissue; discard or bury deeply."
+    ],
+    "prevention": [
+      "Choose late-blight resistant tomato varieties (e.g., Defiant, Mountain Merit, Jasper, Plum Regal).",
+      "Ensure maximum plant spacing and full sun exposure.",
+      "Avoid working in tomato beds when leaves are wet."
+    ],
+    "treatment_note": "Apply oomycete-targeted preventative treatments (copper, phosphonates, or specialized translaminar fungicides) ahead of forecast rain periods."
+  },
+
+  "tomato_bacterial_spot": {
+    "crop": "Tomato",
+    "disease": "Bacterial Spot",
+    "symptoms": [
+      "Small (1/8 inch), dark brown to black circular lesions with water-soaked margins.",
+      "Severe leaf blighting, yellowing, and defoliation.",
+      "Small, dark, raised blister-like spots on green fruit which later become scab-like."
+    ],
+    "causes": [
+      "Bacterial complex Xanthomonas perforans, X. euvesicatoria, X. gardneri, and X. vesicatoria."
+    ],
+    "environment": [
+      "Warm temperatures (75°F to 86°F / 24°C to 30°C)",
+      "High rainfall, driving storms, and overhead irrigation"
+    ],
+    "spread": [
+      "Bacteria enter through natural openings (stomata, hydathodes) and micro-wounds created by windblown sand or equipment."
+    ],
+    "immediate_actions": [
+      "Sanitize pruning shears between plants with 70% alcohol or 10% bleach solution.",
+      "Avoid handling or harvesting wet foliage."
+    ],
+    "prevention": [
+      "Use certified disease-free, hot-water-treated seeds and transplants.",
+      "Employ drip irrigation to eliminate splash dispersal."
+    ],
+    "treatment_note": "Apply preventative fixed copper bactericides combined with mancozeb or plant defense inducers (Acibenzolar-S-methyl / Actigard) where copper resistance occurs."
+  },
+
+  "tomato_yellow_leaf_curl_virus": {
+    "crop": "Tomato",
+    "disease": "Tomato Yellow Leaf Curl Virus (TYLCV)",
+    "symptoms": [
+      "Severe stunting and erect 'bushy' growth habit of plants.",
+      "Upward cupping and yellowing (chlorosis) of leaf margins.",
+      "Significant reduction in leaf size and severe blossom drop leading to minimal fruit set."
+    ],
+    "causes": [
+      "Begomovirus (TYLCV) transmitted by the sweetpotato / silverleaf whitefly (Bemisia tabaci)."
+    ],
+    "environment": [
+      "Warm to hot climates supporting high whitefly vector populations.",
+      "Greenhouse and field tomato production zones."
+    ],
+    "spread": [
+      "Persistent transmission by adult whiteflies feeding on phloem sap."
+    ],
+    "immediate_actions": [
+      "Rogue out and destroy infected plants showing virus symptoms immediately to reduce viral reservoir.",
+      "Deploy yellow sticky traps to monitor whitefly vector density."
+    ],
+    "prevention": [
+      "Plant TYLCV-resistant hybrids carrying Ty-1, Ty-2, or Ty-3 resistance genes.",
+      "Use fine mesh insect netting (50 mesh) in greenhouse/nursery production.",
+      "Apply reflective silver mulches to repel whitefly landings."
+    ],
+    "treatment_note": "No chemical viricide can cure systemic viral infections. Control whitefly vectors using integrated pest management (soaps, oils, and rotating insecticides)."
+  },
+
+  "cherry_leaf_spot": {
+    "crop": "Cherry",
+    "disease": "Cherry Leaf Spot",
+    "symptoms": [
+      "Small circular purple-to-reddish spots on upper leaf surfaces.",
+      "Centers of lesions turn brown, die, and may drop out leaving a 'shot-hole' appearance.",
+      "Leaves turn bright yellow and drop prematurely, often defoliating trees by mid-summer."
+    ],
+    "causes": [
+      "Fungal pathogen Blumeriella jaapii (Higginsia jaapii)."
+    ],
+    "environment": [
+      "Moderate temperatures (60°F to 68°F / 15°C to 20°C)",
+      "Frequent spring rains and extended canopy wetness (>5 hours)"
+    ],
+    "spread": [
+      "Ascospores discharged from overwintered leaves on the orchard floor during spring rain events."
+    ],
+    "immediate_actions": [
+      "Collect and mulch or remove fallen infected leaves beneath trees.",
+      "Prune to open tree canopy and promote rapid foliar drying."
+    ],
+    "prevention": [
+      "Apply protective fungicides starting at petal fall and continuing at 10-14 day intervals through post-harvest.",
+      "Mow or apply nitrogen fertilizer to orchard floor in autumn to speed leaf degradation."
+    ],
+    "treatment_note": "Use captan, chlorothalonil, or sterol inhibitors (myclobutanil, fenbuconazole) according to fruit tree extension guidelines."
+  },
+
+  "pepper_bacterial_spot": {
+    "crop": "Pepper",
+    "disease": "Bacterial Leaf Spot",
+    "symptoms": [
+      "Small, yellowish-green spots with water-soaked borders on leaves.",
+      "Lesions turn brown, become necrotic, and cause severe lower leaf drop.",
+      "Rough, raised, warty brown lesions on pepper fruits."
+    ],
+    "causes": [
+      "Xanthomonas euvesicatoria and Xanthomonas vesicatoria."
+    ],
+    "environment": [
+      "High temperatures (75°F to 90°F / 24°C to 32°C)",
+      "High relative humidity, wind-driven rains, and sprinkler irrigation"
+    ],
+    "spread": [
+      "Splashing water, contaminated seed, workers, and field equipment."
+    ],
+    "immediate_actions": [
+      "Cease overhead irrigation immediately; switch to ground-level drip.",
+      "Do not enter fields while foliage is damp."
+    ],
+    "prevention": [
+      "Plant pepper varieties bred for bacterial spot resistance (e.g. races 1-10).",
+      "Treat seeds with hot water (122°F / 50°C for 25 minutes) before sowing.",
+      "Maintain a 2-year non-host rotation."
+    ],
+    "treatment_note": "Apply preventative copper sprays mixed with mancozeb, or use systemic acquired resistance boosters (Actigard) before infection occurs."
+  },
+
+  "squash_powdery_mildew": {
+    "crop": "Squash",
+    "disease": "Powdery Mildew",
+    "symptoms": [
+      "White, talcum-powder-like circular fungal spots on upper and lower leaf surfaces, petioles, and stems.",
+      "Infected leaves turn yellow, brown, and become brittle, exposing fruit to sunscald."
+    ],
+    "causes": [
+      "Podosphaera xanthii (syn. Sphaerotheca fuliginea) and Golovinomyces cichoracearum."
+    ],
+    "environment": [
+      "Warm, dry days with high relative humidity at night (68°F to 80°F / 20°C to 27°C)",
+      "Dense, shaded plant canopies (does not require free water on leaves to infect)"
+    ],
+    "spread": [
+      "Abundant windblown conidia capable of traveling long distances."
+    ],
+    "immediate_actions": [
+      "Inspect lower and crown leaves where shaded microclimates favor early development.",
+      "Remove severely infested older leaves if canopy density allows."
+    ],
+    "prevention": [
+      "Select powdery-mildew resistant squash and pumpkin cultivars.",
+      "Space plants generously to optimize sunlight exposure and air movement."
+    ],
+    "treatment_note": "Apply sulfur, potassium bicarbonate, neem oil, or registered DMI/QoI fungicides upon first detection of powdery colonies on lower leaves."
+  },
+
+  "strawberry_leaf_scorch": {
+    "crop": "Strawberry",
+    "disease": "Leaf Scorch",
+    "symptoms": [
+      "Numerous small, irregular purplish spots on upper leaf surfaces.",
+      "Lesions coalesce, causing leaf margins to curl upward and look burnt or 'scorched'.",
+      "Dark lesions on petioles, fruit pedicels, and sepals (caps)."
+    ],
+    "causes": [
+      "Fungal pathogen Diplocarpon earlianum."
+    ],
+    "environment": [
+      "Moderate to warm temperatures (60°F to 75°F / 15°C to 24°C)",
+      "Frequent rain, overhead irrigation, and prolonged leaf wetness"
+    ],
+    "spread": [
+      "Conidia dislodged and splashed by water droplets from overwintered leaves."
+    ],
+    "immediate_actions": [
+      "Renovate strawberry beds after harvest: mow, discard, or incorporate old foliage.",
+      "Avoid night watering."
+    ],
+    "prevention": [
+      "Plant certified disease-free strawberry crowns.",
+      "Maintain narrow row widths and weed control for quick canopy drying.",
+      "Select less susceptible cultivars (e.g. Allstar, Honeoye)."
+    ],
+    "treatment_note": "Apply protectant fungicides (captan, thiram) or systemic fungicides in spring when new growth starts and during wet weather cycles."
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "created_at_utc": "2026-09-28T20:02:47.200180+00:00",
+  "num_classes": 14,
+  "classes": [
+    "Apple",
+    "Blueberry",
+    "Cherry (including sour)",
+    "Corn (maize)",
+    "Grape",
+    "Orange",
+    "Peach",
+    "Pepper, bell",
+    "Potato",
+    "Raspberry",
+    "Soybean",
+    "Squash",
+    "Strawberry",
+    "Tomato"
+  ],
+  "class_to_index": {
+    "Apple": 0,
+    "Blueberry": 1,
+    "Cherry (including sour)": 2,
+    "Corn (maize)": 3,
+    "Grape": 4,
+    "Orange": 5,
+    "Peach": 6,
+    "Pepper, bell": 7,
+    "Potato": 8,
+    "Raspberry": 9,
+    "Soybean": 10,
+    "Squash": 11,
+    "Strawberry": 12,
+    "Tomato": 13
+  },
+  "index_to_class": {
+    "0": "Apple",
+    "1": "Blueberry",
+    "2": "Cherry (including sour)",
+    "3": "Corn (maize)",
+    "4": "Grape",
+    "5": "Orange",
+    "6": "Peach",
+    "7": "Pepper, bell",
+    "8": "Potato",
+    "9": "Raspberry",
+    "10": "Soybean",
+    "11": "Squash",
+    "12": "Strawberry",
+    "13": "Tomato"
+  }
+}

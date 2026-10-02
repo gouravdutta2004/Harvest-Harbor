@@ -1,0 +1,18 @@
+{
+  "method": "temperature_scaling",
+  "temperature": 0.05,
+  "fitted": true,
+  "source": "validation_grid_search",
+  "metadata": {
+    "method": "temperature_scaling",
+    "temperature": 0.05,
+    "calibration_dataset_description": "Saved validation split from dataset_split.json (50 images)",
+    "number_of_samples": 50,
+    "calibration_timestamp": "2026-09-30T08:48:41.355277+00:00",
+    "model_version": "health_disease_efficientnetb0",
+    "validation_nll": 0.0003263145794486047,
+    "uncalibrated_nll": 0.01206748540345752,
+    "samples": 50,
+    "source": "validation_grid_search"
+  }
+}

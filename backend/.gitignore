@@ -1,0 +1,68 @@
+# ============================================================
+# Harvest Harbor — Backend .gitignore
+# ============================================================
+
+# Byte-compiled / optimized files
+__pycache__/
+**/__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Caches and runtime state
+.pytest_cache/
+**/.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.cache/
+.keras/
+**/.keras/
+
+# Python Virtual Environments
+.venv/
+venv/
+env/
+ENV/
+
+# Datasets and Archives
+datasets/
+*.zip
+*.tar.gz
+*.tgz
+
+# Local environment & secrets
+.env
+.env.*
+!.env.example
+
+# Lock files and concurrency locks
+*.lock
+traceability/*.lock
+
+# Uploads and generated diagnostic assets (keep directory structure via .gitkeep)
+uploads/*
+!uploads/.gitkeep
+generated/gradcam/*
+!generated/gradcam/.gitkeep
+generated/segmentation/*
+!generated/segmentation/.gitkeep
+
+# Operating system files
+.DS_Store
+**/.DS_Store
+._*
+Thumbs.db
+desktop.ini
+
+# Temporary & Editor files
+*.tmp
+*.temp
+*~
+*.swp
+*.swo
+*.save
+*.bak
+*.orig
+.vscode/
+.idea/

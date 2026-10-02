@@ -1,0 +1,156 @@
+# ============================================================
+# Harvest Harbor (Crop Disease AI) — Root .gitignore
+# ============================================================
+
+# ------------------------------------------------------------
+# Datasets & Large Data (Raw training & test collections)
+# ------------------------------------------------------------
+datasets/
+**/datasets/
+
+# ------------------------------------------------------------
+# Compressed Archives & Packaging Artifacts (Exceeds GitHub limits)
+# ------------------------------------------------------------
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.rar
+*.7z
+*.gz
+
+# ------------------------------------------------------------
+# Python Virtual Environments & Conversion Toolchains
+# ------------------------------------------------------------
+.venv/
+**/.venv/
+venv/
+**/venv/
+ENV/
+**/ENV/
+env/
+**/env/
+*.venv/
+.keras3-convert/
+.keras_home/
+.keras/
+**/.keras/
+
+# ------------------------------------------------------------
+# Python Cache, Bytecode & Build Artifacts
+# ------------------------------------------------------------
+__pycache__/
+**/__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg
+*.egg-info/
+build/
+develop-eggs/
+eggs/
+parts/
+bin/
+var/
+sdist/
+.installed.cfg
+*.egg
+
+# ------------------------------------------------------------
+# Testing & Code Coverage
+# ------------------------------------------------------------
+.pytest_cache/
+**/.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.cache/
+.mypy_cache/
+.ruff_cache/
+
+# ------------------------------------------------------------
+# Node & Frontend Build Output
+# ------------------------------------------------------------
+node_modules/
+**/node_modules/
+dist/
+**/dist/
+dist-ssr/
+**/dist-ssr/
+.vite/
+**/.vite/
+*.local
+
+# Node package logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# ------------------------------------------------------------
+# Secrets & Environment Configurations (Keep .env.example)
+# ------------------------------------------------------------
+.env
+.env.*
+!.env.example
+backend/.env
+backend/.env.*
+!backend/.env.example
+frontend/.env
+frontend/.env.*
+!frontend/.env.example
+
+# ------------------------------------------------------------
+# Operating System Files
+# ------------------------------------------------------------
+.DS_Store
+.DS_Store?
+._*
+**/.DS_Store
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+# ------------------------------------------------------------
+# Concurrency Locks & Temporary Files
+# ------------------------------------------------------------
+*.lock
+!package-lock.json
+*.tmp
+*.temp
+*~
+
+# ------------------------------------------------------------
+# Traceability Locks
+# ------------------------------------------------------------
+backend/traceability/*.lock
+traceability/*.lock
+
+# ------------------------------------------------------------
+# Uploaded & Generated Diagnostic Assets (Preserve .gitkeep)
+# ------------------------------------------------------------
+backend/uploads/*
+!backend/uploads/.gitkeep
+backend/generated/gradcam/*
+!backend/generated/gradcam/.gitkeep
+backend/generated/segmentation/*
+!backend/generated/segmentation/.gitkeep
+
+uploads/*
+!uploads/.gitkeep
+generated/*
+!generated/.gitkeep
+
+# ------------------------------------------------------------
+# IDE & Editor Settings
+# ------------------------------------------------------------
+.vscode/*
+!.vscode/extensions.json
+.idea/
+**/.idea/
+*.swp
+*.swo
+*.save
+*.bak
+*.orig

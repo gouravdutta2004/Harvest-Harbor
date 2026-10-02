@@ -1,0 +1,10 @@
+{
+  "name": "harvest-harbor-platform",
+  "version": "1.0.0",
+  "description": "Harvest Harbor - Crop Disease AI & Tamper-Evident Evidence Platform",
+  "private": true,
+  "scripts": {
+    "dev": "npm --prefix frontend run dev",
+    "build": "npm --prefix frontend run build"
+  }
+}
