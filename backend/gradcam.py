@@ -27,26 +27,39 @@ import cv2
 from PIL import Image, ImageOps
 import tensorflow as tf
 
+try:
+    from tensorflow import keras
+except (ImportError, AttributeError):
+    try:
+        import keras
+    except ImportError:
+        keras = getattr(tf, "keras", None)
+
 logger = logging.getLogger(__name__)
 
 
 class GradCAMGenerator:
-    def __init__(self, model: tf.keras.Model):
+    def __init__(self, model: Any):
         self.model = model
         self.submodel, self.target_layer_name = self._find_target_conv_layer()
         sub_name = self.submodel.name if self.submodel else "top_level"
 
+        # Resolve models module safely across TensorFlow and Keras versions
+        models_module = getattr(getattr(tf, "keras", None), "models", None) or getattr(keras, "models", None)
+        if models_module is None:
+            raise RuntimeError("Unable to locate keras.models in tensorflow or standalone keras.")
+
         # Pre-build sub_grad_model or grad_model once to prevent memory graph leak on every call
         if self.submodel is not None:
             sub_conv_layer = self.submodel.get_layer(self.target_layer_name)
-            self.sub_grad_model = tf.keras.models.Model(
+            self.sub_grad_model = models_module.Model(
                 inputs=self.submodel.inputs,
                 outputs=[sub_conv_layer.output, self.submodel.output],
             )
             self.grad_model = None
         else:
             self.sub_grad_model = None
-            self.grad_model = tf.keras.models.Model(
+            self.grad_model = models_module.Model(
                 inputs=[self.model.inputs],
                 outputs=[
                     self.model.get_layer(self.target_layer_name).output,
@@ -58,7 +71,7 @@ class GradCAMGenerator:
             f"Grad-CAM initialized with target layer '{self.target_layer_name}' in '{sub_name}'"
         )
 
-    def _find_target_conv_layer(self) -> Tuple[Optional[tf.keras.Model], str]:
+    def _find_target_conv_layer(self) -> Tuple[Optional[Any], str]:
         """Find the final convolutional feature layer of the model or submodel."""
         preferred_names = ["top_conv", "top_activation", "conv2d", "block7a_project_conv"]
 
@@ -106,7 +119,7 @@ class GradCAMGenerator:
                 # Forward pass layer-by-layer with training=False to disable data augmentation & dropout
                 x = img_tensor
                 for layer in self.model.layers:
-                    if isinstance(layer, tf.keras.layers.InputLayer):
+                    if layer.__class__.__name__ == "InputLayer":
                         continue
                     if layer == self.submodel:
                         conv_outputs, eff_output = self.sub_grad_model(x, training=False)
