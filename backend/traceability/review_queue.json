@@ -199227,5 +199227,3811 @@
     "review_notes": null,
     "decision": null,
     "updated_at": null
+  },
+  {
+    "review_id": "REV-B8CF8EF8868C",
+    "report_id": "CR-9A89F696A694",
+    "created_at": "2026-10-03T06:22:42.179067+00:00",
+    "status": "pending",
+    "priority": "medium",
+    "reasons": [
+      "severity_thresholds_not_validated"
+    ],
+    "summary": {
+      "health_prediction": {
+        "prediction": "diseased",
+        "predicted_class_idx": null,
+        "confidence": 99.5,
+        "healthy_probability": 0.5,
+        "diseased_probability": null,
+        "threshold": null,
+        "uncertain": false,
+        "model": "health_disease_efficientnetb0",
+        "class_names": null,
+        "calibration": null
+      },
+      "crop_prediction": {
+        "prediction": "Apple",
+        "confidence": 94.0,
+        "uncertain": false
+      },
+      "disease_analysis": {
+        "prediction": "Apple___Apple_scab",
+        "raw_prediction": "Apple___Apple_scab",
+        "raw_confidence": 96.0,
+        "raw_predicted_class_idx": null,
+        "raw_uncertainty": null,
+        "raw_top_3": [
+          {
+            "class": "Apple___Apple_scab",
+            "confidence": 96.0,
+            "crop": "Apple"
+          }
+        ],
+        "crop": "Apple",
+        "crop_identification_method": "dedicated_crop_classifier",
+        "crop_confidence": 94.0,
+        "crop_uncertain": false,
+        "confidence": 100.0,
+        "uncertainty": "Low",
+        "predicted_class_idx": 0,
+        "top_3": [
+          {
+            "class": "Apple___Apple_scab",
+            "class_idx": 0,
+            "crop": "Apple",
+            "score": 100.0,
+            "confidence": 100.0,
+            "raw_score": 96.0,
+            "rank": 1
+          },
+          {
+            "class": "Apple___Apple_scab",
+            "class_idx": 1,
+            "crop": "Apple",
+            "score": 0.0,
+            "confidence": 0.0,
+            "raw_score": 0.0,
+            "rank": 2
+          },
+          {
+            "class": "Apple___Apple_scab",
+            "class_idx": 2,
+            "crop": "Apple",
+            "score": 0.0,
+            "confidence": 0.0,
+            "raw_score": 0.0,
+            "rank": 3
+          }
+        ],
+        "compatible_top_3": [
+          {
+            "class": "Apple___Apple_scab",
+            "class_idx": 0,
+            "crop": "Apple",
+            "score": 100.0,
+            "confidence": 100.0,
+            "raw_score": 96.0,
+            "rank": 1
+          },
+          {
+            "class": "Apple___Apple_scab",
+            "class_idx": 1,
+            "crop": "Apple",
+            "score": 0.0,
+            "confidence": 0.0,
+            "raw_score": 0.0,
+            "rank": 2
+          },
+          {
+            "class": "Apple___Apple_scab",
+            "class_idx": 2,
+            "crop": "Apple",
+            "score": 0.0,
+            "confidence": 0.0,
+            "raw_score": 0.0,
+            "rank": 3
+          }
+        ],
+        "validation": {
+          "status": "validated_by_crop",
+          "reason": null
+        },
+        "model": "plantwild_v2_efficientnetb0"
+      },
+      "segmentation": {
+        "available": true,
+        "architecture": "U-Net (Deep Learning Segmentation)",
+        "model_input_size": "256x256",
+        "total_pixels": 10000,
+        "leaf_pixels": 10000,
+        "diseased_pixels": 0,
+        "affected_ratio": 0.0,
+        "affected_percentage": 0.0,
+        "leaf_mask_path": "/generated/segmentation/segmentation_16d06b33_leaf_mask.png",
+        "mask_path": "generated/segmentation/segmentation_16d06b33_disease_mask.png",
+        "disease_mask_path": "/generated/segmentation/segmentation_16d06b33_disease_mask.png",
+        "overlay_path": "/generated/segmentation/segmentation_16d06b33_overlay.jpg",
+        "composite_path": "/generated/segmentation/segmentation_16d06b33_composite.jpg",
+        "absolute_leaf_mask_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_16d06b33_leaf_mask.png",
+        "absolute_mask_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_16d06b33_disease_mask.png",
+        "absolute_disease_mask_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_16d06b33_disease_mask.png",
+        "absolute_overlay_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_16d06b33_overlay.jpg",
+        "absolute_composite_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_16d06b33_composite.jpg",
+        "confidence": {
+          "score": 77.75,
+          "level": "Medium",
+          "calibrated": false,
+          "method": "segmentation_quality_heuristic",
+          "warning": "This is a quality heuristic, not a calibrated segmentation probability."
+        }
+      },
+      "severity": {
+        "available": true,
+        "diseased_pixels": 0,
+        "leaf_pixels": 10000,
+        "affected_area_percent": 0.0,
+        "severity": "Healthy",
+        "description": "No significant diseased area was detected by the segmentation model.",
+        "recommendation": "No disease area was detected. Continue routine crop monitoring and maintain appropriate crop management practices.",
+        "thresholds": {
+          "healthy": "0%",
+          "early": ">0% to <15%",
+          "moderate": "15% to <35%",
+          "severe": ">=35%"
+        },
+        "threshold_type": "project_defined_initial_thresholds",
+        "calibration_required": true,
+        "threshold_margin_percent": 0.0,
+        "severity_uncertainty": "High",
+        "calibration_note": "Severity thresholds are project-defined and require agronomic validation. Threshold margin indicates how close the estimated affected area is to a project threshold."
+      }
+    },
+    "reviewer": null,
+    "review_notes": null,
+    "decision": null,
+    "updated_at": null
+  },
+  {
+    "review_id": "REV-E221B33BAD57",
+    "report_id": "CR-79B1E8FAFE37",
+    "created_at": "2026-10-03T06:22:42.879623+00:00",
+    "status": "pending",
+    "priority": "medium",
+    "reasons": [
+      "crop_prediction_uncertain",
+      "severity_thresholds_not_validated"
+    ],
+    "summary": {
+      "health_prediction": {
+        "prediction": "diseased",
+        "predicted_class_idx": null,
+        "confidence": 99.0,
+        "healthy_probability": 0.010000000000000009,
+        "diseased_probability": 0.99,
+        "threshold": null,
+        "uncertain": false,
+        "model": "health_disease_efficientnetb0",
+        "class_names": null,
+        "calibration": null
+      },
+      "crop_prediction": {
+        "prediction": "Apple",
+        "confidence": 35.0,
+        "uncertain": true
+      },
+      "disease_analysis": {
+        "prediction": null,
+        "raw_prediction": "Grape___Black_rot",
+        "raw_confidence": 90.0,
+        "raw_predicted_class_idx": null,
+        "raw_uncertainty": null,
+        "raw_top_3": [
+          {
+            "class": "Grape___Black_rot",
+            "confidence": 90.0,
+            "crop": "Grape"
+          }
+        ],
+        "crop": "Apple",
+        "crop_identification_method": "dedicated_crop_classifier",
+        "crop_confidence": 35.0,
+        "crop_uncertain": true,
+        "confidence": null,
+        "uncertainty": "High",
+        "predicted_class_idx": null,
+        "top_3": [],
+        "compatible_top_3": [],
+        "validation": {
+          "status": "skipped_low_crop_confidence",
+          "reason": "Crop prediction confidence was too low (< 50%) to safely validate disease candidates. No official disease prediction was assigned; raw prediction preserved for audit."
+        },
+        "model": "plantwild_v2_efficientnetb0"
+      },
+      "segmentation": {
+        "available": true,
+        "architecture": "U-Net (Deep Learning Segmentation)",
+        "model_input_size": "256x256",
+        "total_pixels": 10000,
+        "leaf_pixels": 10000,
+        "diseased_pixels": 0,
+        "affected_ratio": 0.0,
+        "affected_percentage": 0.0,
+        "leaf_mask_path": "/generated/segmentation/segmentation_84636ed9_leaf_mask.png",
+        "mask_path": "generated/segmentation/segmentation_84636ed9_disease_mask.png",
+        "disease_mask_path": "/generated/segmentation/segmentation_84636ed9_disease_mask.png",
+        "overlay_path": "/generated/segmentation/segmentation_84636ed9_overlay.jpg",
+        "composite_path": "/generated/segmentation/segmentation_84636ed9_composite.jpg",
+        "absolute_leaf_mask_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_84636ed9_leaf_mask.png",
+        "absolute_mask_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_84636ed9_disease_mask.png",
+        "absolute_disease_mask_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_84636ed9_disease_mask.png",
+        "absolute_overlay_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_84636ed9_overlay.jpg",
+        "absolute_composite_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_84636ed9_composite.jpg",
+        "confidence": {
+          "score": 77.75,
+          "level": "Medium",
+          "calibrated": false,
+          "method": "segmentation_quality_heuristic",
+          "warning": "This is a quality heuristic, not a calibrated segmentation probability."
+        }
+      },
+      "severity": {
+        "available": false,
+        "affected_area_percent": 0.0,
+        "message": "Leaf/lesion segmentation was performed, but a severity grade was not assigned because no crop-compatible disease was validated.",
+        "diagnostic_warning": "The segmented affected area must not be interpreted as confirmed severity for a specific disease without a validated disease prediction. Awaiting human review.",
+        "calibration_required": true
+      }
+    },
+    "reviewer": null,
+    "review_notes": null,
+    "decision": null,
+    "updated_at": null
+  },
+  {
+    "review_id": "REV-550F6761D810",
+    "report_id": "CR-1554BDBB9CB3",
+    "created_at": "2026-10-03T06:22:43.494465+00:00",
+    "status": "pending",
+    "priority": "medium",
+    "reasons": [
+      "no_compatible_disease",
+      "severity_thresholds_not_validated"
+    ],
+    "summary": {
+      "health_prediction": {
+        "prediction": "diseased",
+        "predicted_class_idx": null,
+        "confidence": 99.0,
+        "healthy_probability": 0.010000000000000009,
+        "diseased_probability": 0.99,
+        "threshold": null,
+        "uncertain": false,
+        "model": "health_disease_efficientnetb0",
+        "class_names": null,
+        "calibration": null
+      },
+      "crop_prediction": {
+        "prediction": "Tomato",
+        "confidence": 92.0,
+        "uncertain": false
+      },
+      "disease_analysis": {
+        "prediction": null,
+        "raw_prediction": "Apple___Apple_scab",
+        "raw_confidence": 95.0,
+        "raw_predicted_class_idx": null,
+        "raw_uncertainty": null,
+        "raw_top_3": [
+          {
+            "class": "Apple___Apple_scab",
+            "confidence": 95.0,
+            "crop": "Apple"
+          }
+        ],
+        "crop": "Tomato",
+        "crop_identification_method": "dedicated_crop_classifier",
+        "crop_confidence": 92.0,
+        "crop_uncertain": false,
+        "confidence": null,
+        "uncertainty": "High",
+        "predicted_class_idx": null,
+        "top_3": [],
+        "compatible_top_3": [],
+        "validation": {
+          "status": "rejected",
+          "reason": "No disease-class prediction across all model categories is compatible with the independently detected crop."
+        },
+        "model": "plantwild_v2_efficientnetb0"
+      },
+      "segmentation": {
+        "available": true,
+        "architecture": "U-Net (Deep Learning Segmentation)",
+        "model_input_size": "256x256",
+        "total_pixels": 10000,
+        "leaf_pixels": 10000,
+        "diseased_pixels": 0,
+        "affected_ratio": 0.0,
+        "affected_percentage": 0.0,
+        "leaf_mask_path": "/generated/segmentation/segmentation_fc7edbb0_leaf_mask.png",
+        "mask_path": "generated/segmentation/segmentation_fc7edbb0_disease_mask.png",
+        "disease_mask_path": "/generated/segmentation/segmentation_fc7edbb0_disease_mask.png",
+        "overlay_path": "/generated/segmentation/segmentation_fc7edbb0_overlay.jpg",
+        "composite_path": "/generated/segmentation/segmentation_fc7edbb0_composite.jpg",
+        "absolute_leaf_mask_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_fc7edbb0_leaf_mask.png",
+        "absolute_mask_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_fc7edbb0_disease_mask.png",
+        "absolute_disease_mask_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_fc7edbb0_disease_mask.png",
+        "absolute_overlay_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_fc7edbb0_overlay.jpg",
+        "absolute_composite_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_fc7edbb0_composite.jpg",
+        "confidence": {
+          "score": 77.75,
+          "level": "Medium",
+          "calibrated": false,
+          "method": "segmentation_quality_heuristic",
+          "warning": "This is a quality heuristic, not a calibrated segmentation probability."
+        }
+      },
+      "severity": {
+        "available": false,
+        "affected_area_percent": 0.0,
+        "message": "Leaf/lesion segmentation was performed, but a severity grade was not assigned because no crop-compatible disease was validated.",
+        "diagnostic_warning": "The segmented affected area must not be interpreted as confirmed severity for a specific disease without a validated disease prediction. Awaiting human review.",
+        "calibration_required": true
+      }
+    },
+    "reviewer": null,
+    "review_notes": null,
+    "decision": null,
+    "updated_at": null
+  },
+  {
+    "review_id": "REV-8659D0F4EA21",
+    "report_id": "CR-9A9F79056A58",
+    "created_at": "2026-10-03T06:22:48.170769+00:00",
+    "status": "pending",
+    "priority": "medium",
+    "reasons": [
+      "crop_prediction_uncertain",
+      "severity_thresholds_not_validated"
+    ],
+    "summary": {
+      "health_prediction": {
+        "prediction": "diseased",
+        "predicted_class_idx": null,
+        "confidence": 99.0,
+        "healthy_probability": 0.010000000000000009,
+        "diseased_probability": 0.99,
+        "threshold": null,
+        "uncertain": false,
+        "model": "health_disease_efficientnetb0",
+        "class_names": null,
+        "calibration": null
+      },
+      "crop_prediction": {
+        "prediction": "Apple",
+        "confidence": 35.0,
+        "uncertain": true
+      },
+      "disease_analysis": {
+        "prediction": null,
+        "raw_prediction": "Grape___Black_rot",
+        "raw_confidence": 92.0,
+        "raw_predicted_class_idx": null,
+        "raw_uncertainty": null,
+        "raw_top_3": [
+          {
+            "class": "Grape___Black_rot",
+            "confidence": 92.0,
+            "crop": "Grape"
+          }
+        ],
+        "crop": "Apple",
+        "crop_identification_method": "dedicated_crop_classifier",
+        "crop_confidence": 35.0,
+        "crop_uncertain": true,
+        "confidence": null,
+        "uncertainty": "High",
+        "predicted_class_idx": null,
+        "top_3": [],
+        "compatible_top_3": [],
+        "validation": {
+          "status": "skipped_low_crop_confidence",
+          "reason": "Crop prediction confidence was too low (< 50%) to safely validate disease candidates. No official disease prediction was assigned; raw prediction preserved for audit."
+        },
+        "model": "plantwild_v2_efficientnetb0"
+      },
+      "segmentation": {
+        "available": true,
+        "architecture": "U-Net (Deep Learning Segmentation)",
+        "model_input_size": "256x256",
+        "total_pixels": 160000,
+        "leaf_pixels": 59581,
+        "diseased_pixels": 4539,
+        "affected_ratio": 0.0762,
+        "affected_percentage": 7.62,
+        "leaf_mask_path": "/generated/segmentation/segmentation_a7d63cd1_leaf_mask.png",
+        "mask_path": "generated/segmentation/segmentation_a7d63cd1_disease_mask.png",
+        "disease_mask_path": "/generated/segmentation/segmentation_a7d63cd1_disease_mask.png",
+        "overlay_path": "/generated/segmentation/segmentation_a7d63cd1_overlay.jpg",
+        "composite_path": "/generated/segmentation/segmentation_a7d63cd1_composite.jpg",
+        "absolute_leaf_mask_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_a7d63cd1_leaf_mask.png",
+        "absolute_mask_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_a7d63cd1_disease_mask.png",
+        "absolute_disease_mask_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_a7d63cd1_disease_mask.png",
+        "absolute_overlay_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_a7d63cd1_overlay.jpg",
+        "absolute_composite_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_a7d63cd1_composite.jpg",
+        "confidence": {
+          "score": 100.0,
+          "level": "High",
+          "calibrated": false,
+          "method": "segmentation_quality_heuristic",
+          "warning": "This is a quality heuristic, not a calibrated segmentation probability."
+        }
+      },
+      "severity": {
+        "available": false,
+        "affected_area_percent": 7.62,
+        "message": "Leaf/lesion segmentation was performed, but a severity grade was not assigned because no crop-compatible disease was validated.",
+        "diagnostic_warning": "The segmented affected area must not be interpreted as confirmed severity for a specific disease without a validated disease prediction. Awaiting human review.",
+        "calibration_required": true
+      }
+    },
+    "reviewer": null,
+    "review_notes": null,
+    "decision": null,
+    "updated_at": null
+  },
+  {
+    "review_id": "REV-3EA83D97F2BB",
+    "report_id": "CR-225D32EC5F6F",
+    "created_at": "2026-10-03T06:22:51.867973+00:00",
+    "status": "pending",
+    "priority": "medium",
+    "reasons": [
+      "crop_prediction_uncertain",
+      "severity_thresholds_not_validated"
+    ],
+    "summary": {
+      "health_prediction": {
+        "prediction": "diseased",
+        "predicted_class_idx": 1,
+        "confidence": 99.9928,
+        "healthy_probability": 0.0072,
+        "diseased_probability": 99.9928,
+        "threshold": 50.0,
+        "uncertain": false,
+        "model": "health_disease_efficientnetb0",
+        "class_names": {
+          "0": "healthy",
+          "1": "diseased"
+        },
+        "calibration": {
+          "status": "temperature_scaled",
+          "method": "temperature_scaling",
+          "temperature": 0.05,
+          "raw_probability_diseased": 61.7077
+        }
+      },
+      "crop_prediction": {
+        "success": true,
+        "prediction": "Squash",
+        "predicted_class_idx": 11,
+        "confidence": 44.9999,
+        "uncertain": true,
+        "uncertainty_threshold": 60.0,
+        "entropy": 1.397067,
+        "top2_margin": 21.7036,
+        "top_3": [
+          {
+            "rank": 1,
+            "class": "Squash",
+            "confidence": 44.9999,
+            "class_idx": 11
+          },
+          {
+            "rank": 2,
+            "class": "Tomato",
+            "confidence": 23.2962,
+            "class_idx": 13
+          },
+          {
+            "rank": 3,
+            "class": "Corn (maize)",
+            "confidence": 19.5214,
+            "class_idx": 3
+          }
+        ],
+        "model": "crop_efficientnetb0",
+        "model_input_size": [
+          224,
+          224
+        ],
+        "calibration": {
+          "status": "not_calibrated"
+        }
+      },
+      "disease_analysis": {
+        "prediction": null,
+        "raw_prediction": "coffee leaf rust",
+        "raw_confidence": 2.8,
+        "raw_predicted_class_idx": 43,
+        "raw_uncertainty": "High",
+        "raw_top_3": [
+          {
+            "rank": 1,
+            "class": "coffee leaf rust",
+            "score": 2.8,
+            "confidence": 2.8,
+            "class_idx": 43,
+            "crop": null
+          },
+          {
+            "rank": 2,
+            "class": "banana black leaf streak",
+            "score": 2.16,
+            "confidence": 2.16,
+            "class_idx": 5,
+            "crop": "Banana"
+          },
+          {
+            "rank": 3,
+            "class": "wheat loose smut",
+            "score": 1.94,
+            "confidence": 1.94,
+            "class_idx": 106,
+            "crop": "Wheat"
+          }
+        ],
+        "crop": "Squash",
+        "crop_identification_method": "dedicated_crop_classifier",
+        "crop_confidence": 44.9999,
+        "crop_uncertain": true,
+        "confidence": null,
+        "uncertainty": "High",
+        "predicted_class_idx": null,
+        "top_3": [],
+        "compatible_top_3": [],
+        "validation": {
+          "status": "skipped_low_crop_confidence",
+          "reason": "Crop prediction confidence was too low (< 50%) to safely validate disease candidates. No official disease prediction was assigned; raw prediction preserved for audit."
+        },
+        "model": "plantwild_v2_efficientnetb0"
+      },
+      "segmentation": {
+        "available": true,
+        "architecture": "U-Net (Deep Learning Segmentation)",
+        "model_input_size": "256x256",
+        "total_pixels": 10000,
+        "leaf_pixels": 10000,
+        "diseased_pixels": 0,
+        "affected_ratio": 0.0,
+        "affected_percentage": 0.0,
+        "leaf_mask_path": "/generated/segmentation/segmentation_1ec5c5cc_leaf_mask.png",
+        "mask_path": "generated/segmentation/segmentation_1ec5c5cc_disease_mask.png",
+        "disease_mask_path": "/generated/segmentation/segmentation_1ec5c5cc_disease_mask.png",
+        "overlay_path": "/generated/segmentation/segmentation_1ec5c5cc_overlay.jpg",
+        "composite_path": "/generated/segmentation/segmentation_1ec5c5cc_composite.jpg",
+        "absolute_leaf_mask_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_1ec5c5cc_leaf_mask.png",
+        "absolute_mask_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_1ec5c5cc_disease_mask.png",
+        "absolute_disease_mask_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_1ec5c5cc_disease_mask.png",
+        "absolute_overlay_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_1ec5c5cc_overlay.jpg",
+        "absolute_composite_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_1ec5c5cc_composite.jpg",
+        "confidence": {
+          "score": 77.75,
+          "level": "Medium",
+          "calibrated": false,
+          "method": "segmentation_quality_heuristic",
+          "warning": "This is a quality heuristic, not a calibrated segmentation probability."
+        }
+      },
+      "severity": {
+        "available": false,
+        "affected_area_percent": 0.0,
+        "message": "Leaf/lesion segmentation was performed, but a severity grade was not assigned because no crop-compatible disease was validated.",
+        "diagnostic_warning": "The segmented affected area must not be interpreted as confirmed severity for a specific disease without a validated disease prediction. Awaiting human review.",
+        "calibration_required": true
+      }
+    },
+    "reviewer": null,
+    "review_notes": null,
+    "decision": null,
+    "updated_at": null
+  },
+  {
+    "review_id": "REV-186226459EC1",
+    "report_id": "CR-93BADD4A79D3",
+    "created_at": "2026-10-03T06:23:00.593744+00:00",
+    "status": "pending",
+    "priority": "medium",
+    "reasons": [
+      "severity_thresholds_not_validated"
+    ],
+    "summary": {
+      "health_prediction": {
+        "prediction": "diseased",
+        "predicted_class_idx": null,
+        "confidence": 98.0,
+        "healthy_probability": 0.020000000000000018,
+        "diseased_probability": 0.98,
+        "threshold": null,
+        "uncertain": false,
+        "model": "health_disease_efficientnetb0",
+        "class_names": null,
+        "calibration": null
+      },
+      "crop_prediction": {
+        "prediction": "Apple",
+        "confidence": 95.0,
+        "uncertain": false
+      },
+      "disease_analysis": {
+        "prediction": "apple black rot",
+        "raw_prediction": "peach anthracnose",
+        "raw_confidence": 15.6,
+        "raw_predicted_class_idx": 65,
+        "raw_uncertainty": "High",
+        "raw_top_3": [
+          {
+            "rank": 1,
+            "class": "peach anthracnose",
+            "score": 15.6,
+            "confidence": 15.6,
+            "class_idx": 65,
+            "crop": "Peach"
+          },
+          {
+            "rank": 2,
+            "class": "peach brown rot",
+            "score": 12.06,
+            "confidence": 12.06,
+            "class_idx": 66,
+            "crop": "Peach"
+          },
+          {
+            "rank": 3,
+            "class": "peach scab",
+            "score": 3.02,
+            "confidence": 3.02,
+            "class_idx": 69,
+            "crop": "Peach"
+          }
+        ],
+        "crop": "Apple",
+        "crop_identification_method": "dedicated_crop_classifier",
+        "crop_confidence": 95.0,
+        "crop_uncertain": false,
+        "confidence": 60.16,
+        "uncertainty": "Medium",
+        "predicted_class_idx": 0,
+        "top_3": [
+          {
+            "class": "apple black rot",
+            "class_idx": 0,
+            "crop": "Apple",
+            "score": 60.16,
+            "confidence": 60.16,
+            "raw_score": 1.85,
+            "rank": 1
+          },
+          {
+            "class": "apple scab",
+            "class_idx": 3,
+            "crop": "Apple",
+            "score": 26.24,
+            "confidence": 26.24,
+            "raw_score": 0.81,
+            "rank": 2
+          },
+          {
+            "class": "apple rust",
+            "class_idx": 2,
+            "crop": "Apple",
+            "score": 8.21,
+            "confidence": 8.21,
+            "raw_score": 0.25,
+            "rank": 3
+          }
+        ],
+        "compatible_top_3": [
+          {
+            "class": "apple black rot",
+            "class_idx": 0,
+            "crop": "Apple",
+            "score": 60.16,
+            "confidence": 60.16,
+            "raw_score": 1.85,
+            "rank": 1
+          },
+          {
+            "class": "apple scab",
+            "class_idx": 3,
+            "crop": "Apple",
+            "score": 26.24,
+            "confidence": 26.24,
+            "raw_score": 0.81,
+            "rank": 2
+          },
+          {
+            "class": "apple rust",
+            "class_idx": 2,
+            "crop": "Apple",
+            "score": 8.21,
+            "confidence": 8.21,
+            "raw_score": 0.25,
+            "rank": 3
+          }
+        ],
+        "validation": {
+          "status": "validated_by_crop",
+          "reason": null
+        },
+        "model": "plantwild_v2_efficientnetb0"
+      },
+      "segmentation": {
+        "available": true,
+        "architecture": "U-Net (Deep Learning Segmentation)",
+        "model_input_size": "256x256",
+        "total_pixels": 160000,
+        "leaf_pixels": 59581,
+        "diseased_pixels": 4539,
+        "affected_ratio": 0.0762,
+        "affected_percentage": 7.62,
+        "leaf_mask_path": "/generated/segmentation/segmentation_f92e01d7_leaf_mask.png",
+        "mask_path": "generated/segmentation/segmentation_f92e01d7_disease_mask.png",
+        "disease_mask_path": "/generated/segmentation/segmentation_f92e01d7_disease_mask.png",
+        "overlay_path": "/generated/segmentation/segmentation_f92e01d7_overlay.jpg",
+        "composite_path": "/generated/segmentation/segmentation_f92e01d7_composite.jpg",
+        "absolute_leaf_mask_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_f92e01d7_leaf_mask.png",
+        "absolute_mask_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_f92e01d7_disease_mask.png",
+        "absolute_disease_mask_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_f92e01d7_disease_mask.png",
+        "absolute_overlay_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_f92e01d7_overlay.jpg",
+        "absolute_composite_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_f92e01d7_composite.jpg",
+        "confidence": {
+          "score": 100.0,
+          "level": "High",
+          "calibrated": false,
+          "method": "segmentation_quality_heuristic",
+          "warning": "This is a quality heuristic, not a calibrated segmentation probability."
+        }
+      },
+      "severity": {
+        "available": true,
+        "diseased_pixels": 4539,
+        "leaf_pixels": 59581,
+        "affected_area_percent": 7.62,
+        "severity": "Early",
+        "description": "A relatively small portion of the detected leaf area is affected. Field inspection and disease-specific management should be considered.",
+        "recommendation": "Prioritize field inspection and confirm the predicted disease. Monitor affected plants and follow disease-specific management guidance.",
+        "thresholds": {
+          "healthy": "0%",
+          "early": ">0% to <15%",
+          "moderate": "15% to <35%",
+          "severe": ">=35%"
+        },
+        "threshold_type": "project_defined_initial_thresholds",
+        "calibration_required": true,
+        "threshold_margin_percent": 7.38,
+        "severity_uncertainty": "Low",
+        "calibration_note": "Severity thresholds are project-defined and require agronomic validation. Threshold margin indicates how close the estimated affected area is to a project threshold."
+      }
+    },
+    "reviewer": null,
+    "review_notes": null,
+    "decision": null,
+    "updated_at": null
+  },
+  {
+    "review_id": "REV-308F9090AF95",
+    "report_id": "CR-7940CD04C4D5",
+    "created_at": "2026-10-03T06:23:01.579275+00:00",
+    "status": "pending",
+    "priority": "high",
+    "reasons": [
+      "low_disease_confidence",
+      "severity_thresholds_not_validated"
+    ],
+    "summary": {
+      "health_prediction": {
+        "prediction": "diseased",
+        "predicted_class_idx": null,
+        "confidence": 98.0,
+        "healthy_probability": 0.020000000000000018,
+        "diseased_probability": 0.98,
+        "threshold": null,
+        "uncertain": false,
+        "model": "health_disease_efficientnetb0",
+        "class_names": null,
+        "calibration": null
+      },
+      "crop_prediction": {
+        "prediction": "Blueberry",
+        "confidence": 95.0,
+        "uncertain": false
+      },
+      "disease_analysis": {
+        "prediction": "blueberry mummy berry",
+        "raw_prediction": "peach anthracnose",
+        "raw_confidence": 15.6,
+        "raw_predicted_class_idx": 65,
+        "raw_uncertainty": "High",
+        "raw_top_3": [
+          {
+            "rank": 1,
+            "class": "peach anthracnose",
+            "score": 15.6,
+            "confidence": 15.6,
+            "class_idx": 65,
+            "crop": "Peach"
+          },
+          {
+            "rank": 2,
+            "class": "peach brown rot",
+            "score": 12.06,
+            "confidence": 12.06,
+            "class_idx": 66,
+            "crop": "Peach"
+          },
+          {
+            "rank": 3,
+            "class": "peach scab",
+            "score": 3.02,
+            "confidence": 3.02,
+            "class_idx": 69,
+            "crop": "Peach"
+          }
+        ],
+        "crop": "Blueberry",
+        "crop_identification_method": "dedicated_crop_classifier",
+        "crop_confidence": 95.0,
+        "crop_uncertain": false,
+        "confidence": 44.15,
+        "uncertainty": "High",
+        "predicted_class_idx": 20,
+        "top_3": [
+          {
+            "class": "blueberry mummy berry",
+            "class_idx": 20,
+            "crop": "Blueberry",
+            "score": 44.15,
+            "confidence": 44.15,
+            "raw_score": 1.08,
+            "rank": 1
+          },
+          {
+            "class": "blueberry anthracnose",
+            "class_idx": 18,
+            "crop": "Blueberry",
+            "score": 21.83,
+            "confidence": 21.83,
+            "raw_score": 0.53,
+            "rank": 2
+          },
+          {
+            "class": "blueberry rust",
+            "class_idx": 21,
+            "crop": "Blueberry",
+            "score": 20.35,
+            "confidence": 20.35,
+            "raw_score": 0.5,
+            "rank": 3
+          }
+        ],
+        "compatible_top_3": [
+          {
+            "class": "blueberry mummy berry",
+            "class_idx": 20,
+            "crop": "Blueberry",
+            "score": 44.15,
+            "confidence": 44.15,
+            "raw_score": 1.08,
+            "rank": 1
+          },
+          {
+            "class": "blueberry anthracnose",
+            "class_idx": 18,
+            "crop": "Blueberry",
+            "score": 21.83,
+            "confidence": 21.83,
+            "raw_score": 0.53,
+            "rank": 2
+          },
+          {
+            "class": "blueberry rust",
+            "class_idx": 21,
+            "crop": "Blueberry",
+            "score": 20.35,
+            "confidence": 20.35,
+            "raw_score": 0.5,
+            "rank": 3
+          }
+        ],
+        "validation": {
+          "status": "validated_by_crop",
+          "reason": null
+        },
+        "model": "plantwild_v2_efficientnetb0"
+      },
+      "segmentation": {
+        "available": true,
+        "architecture": "U-Net (Deep Learning Segmentation)",
+        "model_input_size": "256x256",
+        "total_pixels": 160000,
+        "leaf_pixels": 59581,
+        "diseased_pixels": 4539,
+        "affected_ratio": 0.0762,
+        "affected_percentage": 7.62,
+        "leaf_mask_path": "/generated/segmentation/segmentation_25b8d005_leaf_mask.png",
+        "mask_path": "generated/segmentation/segmentation_25b8d005_disease_mask.png",
+        "disease_mask_path": "/generated/segmentation/segmentation_25b8d005_disease_mask.png",
+        "overlay_path": "/generated/segmentation/segmentation_25b8d005_overlay.jpg",
+        "composite_path": "/generated/segmentation/segmentation_25b8d005_composite.jpg",
+        "absolute_leaf_mask_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_25b8d005_leaf_mask.png",
+        "absolute_mask_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_25b8d005_disease_mask.png",
+        "absolute_disease_mask_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_25b8d005_disease_mask.png",
+        "absolute_overlay_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_25b8d005_overlay.jpg",
+        "absolute_composite_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_25b8d005_composite.jpg",
+        "confidence": {
+          "score": 100.0,
+          "level": "High",
+          "calibrated": false,
+          "method": "segmentation_quality_heuristic",
+          "warning": "This is a quality heuristic, not a calibrated segmentation probability."
+        }
+      },
+      "severity": {
+        "available": true,
+        "diseased_pixels": 4539,
+        "leaf_pixels": 59581,
+        "affected_area_percent": 7.62,
+        "severity": "Early",
+        "description": "A relatively small portion of the detected leaf area is affected. Field inspection and disease-specific management should be considered.",
+        "recommendation": "Prioritize field inspection and confirm the predicted disease. Monitor affected plants and follow disease-specific management guidance.",
+        "thresholds": {
+          "healthy": "0%",
+          "early": ">0% to <15%",
+          "moderate": "15% to <35%",
+          "severe": ">=35%"
+        },
+        "threshold_type": "project_defined_initial_thresholds",
+        "calibration_required": true,
+        "threshold_margin_percent": 7.38,
+        "severity_uncertainty": "Low",
+        "calibration_note": "Severity thresholds are project-defined and require agronomic validation. Threshold margin indicates how close the estimated affected area is to a project threshold.",
+        "diagnostic_warning": "Disease confidence is low. The affected-area estimate and severity category should not be treated as a confirmed disease diagnosis."
+      }
+    },
+    "reviewer": null,
+    "review_notes": null,
+    "decision": null,
+    "updated_at": null
+  },
+  {
+    "review_id": "REV-E397BD46FB17",
+    "report_id": "CR-8A01482BCCEE",
+    "created_at": "2026-10-03T06:23:02.804604+00:00",
+    "status": "pending",
+    "priority": "medium",
+    "reasons": [
+      "severity_thresholds_not_validated"
+    ],
+    "summary": {
+      "health_prediction": {
+        "prediction": "diseased",
+        "predicted_class_idx": null,
+        "confidence": 98.0,
+        "healthy_probability": 0.020000000000000018,
+        "diseased_probability": 0.98,
+        "threshold": null,
+        "uncertain": false,
+        "model": "health_disease_efficientnetb0",
+        "class_names": null,
+        "calibration": null
+      },
+      "crop_prediction": {
+        "prediction": "Cherry",
+        "confidence": 95.0,
+        "uncertain": false
+      },
+      "disease_analysis": {
+        "prediction": "cherry powdery mildew",
+        "raw_prediction": "peach anthracnose",
+        "raw_confidence": 15.6,
+        "raw_predicted_class_idx": 65,
+        "raw_uncertainty": "High",
+        "raw_top_3": [
+          {
+            "rank": 1,
+            "class": "peach anthracnose",
+            "score": 15.6,
+            "confidence": 15.6,
+            "class_idx": 65,
+            "crop": "Peach"
+          },
+          {
+            "rank": 2,
+            "class": "peach brown rot",
+            "score": 12.06,
+            "confidence": 12.06,
+            "class_idx": 66,
+            "crop": "Peach"
+          },
+          {
+            "rank": 3,
+            "class": "peach scab",
+            "score": 3.02,
+            "confidence": 3.02,
+            "class_idx": 69,
+            "crop": "Peach"
+          }
+        ],
+        "crop": "Cherry",
+        "crop_identification_method": "dedicated_crop_classifier",
+        "crop_confidence": 95.0,
+        "crop_uncertain": false,
+        "confidence": 58.86,
+        "uncertainty": "Medium",
+        "predicted_class_idx": 37,
+        "top_3": [
+          {
+            "class": "cherry powdery mildew",
+            "class_idx": 37,
+            "crop": "Cherry",
+            "score": 58.86,
+            "confidence": 58.86,
+            "raw_score": 0.51,
+            "rank": 1
+          },
+          {
+            "class": "cherry leaf spot",
+            "class_idx": 36,
+            "crop": "Cherry",
+            "score": 41.14,
+            "confidence": 41.14,
+            "raw_score": 0.36,
+            "rank": 2
+          }
+        ],
+        "compatible_top_3": [
+          {
+            "class": "cherry powdery mildew",
+            "class_idx": 37,
+            "crop": "Cherry",
+            "score": 58.86,
+            "confidence": 58.86,
+            "raw_score": 0.51,
+            "rank": 1
+          },
+          {
+            "class": "cherry leaf spot",
+            "class_idx": 36,
+            "crop": "Cherry",
+            "score": 41.14,
+            "confidence": 41.14,
+            "raw_score": 0.36,
+            "rank": 2
+          }
+        ],
+        "validation": {
+          "status": "validated_by_crop",
+          "reason": null
+        },
+        "model": "plantwild_v2_efficientnetb0"
+      },
+      "segmentation": {
+        "available": true,
+        "architecture": "U-Net (Deep Learning Segmentation)",
+        "model_input_size": "256x256",
+        "total_pixels": 160000,
+        "leaf_pixels": 59581,
+        "diseased_pixels": 4539,
+        "affected_ratio": 0.0762,
+        "affected_percentage": 7.62,
+        "leaf_mask_path": "/generated/segmentation/segmentation_54babbd7_leaf_mask.png",
+        "mask_path": "generated/segmentation/segmentation_54babbd7_disease_mask.png",
+        "disease_mask_path": "/generated/segmentation/segmentation_54babbd7_disease_mask.png",
+        "overlay_path": "/generated/segmentation/segmentation_54babbd7_overlay.jpg",
+        "composite_path": "/generated/segmentation/segmentation_54babbd7_composite.jpg",
+        "absolute_leaf_mask_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_54babbd7_leaf_mask.png",
+        "absolute_mask_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_54babbd7_disease_mask.png",
+        "absolute_disease_mask_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_54babbd7_disease_mask.png",
+        "absolute_overlay_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_54babbd7_overlay.jpg",
+        "absolute_composite_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_54babbd7_composite.jpg",
+        "confidence": {
+          "score": 100.0,
+          "level": "High",
+          "calibrated": false,
+          "method": "segmentation_quality_heuristic",
+          "warning": "This is a quality heuristic, not a calibrated segmentation probability."
+        }
+      },
+      "severity": {
+        "available": true,
+        "diseased_pixels": 4539,
+        "leaf_pixels": 59581,
+        "affected_area_percent": 7.62,
+        "severity": "Early",
+        "description": "A relatively small portion of the detected leaf area is affected. Field inspection and disease-specific management should be considered.",
+        "recommendation": "Prioritize field inspection and confirm the predicted disease. Monitor affected plants and follow disease-specific management guidance.",
+        "thresholds": {
+          "healthy": "0%",
+          "early": ">0% to <15%",
+          "moderate": "15% to <35%",
+          "severe": ">=35%"
+        },
+        "threshold_type": "project_defined_initial_thresholds",
+        "calibration_required": true,
+        "threshold_margin_percent": 7.38,
+        "severity_uncertainty": "Low",
+        "calibration_note": "Severity thresholds are project-defined and require agronomic validation. Threshold margin indicates how close the estimated affected area is to a project threshold."
+      }
+    },
+    "reviewer": null,
+    "review_notes": null,
+    "decision": null,
+    "updated_at": null
+  },
+  {
+    "review_id": "REV-44B5908EBEE3",
+    "report_id": "CR-3E9030AD093C",
+    "created_at": "2026-10-03T06:23:03.981172+00:00",
+    "status": "pending",
+    "priority": "high",
+    "reasons": [
+      "low_disease_confidence",
+      "severity_thresholds_not_validated"
+    ],
+    "summary": {
+      "health_prediction": {
+        "prediction": "diseased",
+        "predicted_class_idx": null,
+        "confidence": 98.0,
+        "healthy_probability": 0.020000000000000018,
+        "diseased_probability": 0.98,
+        "threshold": null,
+        "uncertain": false,
+        "model": "health_disease_efficientnetb0",
+        "class_names": null,
+        "calibration": null
+      },
+      "crop_prediction": {
+        "prediction": "Corn",
+        "confidence": 95.0,
+        "uncertain": false
+      },
+      "disease_analysis": {
+        "prediction": "corn gray leaf spot",
+        "raw_prediction": "peach anthracnose",
+        "raw_confidence": 15.6,
+        "raw_predicted_class_idx": 65,
+        "raw_uncertainty": "High",
+        "raw_top_3": [
+          {
+            "rank": 1,
+            "class": "peach anthracnose",
+            "score": 15.6,
+            "confidence": 15.6,
+            "class_idx": 65,
+            "crop": "Peach"
+          },
+          {
+            "rank": 2,
+            "class": "peach brown rot",
+            "score": 12.06,
+            "confidence": 12.06,
+            "class_idx": 66,
+            "crop": "Peach"
+          },
+          {
+            "rank": 3,
+            "class": "peach scab",
+            "score": 3.02,
+            "confidence": 3.02,
+            "class_idx": 69,
+            "crop": "Peach"
+          }
+        ],
+        "crop": "Corn",
+        "crop_identification_method": "dedicated_crop_classifier",
+        "crop_confidence": 95.0,
+        "crop_uncertain": false,
+        "confidence": 30.41,
+        "uncertainty": "High",
+        "predicted_class_idx": 44,
+        "top_3": [
+          {
+            "class": "corn gray leaf spot",
+            "class_idx": 44,
+            "crop": "Corn",
+            "score": 30.41,
+            "confidence": 30.41,
+            "raw_score": 0.66,
+            "rank": 1
+          },
+          {
+            "class": "corn smut",
+            "class_idx": 47,
+            "crop": "Corn",
+            "score": 27.77,
+            "confidence": 27.77,
+            "raw_score": 0.6,
+            "rank": 2
+          },
+          {
+            "class": "corn rust",
+            "class_idx": 46,
+            "crop": "Corn",
+            "score": 27.09,
+            "confidence": 27.09,
+            "raw_score": 0.59,
+            "rank": 3
+          }
+        ],
+        "compatible_top_3": [
+          {
+            "class": "corn gray leaf spot",
+            "class_idx": 44,
+            "crop": "Corn",
+            "score": 30.41,
+            "confidence": 30.41,
+            "raw_score": 0.66,
+            "rank": 1
+          },
+          {
+            "class": "corn smut",
+            "class_idx": 47,
+            "crop": "Corn",
+            "score": 27.77,
+            "confidence": 27.77,
+            "raw_score": 0.6,
+            "rank": 2
+          },
+          {
+            "class": "corn rust",
+            "class_idx": 46,
+            "crop": "Corn",
+            "score": 27.09,
+            "confidence": 27.09,
+            "raw_score": 0.59,
+            "rank": 3
+          }
+        ],
+        "validation": {
+          "status": "validated_by_crop",
+          "reason": null
+        },
+        "model": "plantwild_v2_efficientnetb0"
+      },
+      "segmentation": {
+        "available": true,
+        "architecture": "U-Net (Deep Learning Segmentation)",
+        "model_input_size": "256x256",
+        "total_pixels": 160000,
+        "leaf_pixels": 59581,
+        "diseased_pixels": 4539,
+        "affected_ratio": 0.0762,
+        "affected_percentage": 7.62,
+        "leaf_mask_path": "/generated/segmentation/segmentation_25252a71_leaf_mask.png",
+        "mask_path": "generated/segmentation/segmentation_25252a71_disease_mask.png",
+        "disease_mask_path": "/generated/segmentation/segmentation_25252a71_disease_mask.png",
+        "overlay_path": "/generated/segmentation/segmentation_25252a71_overlay.jpg",
+        "composite_path": "/generated/segmentation/segmentation_25252a71_composite.jpg",
+        "absolute_leaf_mask_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_25252a71_leaf_mask.png",
+        "absolute_mask_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_25252a71_disease_mask.png",
+        "absolute_disease_mask_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_25252a71_disease_mask.png",
+        "absolute_overlay_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_25252a71_overlay.jpg",
+        "absolute_composite_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_25252a71_composite.jpg",
+        "confidence": {
+          "score": 100.0,
+          "level": "High",
+          "calibrated": false,
+          "method": "segmentation_quality_heuristic",
+          "warning": "This is a quality heuristic, not a calibrated segmentation probability."
+        }
+      },
+      "severity": {
+        "available": true,
+        "diseased_pixels": 4539,
+        "leaf_pixels": 59581,
+        "affected_area_percent": 7.62,
+        "severity": "Early",
+        "description": "A relatively small portion of the detected leaf area is affected. Field inspection and disease-specific management should be considered.",
+        "recommendation": "Prioritize field inspection and confirm the predicted disease. Monitor affected plants and follow disease-specific management guidance.",
+        "thresholds": {
+          "healthy": "0%",
+          "early": ">0% to <15%",
+          "moderate": "15% to <35%",
+          "severe": ">=35%"
+        },
+        "threshold_type": "project_defined_initial_thresholds",
+        "calibration_required": true,
+        "threshold_margin_percent": 7.38,
+        "severity_uncertainty": "Low",
+        "calibration_note": "Severity thresholds are project-defined and require agronomic validation. Threshold margin indicates how close the estimated affected area is to a project threshold.",
+        "diagnostic_warning": "Disease confidence is low. The affected-area estimate and severity category should not be treated as a confirmed disease diagnosis."
+      }
+    },
+    "reviewer": null,
+    "review_notes": null,
+    "decision": null,
+    "updated_at": null
+  },
+  {
+    "review_id": "REV-12F4845F83E7",
+    "report_id": "CR-A83E55B0021E",
+    "created_at": "2026-10-03T06:23:04.874373+00:00",
+    "status": "pending",
+    "priority": "medium",
+    "reasons": [
+      "severity_thresholds_not_validated"
+    ],
+    "summary": {
+      "health_prediction": {
+        "prediction": "diseased",
+        "predicted_class_idx": null,
+        "confidence": 98.0,
+        "healthy_probability": 0.020000000000000018,
+        "diseased_probability": 0.98,
+        "threshold": null,
+        "uncertain": false,
+        "model": "health_disease_efficientnetb0",
+        "class_names": null,
+        "calibration": null
+      },
+      "crop_prediction": {
+        "prediction": "Grape",
+        "confidence": 95.0,
+        "uncertain": false
+      },
+      "disease_analysis": {
+        "prediction": "grape black rot",
+        "raw_prediction": "peach anthracnose",
+        "raw_confidence": 15.6,
+        "raw_predicted_class_idx": 65,
+        "raw_uncertainty": "High",
+        "raw_top_3": [
+          {
+            "rank": 1,
+            "class": "peach anthracnose",
+            "score": 15.6,
+            "confidence": 15.6,
+            "class_idx": 65,
+            "crop": "Peach"
+          },
+          {
+            "rank": 2,
+            "class": "peach brown rot",
+            "score": 12.06,
+            "confidence": 12.06,
+            "class_idx": 66,
+            "crop": "Peach"
+          },
+          {
+            "rank": 3,
+            "class": "peach scab",
+            "score": 3.02,
+            "confidence": 3.02,
+            "class_idx": 69,
+            "crop": "Peach"
+          }
+        ],
+        "crop": "Grape",
+        "crop_identification_method": "dedicated_crop_classifier",
+        "crop_confidence": 95.0,
+        "crop_uncertain": false,
+        "confidence": 64.1,
+        "uncertainty": "Medium",
+        "predicted_class_idx": 58,
+        "top_3": [
+          {
+            "class": "grape black rot",
+            "class_idx": 58,
+            "crop": "Grape",
+            "score": 64.1,
+            "confidence": 64.1,
+            "raw_score": 1.45,
+            "rank": 1
+          },
+          {
+            "class": "grape downy mildew",
+            "class_idx": 59,
+            "crop": "Grape",
+            "score": 27.11,
+            "confidence": 27.11,
+            "raw_score": 0.62,
+            "rank": 2
+          },
+          {
+            "class": "grapevine leafroll disease",
+            "class_idx": 61,
+            "crop": "Grape",
+            "score": 5.14,
+            "confidence": 5.14,
+            "raw_score": 0.12,
+            "rank": 3
+          }
+        ],
+        "compatible_top_3": [
+          {
+            "class": "grape black rot",
+            "class_idx": 58,
+            "crop": "Grape",
+            "score": 64.1,
+            "confidence": 64.1,
+            "raw_score": 1.45,
+            "rank": 1
+          },
+          {
+            "class": "grape downy mildew",
+            "class_idx": 59,
+            "crop": "Grape",
+            "score": 27.11,
+            "confidence": 27.11,
+            "raw_score": 0.62,
+            "rank": 2
+          },
+          {
+            "class": "grapevine leafroll disease",
+            "class_idx": 61,
+            "crop": "Grape",
+            "score": 5.14,
+            "confidence": 5.14,
+            "raw_score": 0.12,
+            "rank": 3
+          }
+        ],
+        "validation": {
+          "status": "validated_by_crop",
+          "reason": null
+        },
+        "model": "plantwild_v2_efficientnetb0"
+      },
+      "segmentation": {
+        "available": true,
+        "architecture": "U-Net (Deep Learning Segmentation)",
+        "model_input_size": "256x256",
+        "total_pixels": 160000,
+        "leaf_pixels": 59581,
+        "diseased_pixels": 4539,
+        "affected_ratio": 0.0762,
+        "affected_percentage": 7.62,
+        "leaf_mask_path": "/generated/segmentation/segmentation_51168459_leaf_mask.png",
+        "mask_path": "generated/segmentation/segmentation_51168459_disease_mask.png",
+        "disease_mask_path": "/generated/segmentation/segmentation_51168459_disease_mask.png",
+        "overlay_path": "/generated/segmentation/segmentation_51168459_overlay.jpg",
+        "composite_path": "/generated/segmentation/segmentation_51168459_composite.jpg",
+        "absolute_leaf_mask_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_51168459_leaf_mask.png",
+        "absolute_mask_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_51168459_disease_mask.png",
+        "absolute_disease_mask_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_51168459_disease_mask.png",
+        "absolute_overlay_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_51168459_overlay.jpg",
+        "absolute_composite_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_51168459_composite.jpg",
+        "confidence": {
+          "score": 100.0,
+          "level": "High",
+          "calibrated": false,
+          "method": "segmentation_quality_heuristic",
+          "warning": "This is a quality heuristic, not a calibrated segmentation probability."
+        }
+      },
+      "severity": {
+        "available": true,
+        "diseased_pixels": 4539,
+        "leaf_pixels": 59581,
+        "affected_area_percent": 7.62,
+        "severity": "Early",
+        "description": "A relatively small portion of the detected leaf area is affected. Field inspection and disease-specific management should be considered.",
+        "recommendation": "Prioritize field inspection and confirm the predicted disease. Monitor affected plants and follow disease-specific management guidance.",
+        "thresholds": {
+          "healthy": "0%",
+          "early": ">0% to <15%",
+          "moderate": "15% to <35%",
+          "severe": ">=35%"
+        },
+        "threshold_type": "project_defined_initial_thresholds",
+        "calibration_required": true,
+        "threshold_margin_percent": 7.38,
+        "severity_uncertainty": "Low",
+        "calibration_note": "Severity thresholds are project-defined and require agronomic validation. Threshold margin indicates how close the estimated affected area is to a project threshold."
+      }
+    },
+    "reviewer": null,
+    "review_notes": null,
+    "decision": null,
+    "updated_at": null
+  },
+  {
+    "review_id": "REV-F958355F1B9D",
+    "report_id": "CR-F4B216979072",
+    "created_at": "2026-10-03T06:23:05.753377+00:00",
+    "status": "pending",
+    "priority": "medium",
+    "reasons": [
+      "severity_thresholds_not_validated"
+    ],
+    "summary": {
+      "health_prediction": {
+        "prediction": "diseased",
+        "predicted_class_idx": null,
+        "confidence": 98.0,
+        "healthy_probability": 0.020000000000000018,
+        "diseased_probability": 0.98,
+        "threshold": null,
+        "uncertain": false,
+        "model": "health_disease_efficientnetb0",
+        "class_names": null,
+        "calibration": null
+      },
+      "crop_prediction": {
+        "prediction": "Orange",
+        "confidence": 95.0,
+        "uncertain": false
+      },
+      "disease_analysis": {
+        "prediction": "citrus greening disease",
+        "raw_prediction": "peach anthracnose",
+        "raw_confidence": 15.6,
+        "raw_predicted_class_idx": 65,
+        "raw_uncertainty": "High",
+        "raw_top_3": [
+          {
+            "rank": 1,
+            "class": "peach anthracnose",
+            "score": 15.6,
+            "confidence": 15.6,
+            "class_idx": 65,
+            "crop": "Peach"
+          },
+          {
+            "rank": 2,
+            "class": "peach brown rot",
+            "score": 12.06,
+            "confidence": 12.06,
+            "class_idx": 66,
+            "crop": "Peach"
+          },
+          {
+            "rank": 3,
+            "class": "peach scab",
+            "score": 3.02,
+            "confidence": 3.02,
+            "class_idx": 69,
+            "crop": "Peach"
+          }
+        ],
+        "crop": "Orange",
+        "crop_identification_method": "dedicated_crop_classifier",
+        "crop_confidence": 95.0,
+        "crop_uncertain": false,
+        "confidence": 93.63,
+        "uncertainty": "Low",
+        "predicted_class_idx": 39,
+        "top_3": [
+          {
+            "class": "citrus greening disease",
+            "class_idx": 39,
+            "crop": "Orange",
+            "score": 93.63,
+            "confidence": 93.63,
+            "raw_score": 2.33,
+            "rank": 1
+          },
+          {
+            "class": "citrus canker",
+            "class_idx": 38,
+            "crop": "Orange",
+            "score": 6.37,
+            "confidence": 6.37,
+            "raw_score": 0.16,
+            "rank": 2
+          }
+        ],
+        "compatible_top_3": [
+          {
+            "class": "citrus greening disease",
+            "class_idx": 39,
+            "crop": "Orange",
+            "score": 93.63,
+            "confidence": 93.63,
+            "raw_score": 2.33,
+            "rank": 1
+          },
+          {
+            "class": "citrus canker",
+            "class_idx": 38,
+            "crop": "Orange",
+            "score": 6.37,
+            "confidence": 6.37,
+            "raw_score": 0.16,
+            "rank": 2
+          }
+        ],
+        "validation": {
+          "status": "validated_by_crop",
+          "reason": null
+        },
+        "model": "plantwild_v2_efficientnetb0"
+      },
+      "segmentation": {
+        "available": true,
+        "architecture": "U-Net (Deep Learning Segmentation)",
+        "model_input_size": "256x256",
+        "total_pixels": 160000,
+        "leaf_pixels": 59581,
+        "diseased_pixels": 4539,
+        "affected_ratio": 0.0762,
+        "affected_percentage": 7.62,
+        "leaf_mask_path": "/generated/segmentation/segmentation_eaf483dd_leaf_mask.png",
+        "mask_path": "generated/segmentation/segmentation_eaf483dd_disease_mask.png",
+        "disease_mask_path": "/generated/segmentation/segmentation_eaf483dd_disease_mask.png",
+        "overlay_path": "/generated/segmentation/segmentation_eaf483dd_overlay.jpg",
+        "composite_path": "/generated/segmentation/segmentation_eaf483dd_composite.jpg",
+        "absolute_leaf_mask_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_eaf483dd_leaf_mask.png",
+        "absolute_mask_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_eaf483dd_disease_mask.png",
+        "absolute_disease_mask_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_eaf483dd_disease_mask.png",
+        "absolute_overlay_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_eaf483dd_overlay.jpg",
+        "absolute_composite_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_eaf483dd_composite.jpg",
+        "confidence": {
+          "score": 100.0,
+          "level": "High",
+          "calibrated": false,
+          "method": "segmentation_quality_heuristic",
+          "warning": "This is a quality heuristic, not a calibrated segmentation probability."
+        }
+      },
+      "severity": {
+        "available": true,
+        "diseased_pixels": 4539,
+        "leaf_pixels": 59581,
+        "affected_area_percent": 7.62,
+        "severity": "Early",
+        "description": "A relatively small portion of the detected leaf area is affected. Field inspection and disease-specific management should be considered.",
+        "recommendation": "Prioritize field inspection and confirm the predicted disease. Monitor affected plants and follow disease-specific management guidance.",
+        "thresholds": {
+          "healthy": "0%",
+          "early": ">0% to <15%",
+          "moderate": "15% to <35%",
+          "severe": ">=35%"
+        },
+        "threshold_type": "project_defined_initial_thresholds",
+        "calibration_required": true,
+        "threshold_margin_percent": 7.38,
+        "severity_uncertainty": "Low",
+        "calibration_note": "Severity thresholds are project-defined and require agronomic validation. Threshold margin indicates how close the estimated affected area is to a project threshold."
+      }
+    },
+    "reviewer": null,
+    "review_notes": null,
+    "decision": null,
+    "updated_at": null
+  },
+  {
+    "review_id": "REV-F90C8336AFE6",
+    "report_id": "CR-F59C15EEEFC7",
+    "created_at": "2026-10-03T06:23:06.835474+00:00",
+    "status": "pending",
+    "priority": "medium",
+    "reasons": [
+      "severity_thresholds_not_validated"
+    ],
+    "summary": {
+      "health_prediction": {
+        "prediction": "diseased",
+        "predicted_class_idx": null,
+        "confidence": 98.0,
+        "healthy_probability": 0.020000000000000018,
+        "diseased_probability": 0.98,
+        "threshold": null,
+        "uncertain": false,
+        "model": "health_disease_efficientnetb0",
+        "class_names": null,
+        "calibration": null
+      },
+      "crop_prediction": {
+        "prediction": "Peach",
+        "confidence": 95.0,
+        "uncertain": false
+      },
+      "disease_analysis": {
+        "prediction": "peach anthracnose",
+        "raw_prediction": "peach anthracnose",
+        "raw_confidence": 15.6,
+        "raw_predicted_class_idx": 65,
+        "raw_uncertainty": "High",
+        "raw_top_3": [
+          {
+            "rank": 1,
+            "class": "peach anthracnose",
+            "score": 15.6,
+            "confidence": 15.6,
+            "class_idx": 65,
+            "crop": "Peach"
+          },
+          {
+            "rank": 2,
+            "class": "peach brown rot",
+            "score": 12.06,
+            "confidence": 12.06,
+            "class_idx": 66,
+            "crop": "Peach"
+          },
+          {
+            "rank": 3,
+            "class": "peach scab",
+            "score": 3.02,
+            "confidence": 3.02,
+            "class_idx": 69,
+            "crop": "Peach"
+          }
+        ],
+        "crop": "Peach",
+        "crop_identification_method": "dedicated_crop_classifier",
+        "crop_confidence": 95.0,
+        "crop_uncertain": false,
+        "confidence": 50.5,
+        "uncertainty": "Medium",
+        "predicted_class_idx": 65,
+        "top_3": [
+          {
+            "class": "peach anthracnose",
+            "class_idx": 65,
+            "crop": "Peach",
+            "score": 50.5,
+            "confidence": 50.5,
+            "raw_score": 15.6,
+            "rank": 1
+          },
+          {
+            "class": "peach brown rot",
+            "class_idx": 66,
+            "crop": "Peach",
+            "score": 39.04,
+            "confidence": 39.04,
+            "raw_score": 12.06,
+            "rank": 2
+          },
+          {
+            "class": "peach scab",
+            "class_idx": 69,
+            "crop": "Peach",
+            "score": 9.77,
+            "confidence": 9.77,
+            "raw_score": 3.02,
+            "rank": 3
+          }
+        ],
+        "compatible_top_3": [
+          {
+            "class": "peach anthracnose",
+            "class_idx": 65,
+            "crop": "Peach",
+            "score": 50.5,
+            "confidence": 50.5,
+            "raw_score": 15.6,
+            "rank": 1
+          },
+          {
+            "class": "peach brown rot",
+            "class_idx": 66,
+            "crop": "Peach",
+            "score": 39.04,
+            "confidence": 39.04,
+            "raw_score": 12.06,
+            "rank": 2
+          },
+          {
+            "class": "peach scab",
+            "class_idx": 69,
+            "crop": "Peach",
+            "score": 9.77,
+            "confidence": 9.77,
+            "raw_score": 3.02,
+            "rank": 3
+          }
+        ],
+        "validation": {
+          "status": "validated_by_crop",
+          "reason": null
+        },
+        "model": "plantwild_v2_efficientnetb0"
+      },
+      "segmentation": {
+        "available": true,
+        "architecture": "U-Net (Deep Learning Segmentation)",
+        "model_input_size": "256x256",
+        "total_pixels": 160000,
+        "leaf_pixels": 59581,
+        "diseased_pixels": 4539,
+        "affected_ratio": 0.0762,
+        "affected_percentage": 7.62,
+        "leaf_mask_path": "/generated/segmentation/segmentation_01040a0e_leaf_mask.png",
+        "mask_path": "generated/segmentation/segmentation_01040a0e_disease_mask.png",
+        "disease_mask_path": "/generated/segmentation/segmentation_01040a0e_disease_mask.png",
+        "overlay_path": "/generated/segmentation/segmentation_01040a0e_overlay.jpg",
+        "composite_path": "/generated/segmentation/segmentation_01040a0e_composite.jpg",
+        "absolute_leaf_mask_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_01040a0e_leaf_mask.png",
+        "absolute_mask_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_01040a0e_disease_mask.png",
+        "absolute_disease_mask_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_01040a0e_disease_mask.png",
+        "absolute_overlay_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_01040a0e_overlay.jpg",
+        "absolute_composite_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_01040a0e_composite.jpg",
+        "confidence": {
+          "score": 100.0,
+          "level": "High",
+          "calibrated": false,
+          "method": "segmentation_quality_heuristic",
+          "warning": "This is a quality heuristic, not a calibrated segmentation probability."
+        }
+      },
+      "severity": {
+        "available": true,
+        "diseased_pixels": 4539,
+        "leaf_pixels": 59581,
+        "affected_area_percent": 7.62,
+        "severity": "Early",
+        "description": "A relatively small portion of the detected leaf area is affected. Field inspection and disease-specific management should be considered.",
+        "recommendation": "Prioritize field inspection and confirm the predicted disease. Monitor affected plants and follow disease-specific management guidance.",
+        "thresholds": {
+          "healthy": "0%",
+          "early": ">0% to <15%",
+          "moderate": "15% to <35%",
+          "severe": ">=35%"
+        },
+        "threshold_type": "project_defined_initial_thresholds",
+        "calibration_required": true,
+        "threshold_margin_percent": 7.38,
+        "severity_uncertainty": "Low",
+        "calibration_note": "Severity thresholds are project-defined and require agronomic validation. Threshold margin indicates how close the estimated affected area is to a project threshold."
+      }
+    },
+    "reviewer": null,
+    "review_notes": null,
+    "decision": null,
+    "updated_at": null
+  },
+  {
+    "review_id": "REV-D00BBDF99454",
+    "report_id": "CR-89F20E9CA5E4",
+    "created_at": "2026-10-03T06:23:07.799685+00:00",
+    "status": "pending",
+    "priority": "medium",
+    "reasons": [
+      "no_compatible_disease",
+      "severity_thresholds_not_validated"
+    ],
+    "summary": {
+      "health_prediction": {
+        "prediction": "diseased",
+        "predicted_class_idx": null,
+        "confidence": 98.0,
+        "healthy_probability": 0.020000000000000018,
+        "diseased_probability": 0.98,
+        "threshold": null,
+        "uncertain": false,
+        "model": "health_disease_efficientnetb0",
+        "class_names": null,
+        "calibration": null
+      },
+      "crop_prediction": {
+        "prediction": "Pepper",
+        "confidence": 95.0,
+        "uncertain": false
+      },
+      "disease_analysis": {
+        "prediction": null,
+        "raw_prediction": "peach anthracnose",
+        "raw_confidence": 15.6,
+        "raw_predicted_class_idx": 65,
+        "raw_uncertainty": "High",
+        "raw_top_3": [
+          {
+            "rank": 1,
+            "class": "peach anthracnose",
+            "score": 15.6,
+            "confidence": 15.6,
+            "class_idx": 65,
+            "crop": "Peach"
+          },
+          {
+            "rank": 2,
+            "class": "peach brown rot",
+            "score": 12.06,
+            "confidence": 12.06,
+            "class_idx": 66,
+            "crop": "Peach"
+          },
+          {
+            "rank": 3,
+            "class": "peach scab",
+            "score": 3.02,
+            "confidence": 3.02,
+            "class_idx": 69,
+            "crop": "Peach"
+          }
+        ],
+        "crop": "Pepper",
+        "crop_identification_method": "dedicated_crop_classifier",
+        "crop_confidence": 95.0,
+        "crop_uncertain": false,
+        "confidence": null,
+        "uncertainty": "High",
+        "predicted_class_idx": null,
+        "top_3": [],
+        "compatible_top_3": [],
+        "validation": {
+          "status": "rejected",
+          "reason": "No disease-class prediction across all model categories is compatible with the independently detected crop."
+        },
+        "model": "plantwild_v2_efficientnetb0"
+      },
+      "segmentation": {
+        "available": true,
+        "architecture": "U-Net (Deep Learning Segmentation)",
+        "model_input_size": "256x256",
+        "total_pixels": 160000,
+        "leaf_pixels": 59581,
+        "diseased_pixels": 4539,
+        "affected_ratio": 0.0762,
+        "affected_percentage": 7.62,
+        "leaf_mask_path": "/generated/segmentation/segmentation_b371c54f_leaf_mask.png",
+        "mask_path": "generated/segmentation/segmentation_b371c54f_disease_mask.png",
+        "disease_mask_path": "/generated/segmentation/segmentation_b371c54f_disease_mask.png",
+        "overlay_path": "/generated/segmentation/segmentation_b371c54f_overlay.jpg",
+        "composite_path": "/generated/segmentation/segmentation_b371c54f_composite.jpg",
+        "absolute_leaf_mask_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_b371c54f_leaf_mask.png",
+        "absolute_mask_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_b371c54f_disease_mask.png",
+        "absolute_disease_mask_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_b371c54f_disease_mask.png",
+        "absolute_overlay_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_b371c54f_overlay.jpg",
+        "absolute_composite_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_b371c54f_composite.jpg",
+        "confidence": {
+          "score": 100.0,
+          "level": "High",
+          "calibrated": false,
+          "method": "segmentation_quality_heuristic",
+          "warning": "This is a quality heuristic, not a calibrated segmentation probability."
+        }
+      },
+      "severity": {
+        "available": false,
+        "affected_area_percent": 7.62,
+        "message": "Leaf/lesion segmentation was performed, but a severity grade was not assigned because no crop-compatible disease was validated.",
+        "diagnostic_warning": "The segmented affected area must not be interpreted as confirmed severity for a specific disease without a validated disease prediction. Awaiting human review.",
+        "calibration_required": true
+      }
+    },
+    "reviewer": null,
+    "review_notes": null,
+    "decision": null,
+    "updated_at": null
+  },
+  {
+    "review_id": "REV-0F54E2527FA6",
+    "report_id": "CR-8559F5F87446",
+    "created_at": "2026-10-03T06:23:08.673631+00:00",
+    "status": "pending",
+    "priority": "medium",
+    "reasons": [
+      "severity_thresholds_not_validated"
+    ],
+    "summary": {
+      "health_prediction": {
+        "prediction": "diseased",
+        "predicted_class_idx": null,
+        "confidence": 98.0,
+        "healthy_probability": 0.020000000000000018,
+        "diseased_probability": 0.98,
+        "threshold": null,
+        "uncertain": false,
+        "model": "health_disease_efficientnetb0",
+        "class_names": null,
+        "calibration": null
+      },
+      "crop_prediction": {
+        "prediction": "Potato",
+        "confidence": 95.0,
+        "uncertain": false
+      },
+      "disease_analysis": {
+        "prediction": "potato late blight",
+        "raw_prediction": "peach anthracnose",
+        "raw_confidence": 15.6,
+        "raw_predicted_class_idx": 65,
+        "raw_uncertainty": "High",
+        "raw_top_3": [
+          {
+            "rank": 1,
+            "class": "peach anthracnose",
+            "score": 15.6,
+            "confidence": 15.6,
+            "class_idx": 65,
+            "crop": "Peach"
+          },
+          {
+            "rank": 2,
+            "class": "peach brown rot",
+            "score": 12.06,
+            "confidence": 12.06,
+            "class_idx": 66,
+            "crop": "Peach"
+          },
+          {
+            "rank": 3,
+            "class": "peach scab",
+            "score": 3.02,
+            "confidence": 3.02,
+            "class_idx": 69,
+            "crop": "Peach"
+          }
+        ],
+        "crop": "Potato",
+        "crop_identification_method": "dedicated_crop_classifier",
+        "crop_confidence": 95.0,
+        "crop_uncertain": false,
+        "confidence": 66.82,
+        "uncertainty": "Medium",
+        "predicted_class_idx": 76,
+        "top_3": [
+          {
+            "class": "potato late blight",
+            "class_idx": 76,
+            "crop": "Potato",
+            "score": 66.82,
+            "confidence": 66.82,
+            "raw_score": 0.57,
+            "rank": 1
+          },
+          {
+            "class": "potato early blight",
+            "class_idx": 75,
+            "crop": "Potato",
+            "score": 33.18,
+            "confidence": 33.18,
+            "raw_score": 0.28,
+            "rank": 2
+          }
+        ],
+        "compatible_top_3": [
+          {
+            "class": "potato late blight",
+            "class_idx": 76,
+            "crop": "Potato",
+            "score": 66.82,
+            "confidence": 66.82,
+            "raw_score": 0.57,
+            "rank": 1
+          },
+          {
+            "class": "potato early blight",
+            "class_idx": 75,
+            "crop": "Potato",
+            "score": 33.18,
+            "confidence": 33.18,
+            "raw_score": 0.28,
+            "rank": 2
+          }
+        ],
+        "validation": {
+          "status": "validated_by_crop",
+          "reason": null
+        },
+        "model": "plantwild_v2_efficientnetb0"
+      },
+      "segmentation": {
+        "available": true,
+        "architecture": "U-Net (Deep Learning Segmentation)",
+        "model_input_size": "256x256",
+        "total_pixels": 160000,
+        "leaf_pixels": 59581,
+        "diseased_pixels": 4539,
+        "affected_ratio": 0.0762,
+        "affected_percentage": 7.62,
+        "leaf_mask_path": "/generated/segmentation/segmentation_ab208434_leaf_mask.png",
+        "mask_path": "generated/segmentation/segmentation_ab208434_disease_mask.png",
+        "disease_mask_path": "/generated/segmentation/segmentation_ab208434_disease_mask.png",
+        "overlay_path": "/generated/segmentation/segmentation_ab208434_overlay.jpg",
+        "composite_path": "/generated/segmentation/segmentation_ab208434_composite.jpg",
+        "absolute_leaf_mask_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_ab208434_leaf_mask.png",
+        "absolute_mask_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_ab208434_disease_mask.png",
+        "absolute_disease_mask_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_ab208434_disease_mask.png",
+        "absolute_overlay_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_ab208434_overlay.jpg",
+        "absolute_composite_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_ab208434_composite.jpg",
+        "confidence": {
+          "score": 100.0,
+          "level": "High",
+          "calibrated": false,
+          "method": "segmentation_quality_heuristic",
+          "warning": "This is a quality heuristic, not a calibrated segmentation probability."
+        }
+      },
+      "severity": {
+        "available": true,
+        "diseased_pixels": 4539,
+        "leaf_pixels": 59581,
+        "affected_area_percent": 7.62,
+        "severity": "Early",
+        "description": "A relatively small portion of the detected leaf area is affected. Field inspection and disease-specific management should be considered.",
+        "recommendation": "Prioritize field inspection and confirm the predicted disease. Monitor affected plants and follow disease-specific management guidance.",
+        "thresholds": {
+          "healthy": "0%",
+          "early": ">0% to <15%",
+          "moderate": "15% to <35%",
+          "severe": ">=35%"
+        },
+        "threshold_type": "project_defined_initial_thresholds",
+        "calibration_required": true,
+        "threshold_margin_percent": 7.38,
+        "severity_uncertainty": "Low",
+        "calibration_note": "Severity thresholds are project-defined and require agronomic validation. Threshold margin indicates how close the estimated affected area is to a project threshold."
+      }
+    },
+    "reviewer": null,
+    "review_notes": null,
+    "decision": null,
+    "updated_at": null
+  },
+  {
+    "review_id": "REV-F606603BE618",
+    "report_id": "CR-FFE48F5D1723",
+    "created_at": "2026-10-03T06:23:09.582419+00:00",
+    "status": "pending",
+    "priority": "high",
+    "reasons": [
+      "low_disease_confidence",
+      "severity_thresholds_not_validated"
+    ],
+    "summary": {
+      "health_prediction": {
+        "prediction": "diseased",
+        "predicted_class_idx": null,
+        "confidence": 98.0,
+        "healthy_probability": 0.020000000000000018,
+        "diseased_probability": 0.98,
+        "threshold": null,
+        "uncertain": false,
+        "model": "health_disease_efficientnetb0",
+        "class_names": null,
+        "calibration": null
+      },
+      "crop_prediction": {
+        "prediction": "Raspberry",
+        "confidence": 95.0,
+        "uncertain": false
+      },
+      "disease_analysis": {
+        "prediction": "raspberry leaf spot",
+        "raw_prediction": "peach anthracnose",
+        "raw_confidence": 15.6,
+        "raw_predicted_class_idx": 65,
+        "raw_uncertainty": "High",
+        "raw_top_3": [
+          {
+            "rank": 1,
+            "class": "peach anthracnose",
+            "score": 15.6,
+            "confidence": 15.6,
+            "class_idx": 65,
+            "crop": "Peach"
+          },
+          {
+            "rank": 2,
+            "class": "peach brown rot",
+            "score": 12.06,
+            "confidence": 12.06,
+            "class_idx": 66,
+            "crop": "Peach"
+          },
+          {
+            "rank": 3,
+            "class": "peach scab",
+            "score": 3.02,
+            "confidence": 3.02,
+            "class_idx": 69,
+            "crop": "Peach"
+          }
+        ],
+        "crop": "Raspberry",
+        "crop_identification_method": "dedicated_crop_classifier",
+        "crop_confidence": 95.0,
+        "crop_uncertain": false,
+        "confidence": 36.92,
+        "uncertainty": "High",
+        "predicted_class_idx": 79,
+        "top_3": [
+          {
+            "class": "raspberry leaf spot",
+            "class_idx": 79,
+            "crop": "Raspberry",
+            "score": 36.92,
+            "confidence": 36.92,
+            "raw_score": 1.36,
+            "rank": 1
+          },
+          {
+            "class": "raspberry yellow rust",
+            "class_idx": 80,
+            "crop": "Raspberry",
+            "score": 29.76,
+            "confidence": 29.76,
+            "raw_score": 1.09,
+            "rank": 2
+          },
+          {
+            "class": "raspberry gray mold",
+            "class_idx": 78,
+            "crop": "Raspberry",
+            "score": 26.08,
+            "confidence": 26.08,
+            "raw_score": 0.96,
+            "rank": 3
+          }
+        ],
+        "compatible_top_3": [
+          {
+            "class": "raspberry leaf spot",
+            "class_idx": 79,
+            "crop": "Raspberry",
+            "score": 36.92,
+            "confidence": 36.92,
+            "raw_score": 1.36,
+            "rank": 1
+          },
+          {
+            "class": "raspberry yellow rust",
+            "class_idx": 80,
+            "crop": "Raspberry",
+            "score": 29.76,
+            "confidence": 29.76,
+            "raw_score": 1.09,
+            "rank": 2
+          },
+          {
+            "class": "raspberry gray mold",
+            "class_idx": 78,
+            "crop": "Raspberry",
+            "score": 26.08,
+            "confidence": 26.08,
+            "raw_score": 0.96,
+            "rank": 3
+          }
+        ],
+        "validation": {
+          "status": "validated_by_crop",
+          "reason": null
+        },
+        "model": "plantwild_v2_efficientnetb0"
+      },
+      "segmentation": {
+        "available": true,
+        "architecture": "U-Net (Deep Learning Segmentation)",
+        "model_input_size": "256x256",
+        "total_pixels": 160000,
+        "leaf_pixels": 59581,
+        "diseased_pixels": 4539,
+        "affected_ratio": 0.0762,
+        "affected_percentage": 7.62,
+        "leaf_mask_path": "/generated/segmentation/segmentation_a889a161_leaf_mask.png",
+        "mask_path": "generated/segmentation/segmentation_a889a161_disease_mask.png",
+        "disease_mask_path": "/generated/segmentation/segmentation_a889a161_disease_mask.png",
+        "overlay_path": "/generated/segmentation/segmentation_a889a161_overlay.jpg",
+        "composite_path": "/generated/segmentation/segmentation_a889a161_composite.jpg",
+        "absolute_leaf_mask_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_a889a161_leaf_mask.png",
+        "absolute_mask_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_a889a161_disease_mask.png",
+        "absolute_disease_mask_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_a889a161_disease_mask.png",
+        "absolute_overlay_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_a889a161_overlay.jpg",
+        "absolute_composite_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_a889a161_composite.jpg",
+        "confidence": {
+          "score": 100.0,
+          "level": "High",
+          "calibrated": false,
+          "method": "segmentation_quality_heuristic",
+          "warning": "This is a quality heuristic, not a calibrated segmentation probability."
+        }
+      },
+      "severity": {
+        "available": true,
+        "diseased_pixels": 4539,
+        "leaf_pixels": 59581,
+        "affected_area_percent": 7.62,
+        "severity": "Early",
+        "description": "A relatively small portion of the detected leaf area is affected. Field inspection and disease-specific management should be considered.",
+        "recommendation": "Prioritize field inspection and confirm the predicted disease. Monitor affected plants and follow disease-specific management guidance.",
+        "thresholds": {
+          "healthy": "0%",
+          "early": ">0% to <15%",
+          "moderate": "15% to <35%",
+          "severe": ">=35%"
+        },
+        "threshold_type": "project_defined_initial_thresholds",
+        "calibration_required": true,
+        "threshold_margin_percent": 7.38,
+        "severity_uncertainty": "Low",
+        "calibration_note": "Severity thresholds are project-defined and require agronomic validation. Threshold margin indicates how close the estimated affected area is to a project threshold.",
+        "diagnostic_warning": "Disease confidence is low. The affected-area estimate and severity category should not be treated as a confirmed disease diagnosis."
+      }
+    },
+    "reviewer": null,
+    "review_notes": null,
+    "decision": null,
+    "updated_at": null
+  },
+  {
+    "review_id": "REV-B8D5F2DC6A20",
+    "report_id": "CR-0055C16A7F78",
+    "created_at": "2026-10-03T06:23:10.455264+00:00",
+    "status": "pending",
+    "priority": "high",
+    "reasons": [
+      "low_disease_confidence",
+      "severity_thresholds_not_validated"
+    ],
+    "summary": {
+      "health_prediction": {
+        "prediction": "diseased",
+        "predicted_class_idx": null,
+        "confidence": 98.0,
+        "healthy_probability": 0.020000000000000018,
+        "diseased_probability": 0.98,
+        "threshold": null,
+        "uncertain": false,
+        "model": "health_disease_efficientnetb0",
+        "class_names": null,
+        "calibration": null
+      },
+      "crop_prediction": {
+        "prediction": "Soybean",
+        "confidence": 95.0,
+        "uncertain": false
+      },
+      "disease_analysis": {
+        "prediction": "soybean frog eye leaf spot",
+        "raw_prediction": "peach anthracnose",
+        "raw_confidence": 15.6,
+        "raw_predicted_class_idx": 65,
+        "raw_uncertainty": "High",
+        "raw_top_3": [
+          {
+            "rank": 1,
+            "class": "peach anthracnose",
+            "score": 15.6,
+            "confidence": 15.6,
+            "class_idx": 65,
+            "crop": "Peach"
+          },
+          {
+            "rank": 2,
+            "class": "peach brown rot",
+            "score": 12.06,
+            "confidence": 12.06,
+            "class_idx": 66,
+            "crop": "Peach"
+          },
+          {
+            "rank": 3,
+            "class": "peach scab",
+            "score": 3.02,
+            "confidence": 3.02,
+            "class_idx": 69,
+            "crop": "Peach"
+          }
+        ],
+        "crop": "Soybean",
+        "crop_identification_method": "dedicated_crop_classifier",
+        "crop_confidence": 95.0,
+        "crop_uncertain": false,
+        "confidence": 38.36,
+        "uncertainty": "High",
+        "predicted_class_idx": 86,
+        "top_3": [
+          {
+            "class": "soybean frog eye leaf spot",
+            "class_idx": 86,
+            "crop": "Soybean",
+            "score": 38.36,
+            "confidence": 38.36,
+            "raw_score": 1.22,
+            "rank": 1
+          },
+          {
+            "class": "soybean downy mildew",
+            "class_idx": 85,
+            "crop": "Soybean",
+            "score": 27.97,
+            "confidence": 27.97,
+            "raw_score": 0.89,
+            "rank": 2
+          },
+          {
+            "class": "soybean brown spot",
+            "class_idx": 84,
+            "crop": "Soybean",
+            "score": 12.15,
+            "confidence": 12.15,
+            "raw_score": 0.39,
+            "rank": 3
+          }
+        ],
+        "compatible_top_3": [
+          {
+            "class": "soybean frog eye leaf spot",
+            "class_idx": 86,
+            "crop": "Soybean",
+            "score": 38.36,
+            "confidence": 38.36,
+            "raw_score": 1.22,
+            "rank": 1
+          },
+          {
+            "class": "soybean downy mildew",
+            "class_idx": 85,
+            "crop": "Soybean",
+            "score": 27.97,
+            "confidence": 27.97,
+            "raw_score": 0.89,
+            "rank": 2
+          },
+          {
+            "class": "soybean brown spot",
+            "class_idx": 84,
+            "crop": "Soybean",
+            "score": 12.15,
+            "confidence": 12.15,
+            "raw_score": 0.39,
+            "rank": 3
+          }
+        ],
+        "validation": {
+          "status": "validated_by_crop",
+          "reason": null
+        },
+        "model": "plantwild_v2_efficientnetb0"
+      },
+      "segmentation": {
+        "available": true,
+        "architecture": "U-Net (Deep Learning Segmentation)",
+        "model_input_size": "256x256",
+        "total_pixels": 160000,
+        "leaf_pixels": 59581,
+        "diseased_pixels": 4539,
+        "affected_ratio": 0.0762,
+        "affected_percentage": 7.62,
+        "leaf_mask_path": "/generated/segmentation/segmentation_a58c78e7_leaf_mask.png",
+        "mask_path": "generated/segmentation/segmentation_a58c78e7_disease_mask.png",
+        "disease_mask_path": "/generated/segmentation/segmentation_a58c78e7_disease_mask.png",
+        "overlay_path": "/generated/segmentation/segmentation_a58c78e7_overlay.jpg",
+        "composite_path": "/generated/segmentation/segmentation_a58c78e7_composite.jpg",
+        "absolute_leaf_mask_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_a58c78e7_leaf_mask.png",
+        "absolute_mask_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_a58c78e7_disease_mask.png",
+        "absolute_disease_mask_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_a58c78e7_disease_mask.png",
+        "absolute_overlay_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_a58c78e7_overlay.jpg",
+        "absolute_composite_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_a58c78e7_composite.jpg",
+        "confidence": {
+          "score": 100.0,
+          "level": "High",
+          "calibrated": false,
+          "method": "segmentation_quality_heuristic",
+          "warning": "This is a quality heuristic, not a calibrated segmentation probability."
+        }
+      },
+      "severity": {
+        "available": true,
+        "diseased_pixels": 4539,
+        "leaf_pixels": 59581,
+        "affected_area_percent": 7.62,
+        "severity": "Early",
+        "description": "A relatively small portion of the detected leaf area is affected. Field inspection and disease-specific management should be considered.",
+        "recommendation": "Prioritize field inspection and confirm the predicted disease. Monitor affected plants and follow disease-specific management guidance.",
+        "thresholds": {
+          "healthy": "0%",
+          "early": ">0% to <15%",
+          "moderate": "15% to <35%",
+          "severe": ">=35%"
+        },
+        "threshold_type": "project_defined_initial_thresholds",
+        "calibration_required": true,
+        "threshold_margin_percent": 7.38,
+        "severity_uncertainty": "Low",
+        "calibration_note": "Severity thresholds are project-defined and require agronomic validation. Threshold margin indicates how close the estimated affected area is to a project threshold.",
+        "diagnostic_warning": "Disease confidence is low. The affected-area estimate and severity category should not be treated as a confirmed disease diagnosis."
+      }
+    },
+    "reviewer": null,
+    "review_notes": null,
+    "decision": null,
+    "updated_at": null
+  },
+  {
+    "review_id": "REV-BC2C0EBBF050",
+    "report_id": "CR-C8107387205B",
+    "created_at": "2026-10-03T06:23:11.304075+00:00",
+    "status": "pending",
+    "priority": "medium",
+    "reasons": [
+      "severity_thresholds_not_validated"
+    ],
+    "summary": {
+      "health_prediction": {
+        "prediction": "diseased",
+        "predicted_class_idx": null,
+        "confidence": 98.0,
+        "healthy_probability": 0.020000000000000018,
+        "diseased_probability": 0.98,
+        "threshold": null,
+        "uncertain": false,
+        "model": "health_disease_efficientnetb0",
+        "class_names": null,
+        "calibration": null
+      },
+      "crop_prediction": {
+        "prediction": "Squash",
+        "confidence": 95.0,
+        "uncertain": false
+      },
+      "disease_analysis": {
+        "prediction": "squash powdery mildew",
+        "raw_prediction": "peach anthracnose",
+        "raw_confidence": 15.6,
+        "raw_predicted_class_idx": 65,
+        "raw_uncertainty": "High",
+        "raw_top_3": [
+          {
+            "rank": 1,
+            "class": "peach anthracnose",
+            "score": 15.6,
+            "confidence": 15.6,
+            "class_idx": 65,
+            "crop": "Peach"
+          },
+          {
+            "rank": 2,
+            "class": "peach brown rot",
+            "score": 12.06,
+            "confidence": 12.06,
+            "class_idx": 66,
+            "crop": "Peach"
+          },
+          {
+            "rank": 3,
+            "class": "peach scab",
+            "score": 3.02,
+            "confidence": 3.02,
+            "class_idx": 69,
+            "crop": "Peach"
+          }
+        ],
+        "crop": "Squash",
+        "crop_identification_method": "dedicated_crop_classifier",
+        "crop_confidence": 95.0,
+        "crop_uncertain": false,
+        "confidence": 100.0,
+        "uncertainty": "Low",
+        "predicted_class_idx": 89,
+        "top_3": [
+          {
+            "class": "squash powdery mildew",
+            "class_idx": 89,
+            "crop": "Squash",
+            "score": 100.0,
+            "confidence": 100.0,
+            "raw_score": 0.18,
+            "rank": 1
+          }
+        ],
+        "compatible_top_3": [
+          {
+            "class": "squash powdery mildew",
+            "class_idx": 89,
+            "crop": "Squash",
+            "score": 100.0,
+            "confidence": 100.0,
+            "raw_score": 0.18,
+            "rank": 1
+          }
+        ],
+        "validation": {
+          "status": "validated_by_crop",
+          "reason": null
+        },
+        "model": "plantwild_v2_efficientnetb0"
+      },
+      "segmentation": {
+        "available": true,
+        "architecture": "U-Net (Deep Learning Segmentation)",
+        "model_input_size": "256x256",
+        "total_pixels": 160000,
+        "leaf_pixels": 59581,
+        "diseased_pixels": 4539,
+        "affected_ratio": 0.0762,
+        "affected_percentage": 7.62,
+        "leaf_mask_path": "/generated/segmentation/segmentation_4d5d63c8_leaf_mask.png",
+        "mask_path": "generated/segmentation/segmentation_4d5d63c8_disease_mask.png",
+        "disease_mask_path": "/generated/segmentation/segmentation_4d5d63c8_disease_mask.png",
+        "overlay_path": "/generated/segmentation/segmentation_4d5d63c8_overlay.jpg",
+        "composite_path": "/generated/segmentation/segmentation_4d5d63c8_composite.jpg",
+        "absolute_leaf_mask_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_4d5d63c8_leaf_mask.png",
+        "absolute_mask_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_4d5d63c8_disease_mask.png",
+        "absolute_disease_mask_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_4d5d63c8_disease_mask.png",
+        "absolute_overlay_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_4d5d63c8_overlay.jpg",
+        "absolute_composite_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_4d5d63c8_composite.jpg",
+        "confidence": {
+          "score": 100.0,
+          "level": "High",
+          "calibrated": false,
+          "method": "segmentation_quality_heuristic",
+          "warning": "This is a quality heuristic, not a calibrated segmentation probability."
+        }
+      },
+      "severity": {
+        "available": true,
+        "diseased_pixels": 4539,
+        "leaf_pixels": 59581,
+        "affected_area_percent": 7.62,
+        "severity": "Early",
+        "description": "A relatively small portion of the detected leaf area is affected. Field inspection and disease-specific management should be considered.",
+        "recommendation": "Prioritize field inspection and confirm the predicted disease. Monitor affected plants and follow disease-specific management guidance.",
+        "thresholds": {
+          "healthy": "0%",
+          "early": ">0% to <15%",
+          "moderate": "15% to <35%",
+          "severe": ">=35%"
+        },
+        "threshold_type": "project_defined_initial_thresholds",
+        "calibration_required": true,
+        "threshold_margin_percent": 7.38,
+        "severity_uncertainty": "Low",
+        "calibration_note": "Severity thresholds are project-defined and require agronomic validation. Threshold margin indicates how close the estimated affected area is to a project threshold."
+      }
+    },
+    "reviewer": null,
+    "review_notes": null,
+    "decision": null,
+    "updated_at": null
+  },
+  {
+    "review_id": "REV-3ADB84232A6C",
+    "report_id": "CR-91002FBA9CA1",
+    "created_at": "2026-10-03T06:23:12.168021+00:00",
+    "status": "pending",
+    "priority": "medium",
+    "reasons": [
+      "severity_thresholds_not_validated"
+    ],
+    "summary": {
+      "health_prediction": {
+        "prediction": "diseased",
+        "predicted_class_idx": null,
+        "confidence": 98.0,
+        "healthy_probability": 0.020000000000000018,
+        "diseased_probability": 0.98,
+        "threshold": null,
+        "uncertain": false,
+        "model": "health_disease_efficientnetb0",
+        "class_names": null,
+        "calibration": null
+      },
+      "crop_prediction": {
+        "prediction": "Strawberry",
+        "confidence": 95.0,
+        "uncertain": false
+      },
+      "disease_analysis": {
+        "prediction": "strawberry anthracnose",
+        "raw_prediction": "peach anthracnose",
+        "raw_confidence": 15.6,
+        "raw_predicted_class_idx": 65,
+        "raw_uncertainty": "High",
+        "raw_top_3": [
+          {
+            "rank": 1,
+            "class": "peach anthracnose",
+            "score": 15.6,
+            "confidence": 15.6,
+            "class_idx": 65,
+            "crop": "Peach"
+          },
+          {
+            "rank": 2,
+            "class": "peach brown rot",
+            "score": 12.06,
+            "confidence": 12.06,
+            "class_idx": 66,
+            "crop": "Peach"
+          },
+          {
+            "rank": 3,
+            "class": "peach scab",
+            "score": 3.02,
+            "confidence": 3.02,
+            "class_idx": 69,
+            "crop": "Peach"
+          }
+        ],
+        "crop": "Strawberry",
+        "crop_identification_method": "dedicated_crop_classifier",
+        "crop_confidence": 95.0,
+        "crop_uncertain": false,
+        "confidence": 68.37,
+        "uncertainty": "Medium",
+        "predicted_class_idx": 90,
+        "top_3": [
+          {
+            "class": "strawberry anthracnose",
+            "class_idx": 90,
+            "crop": "Strawberry",
+            "score": 68.37,
+            "confidence": 68.37,
+            "raw_score": 1.01,
+            "rank": 1
+          },
+          {
+            "class": "strawberry leaf scorch",
+            "class_idx": 91,
+            "crop": "Strawberry",
+            "score": 31.63,
+            "confidence": 31.63,
+            "raw_score": 0.47,
+            "rank": 2
+          }
+        ],
+        "compatible_top_3": [
+          {
+            "class": "strawberry anthracnose",
+            "class_idx": 90,
+            "crop": "Strawberry",
+            "score": 68.37,
+            "confidence": 68.37,
+            "raw_score": 1.01,
+            "rank": 1
+          },
+          {
+            "class": "strawberry leaf scorch",
+            "class_idx": 91,
+            "crop": "Strawberry",
+            "score": 31.63,
+            "confidence": 31.63,
+            "raw_score": 0.47,
+            "rank": 2
+          }
+        ],
+        "validation": {
+          "status": "validated_by_crop",
+          "reason": null
+        },
+        "model": "plantwild_v2_efficientnetb0"
+      },
+      "segmentation": {
+        "available": true,
+        "architecture": "U-Net (Deep Learning Segmentation)",
+        "model_input_size": "256x256",
+        "total_pixels": 160000,
+        "leaf_pixels": 59581,
+        "diseased_pixels": 4539,
+        "affected_ratio": 0.0762,
+        "affected_percentage": 7.62,
+        "leaf_mask_path": "/generated/segmentation/segmentation_0f32424d_leaf_mask.png",
+        "mask_path": "generated/segmentation/segmentation_0f32424d_disease_mask.png",
+        "disease_mask_path": "/generated/segmentation/segmentation_0f32424d_disease_mask.png",
+        "overlay_path": "/generated/segmentation/segmentation_0f32424d_overlay.jpg",
+        "composite_path": "/generated/segmentation/segmentation_0f32424d_composite.jpg",
+        "absolute_leaf_mask_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_0f32424d_leaf_mask.png",
+        "absolute_mask_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_0f32424d_disease_mask.png",
+        "absolute_disease_mask_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_0f32424d_disease_mask.png",
+        "absolute_overlay_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_0f32424d_overlay.jpg",
+        "absolute_composite_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_0f32424d_composite.jpg",
+        "confidence": {
+          "score": 100.0,
+          "level": "High",
+          "calibrated": false,
+          "method": "segmentation_quality_heuristic",
+          "warning": "This is a quality heuristic, not a calibrated segmentation probability."
+        }
+      },
+      "severity": {
+        "available": true,
+        "diseased_pixels": 4539,
+        "leaf_pixels": 59581,
+        "affected_area_percent": 7.62,
+        "severity": "Early",
+        "description": "A relatively small portion of the detected leaf area is affected. Field inspection and disease-specific management should be considered.",
+        "recommendation": "Prioritize field inspection and confirm the predicted disease. Monitor affected plants and follow disease-specific management guidance.",
+        "thresholds": {
+          "healthy": "0%",
+          "early": ">0% to <15%",
+          "moderate": "15% to <35%",
+          "severe": ">=35%"
+        },
+        "threshold_type": "project_defined_initial_thresholds",
+        "calibration_required": true,
+        "threshold_margin_percent": 7.38,
+        "severity_uncertainty": "Low",
+        "calibration_note": "Severity thresholds are project-defined and require agronomic validation. Threshold margin indicates how close the estimated affected area is to a project threshold."
+      }
+    },
+    "reviewer": null,
+    "review_notes": null,
+    "decision": null,
+    "updated_at": null
+  },
+  {
+    "review_id": "REV-E22B8AF060FF",
+    "report_id": "CR-B4027C88668B",
+    "created_at": "2026-10-03T06:23:13.194964+00:00",
+    "status": "pending",
+    "priority": "high",
+    "reasons": [
+      "low_disease_confidence",
+      "severity_thresholds_not_validated"
+    ],
+    "summary": {
+      "health_prediction": {
+        "prediction": "diseased",
+        "predicted_class_idx": null,
+        "confidence": 98.0,
+        "healthy_probability": 0.020000000000000018,
+        "diseased_probability": 0.98,
+        "threshold": null,
+        "uncertain": false,
+        "model": "health_disease_efficientnetb0",
+        "class_names": null,
+        "calibration": null
+      },
+      "crop_prediction": {
+        "prediction": "Tomato",
+        "confidence": 95.0,
+        "uncertain": false
+      },
+      "disease_analysis": {
+        "prediction": "tomato late blight",
+        "raw_prediction": "peach anthracnose",
+        "raw_confidence": 15.6,
+        "raw_predicted_class_idx": 65,
+        "raw_uncertainty": "High",
+        "raw_top_3": [
+          {
+            "rank": 1,
+            "class": "peach anthracnose",
+            "score": 15.6,
+            "confidence": 15.6,
+            "class_idx": 65,
+            "crop": "Peach"
+          },
+          {
+            "rank": 2,
+            "class": "peach brown rot",
+            "score": 12.06,
+            "confidence": 12.06,
+            "class_idx": 66,
+            "crop": "Peach"
+          },
+          {
+            "rank": 3,
+            "class": "peach scab",
+            "score": 3.02,
+            "confidence": 3.02,
+            "class_idx": 69,
+            "crop": "Peach"
+          }
+        ],
+        "crop": "Tomato",
+        "crop_identification_method": "dedicated_crop_classifier",
+        "crop_confidence": 95.0,
+        "crop_uncertain": false,
+        "confidence": 33.32,
+        "uncertainty": "High",
+        "predicted_class_idx": 98,
+        "top_3": [
+          {
+            "class": "tomato late blight",
+            "class_idx": 98,
+            "crop": "Tomato",
+            "score": 33.32,
+            "confidence": 33.32,
+            "raw_score": 2.94,
+            "rank": 1
+          },
+          {
+            "class": "tomato leaf mold",
+            "class_idx": 99,
+            "crop": "Tomato",
+            "score": 19.29,
+            "confidence": 19.29,
+            "raw_score": 1.7,
+            "rank": 2
+          },
+          {
+            "class": "tomato early blight",
+            "class_idx": 97,
+            "crop": "Tomato",
+            "score": 16.22,
+            "confidence": 16.22,
+            "raw_score": 1.43,
+            "rank": 3
+          }
+        ],
+        "compatible_top_3": [
+          {
+            "class": "tomato late blight",
+            "class_idx": 98,
+            "crop": "Tomato",
+            "score": 33.32,
+            "confidence": 33.32,
+            "raw_score": 2.94,
+            "rank": 1
+          },
+          {
+            "class": "tomato leaf mold",
+            "class_idx": 99,
+            "crop": "Tomato",
+            "score": 19.29,
+            "confidence": 19.29,
+            "raw_score": 1.7,
+            "rank": 2
+          },
+          {
+            "class": "tomato early blight",
+            "class_idx": 97,
+            "crop": "Tomato",
+            "score": 16.22,
+            "confidence": 16.22,
+            "raw_score": 1.43,
+            "rank": 3
+          }
+        ],
+        "validation": {
+          "status": "validated_by_crop",
+          "reason": null
+        },
+        "model": "plantwild_v2_efficientnetb0"
+      },
+      "segmentation": {
+        "available": true,
+        "architecture": "U-Net (Deep Learning Segmentation)",
+        "model_input_size": "256x256",
+        "total_pixels": 160000,
+        "leaf_pixels": 59581,
+        "diseased_pixels": 4539,
+        "affected_ratio": 0.0762,
+        "affected_percentage": 7.62,
+        "leaf_mask_path": "/generated/segmentation/segmentation_40df3b21_leaf_mask.png",
+        "mask_path": "generated/segmentation/segmentation_40df3b21_disease_mask.png",
+        "disease_mask_path": "/generated/segmentation/segmentation_40df3b21_disease_mask.png",
+        "overlay_path": "/generated/segmentation/segmentation_40df3b21_overlay.jpg",
+        "composite_path": "/generated/segmentation/segmentation_40df3b21_composite.jpg",
+        "absolute_leaf_mask_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_40df3b21_leaf_mask.png",
+        "absolute_mask_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_40df3b21_disease_mask.png",
+        "absolute_disease_mask_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_40df3b21_disease_mask.png",
+        "absolute_overlay_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_40df3b21_overlay.jpg",
+        "absolute_composite_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_40df3b21_composite.jpg",
+        "confidence": {
+          "score": 100.0,
+          "level": "High",
+          "calibrated": false,
+          "method": "segmentation_quality_heuristic",
+          "warning": "This is a quality heuristic, not a calibrated segmentation probability."
+        }
+      },
+      "severity": {
+        "available": true,
+        "diseased_pixels": 4539,
+        "leaf_pixels": 59581,
+        "affected_area_percent": 7.62,
+        "severity": "Early",
+        "description": "A relatively small portion of the detected leaf area is affected. Field inspection and disease-specific management should be considered.",
+        "recommendation": "Prioritize field inspection and confirm the predicted disease. Monitor affected plants and follow disease-specific management guidance.",
+        "thresholds": {
+          "healthy": "0%",
+          "early": ">0% to <15%",
+          "moderate": "15% to <35%",
+          "severe": ">=35%"
+        },
+        "threshold_type": "project_defined_initial_thresholds",
+        "calibration_required": true,
+        "threshold_margin_percent": 7.38,
+        "severity_uncertainty": "Low",
+        "calibration_note": "Severity thresholds are project-defined and require agronomic validation. Threshold margin indicates how close the estimated affected area is to a project threshold.",
+        "diagnostic_warning": "Disease confidence is low. The affected-area estimate and severity category should not be treated as a confirmed disease diagnosis."
+      }
+    },
+    "reviewer": null,
+    "review_notes": null,
+    "decision": null,
+    "updated_at": null
+  },
+  {
+    "review_id": "REV-11CF4357FA3D",
+    "report_id": "CR-46642A6C3989",
+    "created_at": "2026-10-03T06:23:15.582245+00:00",
+    "status": "pending",
+    "priority": "medium",
+    "reasons": [
+      "no_compatible_disease",
+      "severity_thresholds_not_validated"
+    ],
+    "summary": {
+      "health_prediction": {
+        "prediction": "diseased",
+        "predicted_class_idx": null,
+        "confidence": 99.0,
+        "healthy_probability": 0.010000000000000009,
+        "diseased_probability": 0.99,
+        "threshold": null,
+        "uncertain": false,
+        "model": "health_disease_efficientnetb0",
+        "class_names": null,
+        "calibration": null
+      },
+      "crop_prediction": {
+        "prediction": "Apple",
+        "confidence": 95.0,
+        "uncertain": false
+      },
+      "disease_analysis": {
+        "prediction": null,
+        "raw_prediction": "Grape___Black_rot",
+        "raw_confidence": 99.0,
+        "raw_predicted_class_idx": null,
+        "raw_uncertainty": null,
+        "raw_top_3": [
+          {
+            "class": "Grape___Black_rot",
+            "confidence": 99.0,
+            "crop": "Grape"
+          }
+        ],
+        "crop": "Apple",
+        "crop_identification_method": "dedicated_crop_classifier",
+        "crop_confidence": 95.0,
+        "crop_uncertain": false,
+        "confidence": null,
+        "uncertainty": "High",
+        "predicted_class_idx": null,
+        "top_3": [],
+        "compatible_top_3": [],
+        "validation": {
+          "status": "rejected",
+          "reason": "No disease-class prediction across all model categories is compatible with the independently detected crop."
+        },
+        "model": "plantwild_v2_efficientnetb0"
+      },
+      "segmentation": {
+        "available": true,
+        "architecture": "U-Net (Deep Learning Segmentation)",
+        "model_input_size": "256x256",
+        "total_pixels": 160000,
+        "leaf_pixels": 59581,
+        "diseased_pixels": 4539,
+        "affected_ratio": 0.0762,
+        "affected_percentage": 7.62,
+        "leaf_mask_path": "/generated/segmentation/segmentation_b857807b_leaf_mask.png",
+        "mask_path": "generated/segmentation/segmentation_b857807b_disease_mask.png",
+        "disease_mask_path": "/generated/segmentation/segmentation_b857807b_disease_mask.png",
+        "overlay_path": "/generated/segmentation/segmentation_b857807b_overlay.jpg",
+        "composite_path": "/generated/segmentation/segmentation_b857807b_composite.jpg",
+        "absolute_leaf_mask_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_b857807b_leaf_mask.png",
+        "absolute_mask_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_b857807b_disease_mask.png",
+        "absolute_disease_mask_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_b857807b_disease_mask.png",
+        "absolute_overlay_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_b857807b_overlay.jpg",
+        "absolute_composite_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_b857807b_composite.jpg",
+        "confidence": {
+          "score": 100.0,
+          "level": "High",
+          "calibrated": false,
+          "method": "segmentation_quality_heuristic",
+          "warning": "This is a quality heuristic, not a calibrated segmentation probability."
+        }
+      },
+      "severity": {
+        "available": false,
+        "affected_area_percent": 7.62,
+        "message": "Leaf/lesion segmentation was performed, but a severity grade was not assigned because no crop-compatible disease was validated.",
+        "diagnostic_warning": "The segmented affected area must not be interpreted as confirmed severity for a specific disease without a validated disease prediction. Awaiting human review.",
+        "calibration_required": true
+      }
+    },
+    "reviewer": null,
+    "review_notes": null,
+    "decision": null,
+    "updated_at": null
+  },
+  {
+    "review_id": "REV-5F57D6408AB6",
+    "report_id": "CR-4D685DBC7315",
+    "created_at": "2026-10-03T06:23:18.265423+00:00",
+    "status": "pending",
+    "priority": "medium",
+    "reasons": [
+      "crop_prediction_uncertain",
+      "severity_thresholds_not_validated"
+    ],
+    "summary": {
+      "health_prediction": {
+        "prediction": "diseased",
+        "predicted_class_idx": null,
+        "confidence": 99.0,
+        "healthy_probability": 0.010000000000000009,
+        "diseased_probability": 0.99,
+        "threshold": null,
+        "uncertain": false,
+        "model": "health_disease_efficientnetb0",
+        "class_names": null,
+        "calibration": null
+      },
+      "crop_prediction": {
+        "prediction": "Apple",
+        "confidence": 30.0,
+        "uncertain": true
+      },
+      "disease_analysis": {
+        "prediction": null,
+        "raw_prediction": "Grape___Black_rot",
+        "raw_confidence": 80.0,
+        "raw_predicted_class_idx": null,
+        "raw_uncertainty": null,
+        "raw_top_3": [
+          {
+            "class": "Grape___Black_rot",
+            "confidence": 80.0,
+            "crop": "Grape"
+          }
+        ],
+        "crop": "Apple",
+        "crop_identification_method": "dedicated_crop_classifier",
+        "crop_confidence": 30.0,
+        "crop_uncertain": true,
+        "confidence": null,
+        "uncertainty": "High",
+        "predicted_class_idx": null,
+        "top_3": [],
+        "compatible_top_3": [],
+        "validation": {
+          "status": "skipped_low_crop_confidence",
+          "reason": "Crop prediction confidence was too low (< 50%) to safely validate disease candidates. No official disease prediction was assigned; raw prediction preserved for audit."
+        },
+        "model": "plantwild_v2_efficientnetb0"
+      },
+      "segmentation": {
+        "available": true,
+        "architecture": "U-Net (Deep Learning Segmentation)",
+        "model_input_size": "256x256",
+        "total_pixels": 160000,
+        "leaf_pixels": 59581,
+        "diseased_pixels": 4539,
+        "affected_ratio": 0.0762,
+        "affected_percentage": 7.62,
+        "leaf_mask_path": "/generated/segmentation/segmentation_7b753dc3_leaf_mask.png",
+        "mask_path": "generated/segmentation/segmentation_7b753dc3_disease_mask.png",
+        "disease_mask_path": "/generated/segmentation/segmentation_7b753dc3_disease_mask.png",
+        "overlay_path": "/generated/segmentation/segmentation_7b753dc3_overlay.jpg",
+        "composite_path": "/generated/segmentation/segmentation_7b753dc3_composite.jpg",
+        "absolute_leaf_mask_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_7b753dc3_leaf_mask.png",
+        "absolute_mask_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_7b753dc3_disease_mask.png",
+        "absolute_disease_mask_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_7b753dc3_disease_mask.png",
+        "absolute_overlay_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_7b753dc3_overlay.jpg",
+        "absolute_composite_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_7b753dc3_composite.jpg",
+        "confidence": {
+          "score": 100.0,
+          "level": "High",
+          "calibrated": false,
+          "method": "segmentation_quality_heuristic",
+          "warning": "This is a quality heuristic, not a calibrated segmentation probability."
+        }
+      },
+      "severity": {
+        "available": false,
+        "affected_area_percent": 7.62,
+        "message": "Leaf/lesion segmentation was performed, but a severity grade was not assigned because no crop-compatible disease was validated.",
+        "diagnostic_warning": "The segmented affected area must not be interpreted as confirmed severity for a specific disease without a validated disease prediction. Awaiting human review.",
+        "calibration_required": true
+      }
+    },
+    "reviewer": null,
+    "review_notes": null,
+    "decision": null,
+    "updated_at": null
+  },
+  {
+    "review_id": "REV-69A0A9AA8B41",
+    "report_id": "CR-9A0471E6D3ED",
+    "created_at": "2026-10-03T06:23:21.287490+00:00",
+    "status": "pending",
+    "priority": "medium",
+    "reasons": [
+      "no_compatible_disease",
+      "severity_thresholds_not_validated"
+    ],
+    "summary": {
+      "health_prediction": {
+        "prediction": "diseased",
+        "predicted_class_idx": null,
+        "confidence": 99.0,
+        "healthy_probability": 0.010000000000000009,
+        "diseased_probability": 0.99,
+        "threshold": null,
+        "uncertain": false,
+        "model": "health_disease_efficientnetb0",
+        "class_names": null,
+        "calibration": null
+      },
+      "crop_prediction": {
+        "prediction": "Apple",
+        "confidence": 95.0,
+        "uncertain": false
+      },
+      "disease_analysis": {
+        "prediction": null,
+        "raw_prediction": "Grape___Black_rot",
+        "raw_confidence": 99.0,
+        "raw_predicted_class_idx": null,
+        "raw_uncertainty": null,
+        "raw_top_3": [
+          {
+            "class": "Grape___Black_rot",
+            "confidence": 99.0,
+            "crop": "Grape"
+          }
+        ],
+        "crop": "Apple",
+        "crop_identification_method": "dedicated_crop_classifier",
+        "crop_confidence": 95.0,
+        "crop_uncertain": false,
+        "confidence": null,
+        "uncertainty": "High",
+        "predicted_class_idx": null,
+        "top_3": [],
+        "compatible_top_3": [],
+        "validation": {
+          "status": "rejected",
+          "reason": "No disease-class prediction across all model categories is compatible with the independently detected crop."
+        },
+        "model": "plantwild_v2_efficientnetb0"
+      },
+      "segmentation": {
+        "available": true,
+        "architecture": "U-Net (Deep Learning Segmentation)",
+        "model_input_size": "256x256",
+        "total_pixels": 160000,
+        "leaf_pixels": 59581,
+        "diseased_pixels": 4539,
+        "affected_ratio": 0.0762,
+        "affected_percentage": 7.62,
+        "leaf_mask_path": "/generated/segmentation/segmentation_fd0ed83c_leaf_mask.png",
+        "mask_path": "generated/segmentation/segmentation_fd0ed83c_disease_mask.png",
+        "disease_mask_path": "/generated/segmentation/segmentation_fd0ed83c_disease_mask.png",
+        "overlay_path": "/generated/segmentation/segmentation_fd0ed83c_overlay.jpg",
+        "composite_path": "/generated/segmentation/segmentation_fd0ed83c_composite.jpg",
+        "absolute_leaf_mask_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_fd0ed83c_leaf_mask.png",
+        "absolute_mask_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_fd0ed83c_disease_mask.png",
+        "absolute_disease_mask_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_fd0ed83c_disease_mask.png",
+        "absolute_overlay_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_fd0ed83c_overlay.jpg",
+        "absolute_composite_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_fd0ed83c_composite.jpg",
+        "confidence": {
+          "score": 100.0,
+          "level": "High",
+          "calibrated": false,
+          "method": "segmentation_quality_heuristic",
+          "warning": "This is a quality heuristic, not a calibrated segmentation probability."
+        }
+      },
+      "severity": {
+        "available": false,
+        "affected_area_percent": 7.62,
+        "message": "Leaf/lesion segmentation was performed, but a severity grade was not assigned because no crop-compatible disease was validated.",
+        "diagnostic_warning": "The segmented affected area must not be interpreted as confirmed severity for a specific disease without a validated disease prediction. Awaiting human review.",
+        "calibration_required": true
+      }
+    },
+    "reviewer": null,
+    "review_notes": null,
+    "decision": null,
+    "updated_at": null
+  },
+  {
+    "review_id": "REV-9730FB53121D",
+    "report_id": "CR-05B16C2353EC",
+    "created_at": "2026-10-03T06:23:21.939721+00:00",
+    "status": "pending",
+    "priority": "medium",
+    "reasons": [
+      "no_compatible_disease",
+      "severity_thresholds_not_validated"
+    ],
+    "summary": {
+      "health_prediction": {
+        "prediction": "diseased",
+        "predicted_class_idx": null,
+        "confidence": 99.0,
+        "healthy_probability": 0.010000000000000009,
+        "diseased_probability": 0.99,
+        "threshold": null,
+        "uncertain": false,
+        "model": "health_disease_efficientnetb0",
+        "class_names": null,
+        "calibration": null
+      },
+      "crop_prediction": {
+        "prediction": "Apple",
+        "confidence": 95.0,
+        "uncertain": false
+      },
+      "disease_analysis": {
+        "prediction": null,
+        "raw_prediction": "Grape___Black_rot",
+        "raw_confidence": 99.0,
+        "raw_predicted_class_idx": null,
+        "raw_uncertainty": null,
+        "raw_top_3": [
+          {
+            "class": "Grape___Black_rot",
+            "confidence": 99.0,
+            "crop": "Grape"
+          }
+        ],
+        "crop": "Apple",
+        "crop_identification_method": "dedicated_crop_classifier",
+        "crop_confidence": 95.0,
+        "crop_uncertain": false,
+        "confidence": null,
+        "uncertainty": "High",
+        "predicted_class_idx": null,
+        "top_3": [],
+        "compatible_top_3": [],
+        "validation": {
+          "status": "rejected",
+          "reason": "No disease-class prediction across all model categories is compatible with the independently detected crop."
+        },
+        "model": "plantwild_v2_efficientnetb0"
+      },
+      "segmentation": {
+        "available": true,
+        "architecture": "U-Net (Deep Learning Segmentation)",
+        "model_input_size": "256x256",
+        "total_pixels": 160000,
+        "leaf_pixels": 59581,
+        "diseased_pixels": 4539,
+        "affected_ratio": 0.0762,
+        "affected_percentage": 7.62,
+        "leaf_mask_path": "/generated/segmentation/segmentation_16c6734e_leaf_mask.png",
+        "mask_path": "generated/segmentation/segmentation_16c6734e_disease_mask.png",
+        "disease_mask_path": "/generated/segmentation/segmentation_16c6734e_disease_mask.png",
+        "overlay_path": "/generated/segmentation/segmentation_16c6734e_overlay.jpg",
+        "composite_path": "/generated/segmentation/segmentation_16c6734e_composite.jpg",
+        "absolute_leaf_mask_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_16c6734e_leaf_mask.png",
+        "absolute_mask_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_16c6734e_disease_mask.png",
+        "absolute_disease_mask_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_16c6734e_disease_mask.png",
+        "absolute_overlay_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_16c6734e_overlay.jpg",
+        "absolute_composite_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_16c6734e_composite.jpg",
+        "confidence": {
+          "score": 100.0,
+          "level": "High",
+          "calibrated": false,
+          "method": "segmentation_quality_heuristic",
+          "warning": "This is a quality heuristic, not a calibrated segmentation probability."
+        }
+      },
+      "severity": {
+        "available": false,
+        "affected_area_percent": 7.62,
+        "message": "Leaf/lesion segmentation was performed, but a severity grade was not assigned because no crop-compatible disease was validated.",
+        "diagnostic_warning": "The segmented affected area must not be interpreted as confirmed severity for a specific disease without a validated disease prediction. Awaiting human review.",
+        "calibration_required": true
+      }
+    },
+    "reviewer": null,
+    "review_notes": null,
+    "decision": null,
+    "updated_at": null
+  },
+  {
+    "review_id": "REV-C157A3D0221B",
+    "report_id": "CR-3518663423A2",
+    "created_at": "2026-10-03T06:23:22.599016+00:00",
+    "status": "pending",
+    "priority": "medium",
+    "reasons": [
+      "no_compatible_disease",
+      "severity_thresholds_not_validated"
+    ],
+    "summary": {
+      "health_prediction": {
+        "prediction": "diseased",
+        "predicted_class_idx": null,
+        "confidence": 99.0,
+        "healthy_probability": 0.010000000000000009,
+        "diseased_probability": 0.99,
+        "threshold": null,
+        "uncertain": false,
+        "model": "health_disease_efficientnetb0",
+        "class_names": null,
+        "calibration": null
+      },
+      "crop_prediction": {
+        "prediction": "Apple",
+        "confidence": 95.0,
+        "uncertain": false
+      },
+      "disease_analysis": {
+        "prediction": null,
+        "raw_prediction": "Grape___Black_rot",
+        "raw_confidence": 99.0,
+        "raw_predicted_class_idx": null,
+        "raw_uncertainty": null,
+        "raw_top_3": [
+          {
+            "class": "Grape___Black_rot",
+            "confidence": 99.0,
+            "crop": "Grape"
+          }
+        ],
+        "crop": "Apple",
+        "crop_identification_method": "dedicated_crop_classifier",
+        "crop_confidence": 95.0,
+        "crop_uncertain": false,
+        "confidence": null,
+        "uncertainty": "High",
+        "predicted_class_idx": null,
+        "top_3": [],
+        "compatible_top_3": [],
+        "validation": {
+          "status": "rejected",
+          "reason": "No disease-class prediction across all model categories is compatible with the independently detected crop."
+        },
+        "model": "plantwild_v2_efficientnetb0"
+      },
+      "segmentation": {
+        "available": true,
+        "architecture": "U-Net (Deep Learning Segmentation)",
+        "model_input_size": "256x256",
+        "total_pixels": 160000,
+        "leaf_pixels": 59581,
+        "diseased_pixels": 4539,
+        "affected_ratio": 0.0762,
+        "affected_percentage": 7.62,
+        "leaf_mask_path": "/generated/segmentation/segmentation_d210239f_leaf_mask.png",
+        "mask_path": "generated/segmentation/segmentation_d210239f_disease_mask.png",
+        "disease_mask_path": "/generated/segmentation/segmentation_d210239f_disease_mask.png",
+        "overlay_path": "/generated/segmentation/segmentation_d210239f_overlay.jpg",
+        "composite_path": "/generated/segmentation/segmentation_d210239f_composite.jpg",
+        "absolute_leaf_mask_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_d210239f_leaf_mask.png",
+        "absolute_mask_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_d210239f_disease_mask.png",
+        "absolute_disease_mask_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_d210239f_disease_mask.png",
+        "absolute_overlay_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_d210239f_overlay.jpg",
+        "absolute_composite_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_d210239f_composite.jpg",
+        "confidence": {
+          "score": 100.0,
+          "level": "High",
+          "calibrated": false,
+          "method": "segmentation_quality_heuristic",
+          "warning": "This is a quality heuristic, not a calibrated segmentation probability."
+        }
+      },
+      "severity": {
+        "available": false,
+        "affected_area_percent": 7.62,
+        "message": "Leaf/lesion segmentation was performed, but a severity grade was not assigned because no crop-compatible disease was validated.",
+        "diagnostic_warning": "The segmented affected area must not be interpreted as confirmed severity for a specific disease without a validated disease prediction. Awaiting human review.",
+        "calibration_required": true
+      }
+    },
+    "reviewer": null,
+    "review_notes": null,
+    "decision": null,
+    "updated_at": null
+  },
+  {
+    "review_id": "REV-F15FA0B2A680",
+    "report_id": "CR-C835AFBB04DA",
+    "created_at": "2026-10-03T06:23:23.227532+00:00",
+    "status": "pending",
+    "priority": "medium",
+    "reasons": [
+      "no_compatible_disease",
+      "severity_thresholds_not_validated"
+    ],
+    "summary": {
+      "health_prediction": {
+        "prediction": "diseased",
+        "predicted_class_idx": null,
+        "confidence": 99.0,
+        "healthy_probability": 0.010000000000000009,
+        "diseased_probability": 0.99,
+        "threshold": null,
+        "uncertain": false,
+        "model": "health_disease_efficientnetb0",
+        "class_names": null,
+        "calibration": null
+      },
+      "crop_prediction": {
+        "prediction": "Apple",
+        "confidence": 95.0,
+        "uncertain": false
+      },
+      "disease_analysis": {
+        "prediction": null,
+        "raw_prediction": "Grape___Black_rot",
+        "raw_confidence": 99.0,
+        "raw_predicted_class_idx": null,
+        "raw_uncertainty": null,
+        "raw_top_3": [
+          {
+            "class": "Grape___Black_rot",
+            "confidence": 99.0,
+            "crop": "Grape"
+          }
+        ],
+        "crop": "Apple",
+        "crop_identification_method": "dedicated_crop_classifier",
+        "crop_confidence": 95.0,
+        "crop_uncertain": false,
+        "confidence": null,
+        "uncertainty": "High",
+        "predicted_class_idx": null,
+        "top_3": [],
+        "compatible_top_3": [],
+        "validation": {
+          "status": "rejected",
+          "reason": "No disease-class prediction across all model categories is compatible with the independently detected crop."
+        },
+        "model": "plantwild_v2_efficientnetb0"
+      },
+      "segmentation": {
+        "available": true,
+        "architecture": "U-Net (Deep Learning Segmentation)",
+        "model_input_size": "256x256",
+        "total_pixels": 160000,
+        "leaf_pixels": 59581,
+        "diseased_pixels": 4539,
+        "affected_ratio": 0.0762,
+        "affected_percentage": 7.62,
+        "leaf_mask_path": "/generated/segmentation/segmentation_9b0a3993_leaf_mask.png",
+        "mask_path": "generated/segmentation/segmentation_9b0a3993_disease_mask.png",
+        "disease_mask_path": "/generated/segmentation/segmentation_9b0a3993_disease_mask.png",
+        "overlay_path": "/generated/segmentation/segmentation_9b0a3993_overlay.jpg",
+        "composite_path": "/generated/segmentation/segmentation_9b0a3993_composite.jpg",
+        "absolute_leaf_mask_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_9b0a3993_leaf_mask.png",
+        "absolute_mask_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_9b0a3993_disease_mask.png",
+        "absolute_disease_mask_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_9b0a3993_disease_mask.png",
+        "absolute_overlay_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_9b0a3993_overlay.jpg",
+        "absolute_composite_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_9b0a3993_composite.jpg",
+        "confidence": {
+          "score": 100.0,
+          "level": "High",
+          "calibrated": false,
+          "method": "segmentation_quality_heuristic",
+          "warning": "This is a quality heuristic, not a calibrated segmentation probability."
+        }
+      },
+      "severity": {
+        "available": false,
+        "affected_area_percent": 7.62,
+        "message": "Leaf/lesion segmentation was performed, but a severity grade was not assigned because no crop-compatible disease was validated.",
+        "diagnostic_warning": "The segmented affected area must not be interpreted as confirmed severity for a specific disease without a validated disease prediction. Awaiting human review.",
+        "calibration_required": true
+      }
+    },
+    "reviewer": null,
+    "review_notes": null,
+    "decision": null,
+    "updated_at": null
+  },
+  {
+    "review_id": "REV-0875B393F150",
+    "report_id": "CR-13FD670AD84C",
+    "created_at": "2026-10-03T06:28:15.604218+00:00",
+    "status": "pending",
+    "priority": "high",
+    "reasons": [
+      "low_disease_confidence",
+      "severity_thresholds_not_validated"
+    ],
+    "summary": {
+      "health_prediction": {
+        "prediction": "diseased",
+        "predicted_class_idx": 1,
+        "confidence": 100.0,
+        "healthy_probability": 0.0,
+        "diseased_probability": 100.0,
+        "threshold": 50.0,
+        "uncertain": false,
+        "model": "health_disease_efficientnetb0",
+        "class_names": {
+          "0": "healthy",
+          "1": "diseased"
+        },
+        "calibration": {
+          "status": "temperature_scaled",
+          "method": "temperature_scaling",
+          "temperature": 0.05,
+          "raw_probability_diseased": 86.244
+        }
+      },
+      "crop_prediction": {
+        "success": true,
+        "prediction": "Blueberry",
+        "predicted_class_idx": 1,
+        "confidence": 66.3693,
+        "uncertain": false,
+        "uncertainty_threshold": 60.0,
+        "entropy": 0.755643,
+        "top2_margin": 35.4249,
+        "top_3": [
+          {
+            "rank": 1,
+            "class": "Blueberry",
+            "confidence": 66.3693,
+            "class_idx": 1
+          },
+          {
+            "rank": 2,
+            "class": "Orange",
+            "confidence": 30.9444,
+            "class_idx": 5
+          },
+          {
+            "rank": 3,
+            "class": "Corn (maize)",
+            "confidence": 1.333,
+            "class_idx": 3
+          }
+        ],
+        "model": "crop_efficientnetb0",
+        "model_input_size": [
+          224,
+          224
+        ],
+        "calibration": {
+          "status": "not_calibrated"
+        }
+      },
+      "disease_analysis": {
+        "prediction": "blueberry mummy berry",
+        "raw_prediction": "peach anthracnose",
+        "raw_confidence": 15.6,
+        "raw_predicted_class_idx": 65,
+        "raw_uncertainty": "High",
+        "raw_top_3": [
+          {
+            "rank": 1,
+            "class": "peach anthracnose",
+            "score": 15.6,
+            "confidence": 15.6,
+            "class_idx": 65,
+            "crop": "Peach"
+          },
+          {
+            "rank": 2,
+            "class": "peach brown rot",
+            "score": 12.06,
+            "confidence": 12.06,
+            "class_idx": 66,
+            "crop": "Peach"
+          },
+          {
+            "rank": 3,
+            "class": "peach scab",
+            "score": 3.02,
+            "confidence": 3.02,
+            "class_idx": 69,
+            "crop": "Peach"
+          }
+        ],
+        "crop": "Blueberry",
+        "crop_identification_method": "dedicated_crop_classifier",
+        "crop_confidence": 66.3693,
+        "crop_uncertain": false,
+        "confidence": 44.15,
+        "uncertainty": "High",
+        "predicted_class_idx": 20,
+        "top_3": [
+          {
+            "class": "blueberry mummy berry",
+            "class_idx": 20,
+            "crop": "Blueberry",
+            "score": 44.15,
+            "confidence": 44.15,
+            "raw_score": 1.08,
+            "rank": 1
+          },
+          {
+            "class": "blueberry anthracnose",
+            "class_idx": 18,
+            "crop": "Blueberry",
+            "score": 21.83,
+            "confidence": 21.83,
+            "raw_score": 0.53,
+            "rank": 2
+          },
+          {
+            "class": "blueberry rust",
+            "class_idx": 21,
+            "crop": "Blueberry",
+            "score": 20.35,
+            "confidence": 20.35,
+            "raw_score": 0.5,
+            "rank": 3
+          }
+        ],
+        "compatible_top_3": [
+          {
+            "class": "blueberry mummy berry",
+            "class_idx": 20,
+            "crop": "Blueberry",
+            "score": 44.15,
+            "confidence": 44.15,
+            "raw_score": 1.08,
+            "rank": 1
+          },
+          {
+            "class": "blueberry anthracnose",
+            "class_idx": 18,
+            "crop": "Blueberry",
+            "score": 21.83,
+            "confidence": 21.83,
+            "raw_score": 0.53,
+            "rank": 2
+          },
+          {
+            "class": "blueberry rust",
+            "class_idx": 21,
+            "crop": "Blueberry",
+            "score": 20.35,
+            "confidence": 20.35,
+            "raw_score": 0.5,
+            "rank": 3
+          }
+        ],
+        "validation": {
+          "status": "validated_by_crop",
+          "reason": null
+        },
+        "model": "plantwild_v2_efficientnetb0"
+      },
+      "segmentation": {
+        "available": true,
+        "architecture": "U-Net (Deep Learning Segmentation)",
+        "model_input_size": "256x256",
+        "total_pixels": 160000,
+        "leaf_pixels": 59581,
+        "diseased_pixels": 4539,
+        "affected_ratio": 0.0762,
+        "affected_percentage": 7.62,
+        "leaf_mask_path": "/generated/segmentation/segmentation_15547437_leaf_mask.png",
+        "mask_path": "generated/segmentation/segmentation_15547437_disease_mask.png",
+        "disease_mask_path": "/generated/segmentation/segmentation_15547437_disease_mask.png",
+        "overlay_path": "/generated/segmentation/segmentation_15547437_overlay.jpg",
+        "composite_path": "/generated/segmentation/segmentation_15547437_composite.jpg",
+        "absolute_leaf_mask_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_15547437_leaf_mask.png",
+        "absolute_mask_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_15547437_disease_mask.png",
+        "absolute_disease_mask_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_15547437_disease_mask.png",
+        "absolute_overlay_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_15547437_overlay.jpg",
+        "absolute_composite_path": "/Users/gourav/Harvest-Harbor/backend/generated/segmentation/segmentation_15547437_composite.jpg",
+        "confidence": {
+          "score": 100.0,
+          "level": "High",
+          "calibrated": false,
+          "method": "segmentation_quality_heuristic",
+          "warning": "This is a quality heuristic, not a calibrated segmentation probability."
+        }
+      },
+      "severity": {
+        "available": true,
+        "diseased_pixels": 4539,
+        "leaf_pixels": 59581,
+        "affected_area_percent": 7.62,
+        "severity": "Early",
+        "description": "A relatively small portion of the detected leaf area is affected. Field inspection and disease-specific management should be considered.",
+        "recommendation": "Prioritize field inspection and confirm the predicted disease. Monitor affected plants and follow disease-specific management guidance.",
+        "thresholds": {
+          "healthy": "0%",
+          "early": ">0% to <15%",
+          "moderate": "15% to <35%",
+          "severe": ">=35%"
+        },
+        "threshold_type": "project_defined_initial_thresholds",
+        "calibration_required": true,
+        "threshold_margin_percent": 7.38,
+        "severity_uncertainty": "Low",
+        "calibration_note": "Severity thresholds are project-defined and require agronomic validation. Threshold margin indicates how close the estimated affected area is to a project threshold.",
+        "diagnostic_warning": "Disease confidence is low. The affected-area estimate and severity category should not be treated as a confirmed disease diagnosis."
+      }
+    },
+    "reviewer": null,
+    "review_notes": null,
+    "decision": null,
+    "updated_at": null
   }
 ]

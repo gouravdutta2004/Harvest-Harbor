@@ -69,24 +69,35 @@ class CropPredictor:
 
         import tensorflow as tf
 
-        load_path = H5_MODEL_PATH if (H5_MODEL_PATH.exists() and tf.__version__.startswith("2.15")) else model_path
+        tf_version = getattr(tf, "__version__", "")
+        load_path = H5_MODEL_PATH if (H5_MODEL_PATH.exists() and tf_version.startswith("2.15")) else model_path
         logger.info(
             "Loading crop model from %s",
             load_path,
         )
 
+        def _safe_load(filepath):
+            models_mod = getattr(getattr(tf, "keras", None), "models", None)
+            if models_mod is None or not hasattr(models_mod, "load_model"):
+                try:
+                    from tensorflow import keras
+                    models_mod = keras.models
+                except Exception:
+                    try:
+                        import keras
+                        models_mod = keras.models
+                    except Exception:
+                        pass
+            if models_mod is not None and hasattr(models_mod, "load_model"):
+                return models_mod.load_model(str(filepath), compile=False)
+            return tf.keras.models.load_model(str(filepath), compile=False)
+
         try:
-            self.model = tf.keras.models.load_model(
-                str(load_path),
-                compile=False,
-            )
+            self.model = _safe_load(load_path)
         except Exception:
             fallback = H5_MODEL_PATH if load_path != H5_MODEL_PATH else model_path
             if fallback.exists():
-                self.model = tf.keras.models.load_model(
-                    str(fallback),
-                    compile=False,
-                )
+                self.model = _safe_load(fallback)
             else:
                 raise
 
