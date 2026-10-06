@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="frontend/dist/logo.png" alt="Harvest Harbor Logo" width="260" />
+  <img src="frontend/public/logo.png" alt="Harvest Harbor Logo" width="260" />
 </p>
 
 <h1 align="center">Harvest Harbor (AI Crop Intelligence)</h1>
