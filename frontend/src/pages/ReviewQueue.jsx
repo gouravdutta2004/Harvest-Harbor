@@ -38,7 +38,7 @@ export function ReviewQueue() {
       const data = await getReviewQueue(statusParam);
       let list = data.items || [];
       if (activeTab === 'needs_attention') {
-        list = list.filter((i) => i.priority === 'high' || (i.reasons && i.reasons.includes('health_prediction_uncertain')));
+        list = list.filter((i) => i.status === 'pending' && (i.priority === 'high' || (i.reasons && i.reasons.includes('health_prediction_uncertain'))));
       }
       setItems(list);
     } catch (e) {
@@ -141,9 +141,9 @@ export function ReviewQueue() {
         </button>
 
         <button
-          onClick={() => setActiveTab('reviewed')}
+          onClick={() => setActiveTab('resolved')}
           className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
-            activeTab === 'reviewed'
+            activeTab === 'resolved'
               ? 'bg-emerald-600 text-white shadow-subtle'
               : 'text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-darkElevated'
           }`}
@@ -194,7 +194,31 @@ export function ReviewQueue() {
             const crop = summary.crop_prediction?.prediction || summary.crop_analysis?.prediction || 'Unknown';
             const disease = summary.disease_analysis?.prediction || 'Uncertain';
             const conf = summary.disease_analysis?.confidence ?? summary.health_prediction?.confidence;
-            const severityLevel = summary.severity?.severity_level || 'Moderate';
+            const rawSev =
+              summary.severity?.severity ||
+              summary.severity?.severity_level ||
+              (typeof summary.severity === 'string' ? summary.severity : null) ||
+              summary.severity_analysis?.severity ||
+              summary.severity_analysis?.severity_level ||
+              (typeof summary.severity_analysis === 'string' ? summary.severity_analysis : null);
+
+            const affectedArea =
+              summary.severity?.affected_area_percent ??
+              summary.severity_analysis?.affected_area_percent ??
+              summary.affected_area_percent;
+
+            const severityLevel =
+              rawSev ||
+              (affectedArea !== undefined && affectedArea !== null
+                ? affectedArea > 35
+                  ? 'Severe'
+                  : affectedArea > 15
+                  ? 'Moderate'
+                  : affectedArea > 0
+                  ? 'Early'
+                  : 'Healthy'
+                : 'Moderate');
+
             const severityTheme = getSeverityTheme(severityLevel);
             const isItemPending = item.status === 'pending';
 
@@ -254,7 +278,7 @@ export function ReviewQueue() {
                   <div>
                     <span className="text-[10px] uppercase font-bold text-gray-400 block">Est. Severity</span>
                     <span className={`inline-block px-2 py-0.5 rounded text-[10px] font-bold ${severityTheme.badge}`}>
-                      {severityLevel}
+                      {severityLevel}{affectedArea !== undefined && affectedArea !== null ? ` (${affectedArea}%)` : ''}
                     </span>
                   </div>
                 </div>

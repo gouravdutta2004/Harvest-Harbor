@@ -90,13 +90,13 @@ def enrich_top3_with_crop(top3: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
         if not isinstance(item, dict):
             continue
 
-        copy = dict(item)
+        item_copy = dict(item)
 
-        copy["crop"] = identify_crop_from_disease_class(
-            copy.get("class")
+        item_copy["crop"] = identify_crop_from_disease_class(
+            item_copy.get("class")
         )
 
-        result.append(copy)
+        result.append(item_copy)
 
     return result
 

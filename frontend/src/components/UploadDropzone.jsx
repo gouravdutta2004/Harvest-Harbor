@@ -6,98 +6,23 @@ import {
   AlertCircle,
   ScanLine,
   FileCheck,
-  Sparkles,
   CheckCircle2,
-  Info,
-  Maximize2,
-  Zap,
-  ChevronDown,
-  ChevronUp,
+  Sparkles,
 } from 'lucide-react';
 import AuthenticatedImage from './AuthenticatedImage';
 import { PhotoTipsModal } from './PhotoTipsModal';
-
-export const REAL_WORLD_SAMPLES = [
-  {
-    id: 'apple_healthy',
-    name: 'Apple Healthy',
-    badge: 'Healthy Leaf',
-    crop: 'Pome Fruit (Malus)',
-    status: 'healthy',
-    path: '/samples/sample_leaf.jpg',
-    filename: 'sample_apple_healthy.jpg',
-    description: 'High-confidence healthy screening with disease suppression & assessment summary',
-    theme: {
-      bg: 'bg-emerald-50 dark:bg-emerald-950/40 hover:bg-emerald-100 dark:hover:bg-emerald-900/60',
-      border: 'border-emerald-200 dark:border-emerald-800/80',
-      text: 'text-emerald-800 dark:text-emerald-300',
-      dot: 'text-emerald-600',
-    },
-  },
-  {
-    id: 'potato_blight',
-    name: 'Potato Early Blight',
-    badge: 'Foliar Blight',
-    crop: 'Solanaceous (Solanum)',
-    status: 'diseased',
-    path: '/samples/diseased_leaf.jpg',
-    filename: 'sample_potato_early_blight.jpg',
-    description: 'Alternaria solani target lesions with U-Net lesion mask and Grad-CAM focus',
-    theme: {
-      bg: 'bg-rose-50 dark:bg-rose-950/40 hover:bg-rose-100 dark:hover:bg-rose-900/60',
-      border: 'border-rose-200 dark:border-rose-800/80',
-      text: 'text-rose-800 dark:text-rose-300',
-      dot: 'text-rose-600',
-    },
-  },
-  {
-    id: 'corn_spot',
-    name: 'Corn Gray Spot',
-    badge: 'Cereal Spot',
-    crop: 'Gramineae (Zea mays)',
-    status: 'diseased',
-    path: '/samples/corn_gray_leaf_spot.jpg',
-    filename: 'sample_corn_gray_leaf_spot.jpg',
-    description: 'Cercospora zeae-maydis on cereal maize with calibrated severity estimation',
-    theme: {
-      bg: 'bg-amber-50 dark:bg-amber-950/40 hover:bg-amber-100 dark:hover:bg-amber-900/60',
-      border: 'border-amber-200 dark:border-amber-800/80',
-      text: 'text-amber-800 dark:text-amber-300',
-      dot: 'text-amber-600',
-    },
-  },
-  {
-    id: 'apple_rot',
-    name: 'Apple Black Rot',
-    badge: 'Necrotic Rot',
-    crop: 'Pome Fruit (Malus)',
-    status: 'diseased',
-    path: '/samples/apple_black_rot.jpg',
-    filename: 'sample_apple_black_rot.jpg',
-    description: 'Botryosphaeria obtusa necrotic rot with actionable agronomic treatment plan',
-    theme: {
-      bg: 'bg-purple-50 dark:bg-purple-950/40 hover:bg-purple-100 dark:hover:bg-purple-900/60',
-      border: 'border-purple-200 dark:border-purple-800/80',
-      text: 'text-purple-800 dark:text-purple-300',
-      dot: 'text-purple-600',
-    },
-  },
-];
 
 export function UploadDropzone({
   onFileSelected,
   selectedFile,
   previewUrl,
   onAnalyze,
-  onQuickAnalyze,
   isAnalyzing,
   onReset,
-  autoLoadSampleId = null,
 }) {
   const [isDragOver, setIsDragOver] = useState(false);
   const [fileError, setFileError] = useState(null);
   const [imageMeta, setImageMeta] = useState(null);
-  const [showTips, setShowTips] = useState(true);
   const [photoTipsOpen, setPhotoTipsOpen] = useState(false);
   const fileInputRef = useRef(null);
   const cameraInputRef = useRef(null);
@@ -134,18 +59,6 @@ export function UploadDropzone({
     }
   }, [previewUrl]);
 
-  // Support 1-click loading from dashboard links
-  useEffect(() => {
-    if (!autoLoadSampleId || isAnalyzing) return;
-    const match = REAL_WORLD_SAMPLES.find(
-      (s) => s.id === autoLoadSampleId || s.filename.includes(autoLoadSampleId)
-    );
-    if (match) {
-      handleLoadSample(match.path, match.filename, true);
-    }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [autoLoadSampleId]);
-
   const validateAndSelect = (file) => {
     setFileError(null);
     if (!file) return;
@@ -162,26 +75,6 @@ export function UploadDropzone({
     }
 
     onFileSelected(file);
-  };
-
-  const handleLoadSample = async (samplePath, filename, autoAnalyze = false) => {
-    try {
-      setFileError(null);
-      const res = await fetch(samplePath);
-      if (!res.ok) throw new Error(`Could not load ${filename}`);
-      const blob = await res.blob();
-      const file = new File([blob], filename, { type: 'image/jpeg' });
-      onFileSelected(file);
-      if (autoAnalyze) {
-        if (onQuickAnalyze) {
-          onQuickAnalyze(file);
-        } else if (onAnalyze) {
-          setTimeout(() => onAnalyze(file), 50);
-        }
-      }
-    } catch (err) {
-      setFileError(`Failed to load sample leaf: ${err.message}`);
-    }
   };
 
   const handleDrop = (e) => {
@@ -307,130 +200,6 @@ export function UploadDropzone({
               </div>
             </div>
           </div>
-
-          {/* Tips for Better Results Checklist */}
-          <div className="rounded-2xl border border-emerald-200/70 dark:border-emerald-900/60 bg-emerald-50/50 dark:bg-emerald-950/20 overflow-hidden transition-all">
-            <button
-              type="button"
-              onClick={() => setShowTips(!showTips)}
-              className="w-full px-4 py-3 flex items-center justify-between text-left hover:bg-emerald-100/40 dark:hover:bg-emerald-900/30 transition-colors"
-            >
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
-                <span className="text-xs font-bold text-emerald-900 dark:text-emerald-200">
-                  Tips for Better Results
-                </span>
-                <span className="text-[11px] text-emerald-700/80 dark:text-emerald-400/80">
-                  (5 essential field practices)
-                </span>
-              </div>
-              <div className="text-emerald-700 dark:text-emerald-400">
-                {showTips ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
-              </div>
-            </button>
-
-            {showTips && (
-              <div className="px-4 pb-4 pt-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5 text-xs text-gray-700 dark:text-gray-300 border-t border-emerald-100/80 dark:border-emerald-900/40">
-                <div className="flex items-start gap-2 p-2 rounded-xl bg-white/70 dark:bg-darkCard/70 border border-emerald-100 dark:border-emerald-950">
-                  <span className="text-emerald-600 dark:text-emerald-400 font-bold shrink-0">✓</span>
-                  <div>
-                    <span className="font-semibold text-gray-900 dark:text-white block">Clear lighting</span>
-                    <span className="text-[11px] text-gray-500 dark:text-gray-400">Diffused daylight; avoid harsh shadows or direct flash reflection.</span>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-2 p-2 rounded-xl bg-white/70 dark:bg-darkCard/70 border border-emerald-100 dark:border-emerald-950">
-                  <span className="text-emerald-600 dark:text-emerald-400 font-bold shrink-0">✓</span>
-                  <div>
-                    <span className="font-semibold text-gray-900 dark:text-white block">Avoid blur</span>
-                    <span className="text-[11px] text-gray-500 dark:text-gray-400">Hold steady; tap to focus on foliar lesions and vein patterns.</span>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-2 p-2 rounded-xl bg-white/70 dark:bg-darkCard/70 border border-emerald-100 dark:border-emerald-950">
-                  <span className="text-emerald-600 dark:text-emerald-400 font-bold shrink-0">✓</span>
-                  <div>
-                    <span className="font-semibold text-gray-900 dark:text-white block">Fill most of the frame</span>
-                    <span className="text-[11px] text-gray-500 dark:text-gray-400">Maximize leaf area (at least 60-70% of frame) for neural input resolution.</span>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-2 p-2 rounded-xl bg-white/70 dark:bg-darkCard/70 border border-emerald-100 dark:border-emerald-950">
-                  <span className="text-emerald-600 dark:text-emerald-400 font-bold shrink-0">✓</span>
-                  <div>
-                    <span className="font-semibold text-gray-900 dark:text-white block">Keep the leaf centered</span>
-                    <span className="text-[11px] text-gray-500 dark:text-gray-400">Position suspected pathology near center for Grad-CAM activation.</span>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-2 p-2 rounded-xl bg-white/70 dark:bg-darkCard/70 border border-emerald-100 dark:border-emerald-950 sm:col-span-2 lg:col-span-2">
-                  <span className="text-emerald-600 dark:text-emerald-400 font-bold shrink-0">✓</span>
-                  <div>
-                    <span className="font-semibold text-gray-900 dark:text-white block">Plain background works best</span>
-                    <span className="text-[11px] text-gray-500 dark:text-gray-400">Neutral background (soil, paper, or hand away from blade) prevents soil/weed false features.</span>
-                  </div>
-                </div>
-              </div>
-            )}
-          </div>
-
-          {/* 4 Real-World Diagnostic Test Samples */}
-          <div className="p-4 sm:p-5 rounded-3xl bg-white dark:bg-darkCard border border-gray-200 dark:border-darkBorder shadow-subtle space-y-3.5">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-gray-800 dark:text-gray-200">
-                <Sparkles className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
-                <span>Real-World Field Test Suite</span>
-              </div>
-              <span className="text-[10px] text-gray-400 font-mono">1-Click Test</span>
-            </div>
-            <p className="text-[11px] text-gray-500 dark:text-gray-400 leading-relaxed">
-              Select a field-verified sample to inspect leaf pre-flight checks, or click <strong>Test</strong> to run the full diagnostic pipeline instantly.
-            </p>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-              {REAL_WORLD_SAMPLES.map((sample) => (
-                <div
-                  key={sample.filename}
-                  onClick={() => handleLoadSample(sample.path, sample.filename, false)}
-                  className={`p-3 rounded-2xl border text-left transition-all text-xs group cursor-pointer flex flex-col justify-between space-y-2 ${sample.theme.bg} ${sample.theme.border}`}
-                >
-                  <div>
-                    <div className={`font-bold flex items-center justify-between ${sample.theme.text}`}>
-                      <span className="truncate">{sample.name}</span>
-                      <span className={`text-[10px] font-black ${sample.theme.dot}`}>
-                        {sample.status === 'healthy' ? '✓' : '⚠'}
-                      </span>
-                    </div>
-                    <div className="text-[10px] text-gray-500 dark:text-gray-400 flex items-center justify-between mt-0.5">
-                      <span className="font-medium">{sample.badge}</span>
-                      <span className="opacity-75 text-[9px]">{sample.crop}</span>
-                    </div>
-                    <p className="text-[10px] text-gray-600 dark:text-gray-400 mt-1 line-clamp-2 leading-tight">
-                      {sample.description}
-                    </p>
-                  </div>
-
-                  <div className="pt-1 flex items-center justify-between gap-2 border-t border-gray-200/50 dark:border-darkBorder/50">
-                    <span className="text-[10px] text-gray-400 group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors">
-                      Click to stage
-                    </span>
-                    <button
-                      type="button"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleLoadSample(sample.path, sample.filename, true);
-                      }}
-                      className="px-2.5 py-1 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-[10px] flex items-center gap-1 shadow-subtle transition-all transform active:scale-95"
-                      title={`Run instant assessment on ${sample.name}`}
-                    >
-                      <Zap className="w-3 h-3 text-amber-300 fill-amber-300" />
-                      <span>Test</span>
-                    </button>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
         </>
       ) : (
         /* Preview Card */
@@ -513,28 +282,6 @@ export function UploadDropzone({
               </button>
             )}
           </div>
-
-          {/* Quick switcher to other samples while staged */}
-          {!isAnalyzing && (
-            <div className="pt-2 border-t border-gray-100 dark:border-darkBorder space-y-2">
-              <span className="text-[10px] font-bold uppercase tracking-wider text-gray-400 block">
-                Quick switch sample:
-              </span>
-              <div className="flex flex-wrap gap-1.5">
-                {REAL_WORLD_SAMPLES.map((sample) => (
-                  <button
-                    key={sample.filename}
-                    type="button"
-                    onClick={() => handleLoadSample(sample.path, sample.filename, false)}
-                    className="px-2 py-1 rounded-lg bg-gray-100 dark:bg-darkElevated hover:bg-emerald-50 dark:hover:bg-emerald-950/40 text-[10px] font-medium text-gray-700 dark:text-gray-300 transition-colors border border-gray-200/60 dark:border-darkBorder truncate max-w-[140px]"
-                    title={`Switch to ${sample.name}`}
-                  >
-                    {sample.name}
-                  </button>
-                ))}
-              </div>
-            </div>
-          )}
 
           <input
             ref={fileInputRef}

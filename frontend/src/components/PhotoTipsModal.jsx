@@ -121,7 +121,7 @@ export function PhotoTipsModal({ isOpen, onClose }) {
         <div className="p-3.5 rounded-2xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200/80 dark:border-emerald-800 text-[11px] text-emerald-800 dark:text-emerald-300 flex items-center gap-2.5">
           <Sparkles className="w-4 h-4 text-emerald-600 shrink-0" />
           <span>
-            <strong>Don&apos;t have a leaf right now?</strong> You can click any of the 4 sample leaves on the Analyze page to test the system instantly.
+            <strong>Field Photography Tip:</strong> Keep the leaf blade steady and frame the suspect foliage clearly for best diagnostic results.
           </span>
         </div>
 

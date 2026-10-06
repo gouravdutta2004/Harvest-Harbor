@@ -73,7 +73,7 @@ export function CropIdentificationCard({ cropData, cropIdentification, className
           <div className="flex flex-wrap gap-2">
             {alternatives.map((alt, idx) => (
               <span
-                key={idx}
+                key={alt.crop || alt.name || idx}
                 className="px-2.5 py-1 rounded-lg bg-gray-100 dark:bg-darkElevated text-gray-600 dark:text-gray-300 text-xs font-mono"
               >
                 {toTitleCase(alt.crop || alt.name)}: <strong>{formatPercent(alt.confidence || alt.prob)}</strong>

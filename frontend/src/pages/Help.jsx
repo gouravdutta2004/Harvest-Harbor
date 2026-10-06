@@ -29,7 +29,7 @@ export function Help() {
     {
       step: '02',
       title: 'Capture or Upload Leaf',
-      description: 'Take a clear, well-lit field photo or drag-and-drop a JPG/PNG. Alternatively, click any pre-loaded field test sample.',
+      description: 'Take a clear, well-lit field photo or drag-and-drop a JPG/PNG to run the diagnostic pipeline.',
       icon: Camera,
     },
     {

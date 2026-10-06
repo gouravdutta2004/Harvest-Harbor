@@ -130,7 +130,7 @@ export function HumanReviewCard({
           <div className="flex flex-wrap gap-2">
             {reasons.map((r, idx) => (
               <span
-                key={idx}
+                key={r || idx}
                 className="px-2.5 py-1 rounded-xl text-xs bg-gray-50 dark:bg-darkElevated border border-gray-200 dark:border-darkBorder text-gray-700 dark:text-gray-300 flex items-center gap-1.5"
               >
                 <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />

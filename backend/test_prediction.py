@@ -70,18 +70,18 @@ class TestHealthPredictor(unittest.TestCase):
         cls.hp = HealthPredictor()
         cls.img = _make_leaf_image()
 
-    def test_model_not_none(self):
+    def test_health_model_not_none(self):
         """HealthPredictor.model must not be None after init."""
         self.assertIsNotNone(
             self.hp.model,
             "HealthPredictor.model is None — model failed to load"
         )
 
-    def test_predict_returns_dict(self):
+    def test_health_predict_returns_dict(self):
         result = self.hp.predict_image(self.img)
         self.assertIsInstance(result, dict)
 
-    def test_predict_has_required_keys(self):
+    def test_health_predict_has_required_keys(self):
         result = self.hp.predict_image(self.img)
         for key in ("prediction", "confidence", "probability_healthy", "probability_diseased"):
             self.assertIn(key, result, f"Missing key '{key}' in health result")
@@ -90,7 +90,7 @@ class TestHealthPredictor(unittest.TestCase):
         result = self.hp.predict_image(self.img)
         self.assertIn(result["prediction"], ("healthy", "diseased"))
 
-    def test_confidence_range(self):
+    def test_health_confidence_range(self):
         result = self.hp.predict_image(self.img)
         self.assertGreaterEqual(result["confidence"], 0.0)
         self.assertLessEqual(result["confidence"], 100.0)
@@ -114,17 +114,17 @@ class TestDiseasePredictor(unittest.TestCase):
         cls.predictor = get_predictor()
         cls.img = _make_leaf_image()
 
-    def test_model_not_none(self):
+    def test_disease_model_not_none(self):
         self.assertIsNotNone(
             self.predictor.model,
             "Disease predictor model is None"
         )
 
-    def test_predict_returns_dict(self):
+    def test_disease_predict_returns_dict(self):
         result = self.predictor.predict_image(self.img)
         self.assertIsInstance(result, dict)
 
-    def test_predict_has_required_keys(self):
+    def test_disease_predict_has_required_keys(self):
         result = self.predictor.predict_image(self.img)
         for key in ("raw_prediction", "confidence", "top_3"):
             self.assertIn(key, result, f"Missing key '{key}' in disease result")
@@ -134,7 +134,7 @@ class TestDiseasePredictor(unittest.TestCase):
         self.assertGreaterEqual(len(result["top_3"]), 1)
         self.assertLessEqual(len(result["top_3"]), 3)
 
-    def test_confidence_range(self):
+    def test_disease_confidence_range(self):
         result = self.predictor.predict_image(self.img)
         self.assertGreater(result["confidence"], 0.0)
         self.assertLessEqual(result["confidence"], 100.0)

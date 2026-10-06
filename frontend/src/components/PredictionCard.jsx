@@ -28,10 +28,18 @@ export function PredictionCard({ data }) {
 
   const healthStatus = (health.prediction || data.status || 'unknown').toLowerCase();
   const isHealthy = healthStatus === 'healthy' || data.status === 'healthy_prediction';
-  const isDiseased = !isValidationRejected && !isValidationSkipped && (healthStatus === 'diseased' || data.status === 'disease_prediction');
-  const isUncertain = isValidationRejected || isValidationSkipped || data.status?.includes('uncertain') || disease.uncertainty?.toLowerCase() === 'high' || health.uncertain;
+  const isUncertain =
+    !isHealthy &&
+    (isValidationRejected ||
+      isValidationSkipped ||
+      data.status === 'uncertain_prediction' ||
+      data.status?.includes('uncertain') ||
+      disease.uncertainty?.toLowerCase() === 'high' ||
+      health.uncertain ||
+      (disease.confidence !== null && disease.confidence !== undefined && disease.confidence < 50));
+  const isDiseased = !isHealthy && !isUncertain && (healthStatus === 'diseased' || data.status === 'disease_prediction');
 
-  const theme = getHealthStatusTheme(isHealthy ? 'healthy' : isDiseased ? 'diseased' : 'uncertain');
+  const theme = getHealthStatusTheme(isHealthy ? 'healthy' : isUncertain ? 'uncertain' : 'diseased');
 
   // Overall confidence
   const overallConfidence = isHealthy ? health.confidence : (disease.confidence ?? health.confidence);
@@ -65,6 +73,8 @@ export function PredictionCard({ data }) {
     ? 'Candidate Rejected by Crop Check'
     : isValidationSkipped
     ? 'Uncertain Host Compatibility'
+    : isUncertain
+    ? (disease.prediction ? `Uncertain: ${toTitleCase(disease.prediction)}` : 'Uncertain Diagnosis')
     : isDiseased
     ? (disease.prediction ? toTitleCase(disease.prediction) : 'Diseased Foliage')
     : 'Uncertain Diagnosis';
@@ -81,7 +91,15 @@ export function PredictionCard({ data }) {
               </span>
               <span className="w-1.5 h-1.5 rounded-full bg-gray-400" />
               <span className="px-2 py-0.5 rounded-md text-[10px] font-mono font-bold bg-white/80 dark:bg-darkCard text-gray-700 dark:text-gray-300 border border-gray-200/50 dark:border-darkBorder">
-                Status: AI Prediction
+                {isHealthy
+                  ? 'Status: Healthy Specimen'
+                  : isValidationRejected
+                  ? 'Status: Host Incompatible'
+                  : isValidationSkipped
+                  ? 'Status: Uncertain Host'
+                  : isUncertain
+                  ? 'Status: Uncertain Prediction'
+                  : 'Status: AI Prediction'}
               </span>
             </div>
 
@@ -91,7 +109,7 @@ export function PredictionCard({ data }) {
               </h2>
               {isHealthy ? (
                 <CheckCircle2 className="w-7 h-7 text-emerald-600 dark:text-emerald-400 shrink-0" />
-              ) : isValidationRejected || isValidationSkipped ? (
+              ) : isUncertain ? (
                 <AlertTriangle className="w-7 h-7 text-amber-500 shrink-0" />
               ) : isDiseased ? (
                 <ShieldAlert className="w-7 h-7 text-rose-600 dark:text-rose-400 shrink-0" />

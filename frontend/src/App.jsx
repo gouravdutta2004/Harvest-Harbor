@@ -73,8 +73,6 @@ export function App() {
                       element={
                         <Analyze
                           onReportGenerated={handleReportGenerated}
-                          initialResult={latestReport}
-                          initialImageSrc={latestImageSrc}
                         />
                       }
                     />

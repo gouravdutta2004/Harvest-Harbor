@@ -267,7 +267,9 @@ export function Traceability() {
         )}
 
         {/* Verification Result Card if Report Found */}
-        {reportResult && reportResult.report && (
+        {reportResult && reportResult.report && (() => {
+          const blockData = reportResult.report.data || reportResult.report.evidence_data || {};
+          return (
           <div className="p-6 rounded-3xl bg-emerald-50/50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800/80 shadow-subtle space-y-6 animate-fade-in">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-emerald-200/60 dark:border-emerald-800/60 pb-4">
               <div className="space-y-1">
@@ -298,10 +300,10 @@ export function Traceability() {
                   Health Screening
                 </span>
                 <div className="font-bold text-gray-900 dark:text-white capitalize text-sm">
-                  {reportResult.report.data?.health?.prediction || 'Not available'}
+                  {blockData.health?.prediction || 'Not available'}
                 </div>
                 <span className="text-gray-400">
-                  Confidence: {formatPercent(reportResult.report.data?.health?.confidence)}
+                  Confidence: {formatPercent(blockData.health?.confidence)}
                 </span>
               </div>
 
@@ -310,13 +312,13 @@ export function Traceability() {
                   Disease Prediction
                 </span>
                 <div className="font-bold text-gray-900 dark:text-white text-sm truncate">
-                  {reportResult.report.data?.disease?.prediction
-                    ? toTitleCase(reportResult.report.data.disease.prediction)
+                  {blockData.disease?.prediction
+                    ? toTitleCase(blockData.disease.prediction)
                     : 'None (Healthy)'}
                 </div>
                 <span className="text-gray-400">
-                  {reportResult.report.data?.disease?.confidence
-                    ? `Confidence: ${formatPercent(reportResult.report.data.disease.confidence)}`
+                  {blockData.disease?.confidence
+                    ? `Confidence: ${formatPercent(blockData.disease.confidence)}`
                     : 'Clean leaf screening'}
                 </span>
               </div>
@@ -326,10 +328,10 @@ export function Traceability() {
                   Severity &amp; Coverage
                 </span>
                 <div className="font-bold text-gray-900 dark:text-white text-sm">
-                  {reportResult.report.data?.severity?.severity || 'Not available'}
+                  {blockData.severity?.severity || 'Not available'}
                 </div>
                 <span className="text-gray-400">
-                  Affected area: {formatPercent(reportResult.report.data?.severity?.affected_area_percent)}
+                  Affected area: {formatPercent(blockData.severity?.affected_area_percent)}
                 </span>
               </div>
             </div>
@@ -358,7 +360,7 @@ export function Traceability() {
                   <span className="text-gray-500 dark:text-gray-400 block text-[11px] mb-1">
                     Image SHA-256 Digest:
                   </span>
-                  <HashDisplay hash={reportResult.report.data?.image_sha256} />
+                  <HashDisplay hash={blockData.image_sha256} />
                 </div>
                 <div>
                   <span className="text-gray-500 dark:text-gray-400 block text-[11px] mb-1">
@@ -371,7 +373,8 @@ export function Traceability() {
               </div>
             </div>
           </div>
-        )}
+          );
+        })()}
       </div>
 
       {/* Complete Evidence Chain History Timeline */}

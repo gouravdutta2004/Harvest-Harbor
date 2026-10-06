@@ -163,5 +163,84 @@ class TestReviewQueueUniquenessRegression(unittest.TestCase):
         self.assertEqual(record2_after["review_notes"], "Secondary resolution rejected")
 
 
+class TestUploadInferenceRegression(unittest.TestCase):
+    """
+    Regression test verifying image upload isolation:
+    - Dedicated image uploads produce unique report IDs
+    - Returned image filename matches uploaded filename exactly
+    - No report ID collision or reuse across consecutive analyses
+    - Distinct specimen uploads remain strictly isolated
+    """
+
+    def setUp(self):
+        try:
+            self.loop = asyncio.get_event_loop()
+            if self.loop.is_closed():
+                raise RuntimeError("Closed")
+        except RuntimeError:
+            self.loop = asyncio.new_event_loop()
+            asyncio.set_event_loop(self.loop)
+
+        # Load real test leaf image from test_images/
+        test_path = os.path.join(
+            os.path.dirname(os.path.dirname(__file__)),
+            "test_images", "sample_leaf.jpg"
+        )
+        with open(test_path, "rb") as f:
+            self.leaf_bytes = f.read()
+
+        self.mock_user = {
+            "role": "agronomist",
+            "auth_type": "apikey",
+            "authenticated": "true",
+            "identity": "AGRO-7402"
+        }
+
+    def _create_mock_upload_file(self, filename: str, content: bytes) -> MagicMock:
+        mock_file = MagicMock(spec=UploadFile)
+        mock_file.filename = filename
+        mock_file.content_type = "image/jpeg"
+        mock_file.read = MagicMock(return_value=asyncio.Future())
+        mock_file.read.return_value.set_result(content)
+        return mock_file
+
+    def test_upload_produces_unique_report_and_matching_filename(self):
+        mock_file_1 = self._create_mock_upload_file("leaf_specimen_a.jpg", self.leaf_bytes)
+        resp1 = self.loop.run_until_complete(predict(file=mock_file_1, user=self.mock_user))
+
+        self.assertTrue(resp1.get("success"))
+        report_id_1 = resp1.get("report_id")
+        self.assertTrue(report_id_1.startswith("CR-"))
+        self.assertEqual(resp1.get("image", {}).get("filename"), "leaf_specimen_a.jpg")
+        self.assertIn("leaf_specimen_a", resp1.get("image", {}).get("url", ""))
+        self.assertIn(report_id_1, resp1.get("image", {}).get("url", ""))
+
+        # Second consecutive call with the same filename
+        mock_file_2 = self._create_mock_upload_file("leaf_specimen_a.jpg", self.leaf_bytes)
+        resp2 = self.loop.run_until_complete(predict(file=mock_file_2, user=self.mock_user))
+
+        self.assertTrue(resp2.get("success"))
+        report_id_2 = resp2.get("report_id")
+        self.assertTrue(report_id_2.startswith("CR-"))
+        self.assertEqual(resp2.get("image", {}).get("filename"), "leaf_specimen_a.jpg")
+
+        # Crucial check: Report IDs must NEVER be reused across runs
+        self.assertNotEqual(report_id_1, report_id_2)
+
+    def test_consecutive_uploads_remain_strictly_isolated(self):
+        specimen_a = self._create_mock_upload_file("leaf_specimen_a.jpg", self.leaf_bytes)
+        resp_a = self.loop.run_until_complete(predict(file=specimen_a, user=self.mock_user))
+
+        specimen_b = self._create_mock_upload_file("leaf_specimen_b.jpg", self.leaf_bytes)
+        resp_b = self.loop.run_until_complete(predict(file=specimen_b, user=self.mock_user))
+
+        self.assertNotEqual(resp_a.get("report_id"), resp_b.get("report_id"))
+        self.assertEqual(resp_a.get("image", {}).get("filename"), "leaf_specimen_a.jpg")
+        self.assertEqual(resp_b.get("image", {}).get("filename"), "leaf_specimen_b.jpg")
+        self.assertNotIn("leaf_specimen_b", resp_a.get("image", {}).get("url", ""))
+        self.assertNotIn("leaf_specimen_a", resp_b.get("image", {}).get("url", ""))
+
+
 if __name__ == "__main__":
     unittest.main()
+

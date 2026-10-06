@@ -66,7 +66,8 @@ export function Dashboard() {
           blocks.forEach((block) => {
             if (block.block_type === 'evidence') {
               reportsCount += 1;
-              const pred = (block.data?.health?.prediction || block.data?.report_snapshot?.health_prediction?.prediction || '').toLowerCase();
+              const evData = block.data || block.evidence_data || {};
+              const pred = (evData.health?.prediction || evData.report_snapshot?.health_prediction?.prediction || '').toLowerCase();
               if (pred === 'healthy') healthyCount += 1;
               if (pred === 'diseased') diseasedCount += 1;
             }
@@ -288,48 +289,6 @@ export function Dashboard() {
               <span>Review Cases</span>
             </Link>
           </div>
-
-          {/* Quick 1-Click Demo Leaves for Beginners */}
-          <div className="pt-3 border-t border-emerald-800/60 space-y-2">
-            <span className="text-[11px] font-semibold text-emerald-200 flex items-center gap-1.5">
-              <Sparkles className="w-3.5 h-3.5 text-amber-300" />
-              <span>Try a 1-click test sample right now:</span>
-            </span>
-            <div className="flex flex-wrap gap-2">
-              <Link
-                to="/analyze?sample=apple_healthy"
-                className="px-3 py-1.5 rounded-xl bg-white/10 hover:bg-emerald-500/30 text-white text-xs font-medium border border-white/15 flex items-center gap-1.5 transition-all hover:scale-105"
-                title="Diagnose Healthy Apple Leaf"
-              >
-                <span>🍏</span>
-                <span>Apple Healthy</span>
-              </Link>
-              <Link
-                to="/analyze?sample=potato_blight"
-                className="px-3 py-1.5 rounded-xl bg-white/10 hover:bg-rose-500/30 text-white text-xs font-medium border border-white/15 flex items-center gap-1.5 transition-all hover:scale-105"
-                title="Diagnose Potato Early Blight"
-              >
-                <span>🥔</span>
-                <span>Potato Blight</span>
-              </Link>
-              <Link
-                to="/analyze?sample=corn_spot"
-                className="px-3 py-1.5 rounded-xl bg-white/10 hover:bg-amber-500/30 text-white text-xs font-medium border border-white/15 flex items-center gap-1.5 transition-all hover:scale-105"
-                title="Diagnose Corn Gray Spot"
-              >
-                <span>🌽</span>
-                <span>Corn Spot</span>
-              </Link>
-              <Link
-                to="/analyze?sample=apple_rot"
-                className="px-3 py-1.5 rounded-xl bg-white/10 hover:bg-purple-500/30 text-white text-xs font-medium border border-white/15 flex items-center gap-1.5 transition-all hover:scale-105"
-                title="Diagnose Apple Black Rot"
-              >
-                <span>🍎</span>
-                <span>Apple Black Rot</span>
-              </Link>
-            </div>
-          </div>
         </div>
 
         {/* Ambient background decoration */}
@@ -367,7 +326,7 @@ export function Dashboard() {
               <span>Snap or Upload a Photo</span>
             </h3>
             <p className="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
-              Snap a clear photo of the leaf blade in natural daylight, or choose one of our verified field test samples.
+              Snap a clear photo of the leaf blade in natural daylight with the lesion in focus.
             </p>
           </div>
 
@@ -664,7 +623,7 @@ export function Dashboard() {
               const data = block.data || block.evidence_data || {};
               const snap = data.report_snapshot || {};
               const pred = (data.health?.prediction || snap.health_prediction?.prediction || '').toLowerCase();
-              const crop = data.crop?.prediction || snap.crop_analysis?.prediction;
+              const crop = data.crop?.prediction || snap.crop_prediction?.prediction || snap.crop_analysis?.prediction;
               const disease = data.disease?.prediction || snap.disease_analysis?.prediction;
               const isHealthy = pred === 'healthy';
 

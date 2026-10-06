@@ -129,7 +129,7 @@ export function Limitations() {
             Have questions about field validation or model evaluation?
           </span>
           <p className="text-gray-500 dark:text-gray-400">
-            Read our complete research architecture in the About section or test a sample leaf in the Analyze studio.
+            Read our complete research architecture in the About section or analyze a leaf in the Analyze studio.
           </p>
         </div>
         <Link

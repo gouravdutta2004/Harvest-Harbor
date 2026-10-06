@@ -102,7 +102,14 @@ def evaluate_segmentation(num_samples: int = 50):
             img_arr = np.array(img_resized, dtype=np.float32) / 255.0
             img_batch = np.expand_dims(img_arr, axis=0)
 
-            pred_prob = segmenter.unet_model.predict(img_batch, verbose=0)[0]  # (256, 256, 1)
+            if segmenter.unet_infer is not None:
+                import tensorflow as tf
+                out = segmenter.unet_infer(input_layer=tf.constant(img_batch, dtype=tf.float32))
+                pred_prob = out["output_0"].numpy()[0]  # (256, 256, 1)
+            elif hasattr(segmenter.unet_model, "predict"):
+                pred_prob = segmenter.unet_model.predict(img_batch, verbose=0)[0]  # (256, 256, 1)
+            else:
+                raise RuntimeError("U-Net model callable not found")
             pred_mask_256 = (pred_prob[..., 0] >= 0.5).astype(np.uint8)
 
             # Resize pred mask back to original dimensions for fair pixel-level evaluation

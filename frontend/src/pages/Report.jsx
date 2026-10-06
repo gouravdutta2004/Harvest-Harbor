@@ -9,9 +9,13 @@ export function Report({ latestReport = null, latestImageSrc = null }) {
   const [searchParams, setSearchParams] = useSearchParams();
   const queryId = searchParams.get('id') || '';
 
+  const isMatchingLatest = Boolean(queryId && latestReport && latestReport.report_id === queryId.trim());
+  const initialActive = isMatchingLatest ? latestReport : (!queryId ? latestReport : null);
+  const initialImg = isMatchingLatest ? (latestReport.image?.url || null) : (!queryId ? (latestReport?.image?.url || null) : null);
+
   const [inputReportId, setInputReportId] = useState(queryId);
-  const [activeReport, setActiveReport] = useState(latestReport);
-  const [originalImage, setOriginalImage] = useState(latestReport?.image?.url || null);
+  const [activeReport, setActiveReport] = useState(initialActive);
+  const [originalImage, setOriginalImage] = useState(initialImg);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [recentReports, setRecentReports] = useState([]);
@@ -36,6 +40,7 @@ export function Report({ latestReport = null, latestImageSrc = null }) {
 
   // If query parameter changes or is present on load, fetch that report
   useEffect(() => {
+    setInputReportId(queryId);
     if (queryId && queryId.trim()) {
       // If we already have this report in memory (rich data from Analyze page), use it
       if (latestReport && latestReport.report_id === queryId.trim()) {
@@ -48,6 +53,9 @@ export function Report({ latestReport = null, latestImageSrc = null }) {
     } else if (latestReport && !queryId) {
       setActiveReport(latestReport);
       setOriginalImage(latestReport.image?.url || null);
+    } else {
+      setActiveReport(null);
+      setOriginalImage(null);
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [queryId]);
@@ -68,6 +76,8 @@ export function Report({ latestReport = null, latestImageSrc = null }) {
 
     setIsLoading(true);
     setError(null);
+    setActiveReport(null);
+    setOriginalImage(null);
 
     try {
       const data = await getTraceabilityReport(reportIdToFetch.trim());

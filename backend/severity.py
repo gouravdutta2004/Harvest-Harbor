@@ -323,6 +323,7 @@ def analyze_severity(
         ),
 
         "severity": severity,
+        "severity_level": severity,
 
         "description": description,
 

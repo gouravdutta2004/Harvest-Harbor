@@ -146,6 +146,21 @@ def cleanup_expired_files(max_age_hours: int = MAX_GENERATED_FILE_AGE_HOURS) -> 
                 except Exception as err:
                     logger.warning(f"Failed to remove expired file {file_path}: {err}")
 
+    # Also clean up stale .lock files from all scanned directories (only if expired)
+    for target_dir in (GRADCAM_DIR, SEGMENTATION_DIR, UPLOADS_DIR):
+        if not target_dir.exists():
+            continue
+        for file_path in target_dir.glob("*.lock"):
+            if file_path.is_file():
+                try:
+                    file_age = now - file_path.stat().st_mtime
+                    if file_age > max_age_seconds:
+                        file_path.unlink()
+                        deleted_count += 1
+                except Exception as err:
+                    logger.warning(f"Failed to remove stale lock file {file_path}: {err}")
+
+
     if deleted_count > 0:
         logger.info(f"Cleaned up {deleted_count} expired output/upload files.")
 

@@ -41,21 +41,25 @@ export function formatNumber(val) {
 /**
  * Formats ISO timestamp to human readable format.
  * @param {string|null|undefined} isoString
+ * @param {{ includeTime?: boolean }} [options]
  */
-export function formatDate(isoString) {
+export function formatDate(isoString, { includeTime = true } = {}) {
   if (!isoString) return 'Not available';
   try {
     const d = new Date(isoString);
     if (isNaN(d.getTime())) return isoString;
-    return new Intl.DateTimeFormat('en-US', {
+    const dateOptions = {
       year: 'numeric',
       month: 'short',
       day: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit',
-      second: '2-digit',
-      timeZoneName: 'short',
-    }).format(d);
+    };
+    if (includeTime) {
+      dateOptions.hour = '2-digit';
+      dateOptions.minute = '2-digit';
+      dateOptions.second = '2-digit';
+      dateOptions.timeZoneName = 'short';
+    }
+    return new Intl.DateTimeFormat('en-US', dateOptions).format(d);
   } catch {
     return isoString;
   }

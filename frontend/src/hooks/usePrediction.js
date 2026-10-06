@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect, useRef } from 'react';
 import { predictCrop } from '../services/api';
 
 /**
@@ -22,6 +22,9 @@ export function usePrediction(initialResult = null, initialImageSrc = null) {
   const [result, setResult] = useState(initialResult || null);
   const [error, setError] = useState(null);
 
+  // Request counter token to guarantee race protection (Requirement C)
+  const activeRequestIdRef = useRef(0);
+
   // Manage object URL lifecycle to prevent memory leaks
   const handleSelectFile = useCallback((file) => {
     if (previewUrl && typeof previewUrl === 'string' && previewUrl.startsWith('blob:')) {
@@ -30,11 +33,13 @@ export function usePrediction(initialResult = null, initialImageSrc = null) {
     if (!file) {
       setSelectedFile(null);
       setPreviewUrl(null);
+      setResult(null);
       return;
     }
     setSelectedFile(file);
     const url = URL.createObjectURL(file);
     setPreviewUrl(url);
+    setResult(null);
     setError(null);
   }, [previewUrl]);
 
@@ -54,8 +59,18 @@ export function usePrediction(initialResult = null, initialImageSrc = null) {
       return null;
     }
 
+    // Verify sample file identity and validity (Requirement D)
+    if (!(file instanceof File) && !(file instanceof Blob)) {
+      setError('Invalid file object. Please choose a valid leaf image file.');
+      return null;
+    }
+
+    // Allocate new request token for race protection (Requirement C)
+    const currentRequestId = ++activeRequestIdRef.current;
+
     setIsAnalyzing(true);
     setError(null);
+    setResult(null);
     setCurrentStageIndex(0);
 
     // Subtle stage progression interval while awaiting the API response
@@ -71,19 +86,36 @@ export function usePrediction(initialResult = null, initialImageSrc = null) {
     try {
       const data = await predictCrop(file);
       clearInterval(stageTimer);
+
+      // Race condition check: Only the latest active request may update state (Requirement C)
+      if (currentRequestId !== activeRequestIdRef.current) {
+        return null;
+      }
+
       setCurrentStageIndex(ANALYSIS_STAGES.length - 1);
       setResult(data);
       return data;
     } catch (err) {
       clearInterval(stageTimer);
+
+      // Ignore errors from superseded requests
+      if (currentRequestId !== activeRequestIdRef.current) {
+        return null;
+      }
+
       setError(err.message || 'An error occurred during prediction.');
       return null;
     } finally {
-      setIsAnalyzing(false);
+      if (currentRequestId === activeRequestIdRef.current) {
+        setIsAnalyzing(false);
+      }
     }
   }, [selectedFile]);
 
   const reset = useCallback(() => {
+    // Invalidate any in-flight request so its completion cannot update state
+    activeRequestIdRef.current += 1;
+
     if (previewUrl && typeof previewUrl === 'string' && previewUrl.startsWith('blob:')) {
       URL.revokeObjectURL(previewUrl);
     }

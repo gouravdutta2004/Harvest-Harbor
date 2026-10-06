@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
+import React, { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import {
   ScanLine,
   FileText,
@@ -40,8 +40,6 @@ import { toTitleCase, formatPercent } from '../utils/formatters';
 import { submitForReview } from '../services/api';
 
 export function Analyze({ onReportGenerated, initialResult = null, initialImageSrc = null }) {
-  const [searchParams] = useSearchParams();
-  const autoSample = searchParams.get('sample');
   const [activeResultTab, setActiveResultTab] = useState('overview'); // 'overview' | 'visual' | 'technical'
   const [copiedId, setCopiedId] = useState(false);
   const [securityModalOpen, setSecurityModalOpen] = useState(false);
@@ -60,19 +58,18 @@ export function Analyze({ onReportGenerated, initialResult = null, initialImageS
     reset,
   } = usePrediction(initialResult, initialImageSrc);
 
+  const handleResetAll = () => {
+    reset();
+    if (onReportGenerated) {
+      onReportGenerated(null, null);
+    }
+  };
+
   // If report generated, notify parent so Report page can pre-load it
   const handleAnalyzeClick = async (fileOverride = null) => {
     const data = await runAnalysis(fileOverride);
     if (data && onReportGenerated) {
-      onReportGenerated(data, data.image?.url || previewUrl);
-    }
-  };
-
-  const handleQuickAnalyze = async (file) => {
-    selectFile(file);
-    const data = await runAnalysis(file);
-    if (data && onReportGenerated) {
-      onReportGenerated(data, data.image?.url || previewUrl);
+      onReportGenerated(data, data.image?.url || null);
     }
   };
 
@@ -97,13 +94,8 @@ export function Analyze({ onReportGenerated, initialResult = null, initialImageS
             selectedFile={selectedFile}
             previewUrl={previewUrl}
             onAnalyze={handleAnalyzeClick}
-            onQuickAnalyze={handleQuickAnalyze}
             isAnalyzing={isAnalyzing}
-            autoLoadSampleId={autoSample}
-            onReset={() => {
-              reset();
-              if (onReportGenerated) onReportGenerated(null, null);
-            }}
+            onReset={handleResetAll}
           />
 
           {/* Imaging Best Practices Tip Card */}
@@ -271,10 +263,10 @@ export function Analyze({ onReportGenerated, initialResult = null, initialImageS
               {/* Call to action */}
               <div className="p-4 rounded-2xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200/80 dark:border-emerald-800 text-center space-y-1.5">
                 <span className="text-xs font-bold text-emerald-900 dark:text-emerald-200 block">
-                  Select an image or click &quot;Test&quot; on any sample leaf to begin
+                  Select or drop a leaf image to begin AI analysis
                 </span>
                 <p className="text-[11px] text-emerald-700 dark:text-emerald-300">
-                  Try Apple Healthy, Potato Early Blight, Corn Gray Spot, or Apple Black Rot from the left panel.
+                  Upload a photo of your crop leaf from the left panel to run deep learning diagnostics.
                 </p>
               </div>
             </div>
@@ -286,6 +278,17 @@ export function Analyze({ onReportGenerated, initialResult = null, initialImageS
               {/* Prominent Friendly Verdict Banner */}
               {(() => {
                 const isHealthy = (result.health_prediction?.prediction || result.status || '').toLowerCase() === 'healthy' || result.status === 'healthy_prediction';
+                const isValidationRejected = result.disease_analysis?.validation?.status === 'rejected';
+                const isValidationSkipped = result.disease_analysis?.validation?.status === 'skipped_low_crop_confidence';
+                const isUncertain =
+                  !isHealthy &&
+                  (result.status === 'uncertain_prediction' ||
+                    result.status?.includes('uncertain') ||
+                    isValidationRejected ||
+                    isValidationSkipped ||
+                    result.disease_analysis?.uncertainty?.toLowerCase() === 'high' ||
+                    (result.disease_analysis?.confidence != null && result.disease_analysis.confidence < 50));
+
                 const cropName = result.crop_analysis?.prediction || result.crop_prediction?.prediction || result.crop_identification?.prediction;
                 const diseaseName = result.disease_analysis?.prediction;
                 const formattedCrop = cropName ? toTitleCase(cropName) : 'Crop Leaf';
@@ -307,6 +310,8 @@ export function Analyze({ onReportGenerated, initialResult = null, initialImageS
                   <div className={`p-6 sm:p-7 rounded-3xl border shadow-premium relative overflow-hidden ${
                     isHealthy
                       ? 'bg-gradient-to-br from-emerald-50 via-emerald-100/50 to-white dark:from-emerald-950/60 dark:via-darkCard dark:to-darkCard border-emerald-200 dark:border-emerald-800'
+                      : isUncertain
+                      ? 'bg-gradient-to-br from-amber-50 via-amber-100/50 to-white dark:from-amber-950/60 dark:via-darkCard dark:to-darkCard border-amber-200 dark:border-amber-800'
                       : 'bg-gradient-to-br from-rose-50 via-rose-100/50 to-white dark:from-rose-950/60 dark:via-darkCard dark:to-darkCard border-rose-200 dark:border-rose-800'
                   }`}>
                     <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
@@ -315,10 +320,28 @@ export function Analyze({ onReportGenerated, initialResult = null, initialImageS
                           <span className={`px-2.5 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wider flex items-center gap-1.5 ${
                             isHealthy
                               ? 'bg-emerald-600 text-white shadow-subtle'
+                              : isUncertain
+                              ? 'bg-amber-600 text-white shadow-subtle'
                               : 'bg-rose-600 text-white shadow-subtle'
                           }`}>
-                            {isHealthy ? <CheckCircle2 className="w-3.5 h-3.5" /> : <AlertCircle className="w-3.5 h-3.5" />}
-                            <span>{isHealthy ? 'Healthy Specimen' : 'Pathogen Detected'}</span>
+                            {isHealthy ? (
+                              <CheckCircle2 className="w-3.5 h-3.5" />
+                            ) : isUncertain ? (
+                              <AlertCircle className="w-3.5 h-3.5" />
+                            ) : (
+                              <AlertCircle className="w-3.5 h-3.5" />
+                            )}
+                            <span>
+                              {isHealthy
+                                ? 'Healthy Specimen'
+                                : isValidationRejected
+                                ? 'Host Incompatible'
+                                : isValidationSkipped
+                                ? 'Uncertain Host'
+                                : isUncertain
+                                ? 'Uncertain Assessment'
+                                : 'Pathogen Detected'}
+                            </span>
                           </span>
 
                           <span className="text-[11px] font-mono text-gray-500 dark:text-gray-400">
@@ -327,12 +350,20 @@ export function Analyze({ onReportGenerated, initialResult = null, initialImageS
                         </div>
 
                         <h2 className="text-2xl sm:text-3xl font-black text-gray-900 dark:text-white tracking-tight">
-                          {isHealthy ? `${formattedCrop} Leaf is Healthy` : `${formattedDisease} on ${formattedCrop}`}
+                          {isHealthy
+                            ? `${formattedCrop} Leaf is Healthy`
+                            : isValidationRejected
+                            ? `Host Incompatibility on ${formattedCrop}`
+                            : isUncertain
+                            ? `Uncertain: ${formattedDisease} on ${formattedCrop}`
+                            : `${formattedDisease} on ${formattedCrop}`}
                         </h2>
 
                         <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl">
                           {isHealthy
                             ? `Great news! The AI assessed this ${formattedCrop} specimen with ${formatPercent(confidence)} confidence. Leaf foliage appears robust with no active fungal or bacterial lesions.`
+                            : isUncertain
+                            ? `Borderline diagnostic confidence (${formatPercent(confidence)} < 50%). ${result.message || 'Automated checks detected low confidence. This assessment requires agronomist confirmation before any chemical treatment intervention.'}${affectedArea !== undefined ? ` Estimated foliar coverage: ${affectedArea.toFixed(1)}%.` : ''}`
                             : `Visual foliar symptoms matching ${formattedDisease} detected on ${formattedCrop} with ${formatPercent(confidence)} confidence.${affectedArea !== undefined ? ` Estimated foliar coverage: ${affectedArea.toFixed(1)}%.` : ''}`}
                         </p>
                       </div>
@@ -369,7 +400,7 @@ export function Analyze({ onReportGenerated, initialResult = null, initialImageS
 
                         <button
                           type="button"
-                          onClick={reset}
+                          onClick={handleResetAll}
                           className="px-3.5 py-2.5 rounded-xl bg-white dark:bg-darkElevated hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-200 border border-gray-200 dark:border-darkBorder text-xs font-semibold flex items-center gap-1.5 transition-colors"
                           title="Analyze another leaf photo"
                         >

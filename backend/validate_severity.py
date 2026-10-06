@@ -26,6 +26,17 @@ import sys
 import argparse
 from pathlib import Path
 
+# ============================================================
+# PATHS & ENVIRONMENT
+# ============================================================
+
+BASE_DIR = Path(__file__).resolve().parent
+if str(BASE_DIR) not in sys.path:
+    sys.path.insert(0, str(BASE_DIR))
+
+# Ensure Keras home points to backend/.keras so TF does not attempt to read ~/.keras/keras.json
+os.environ["KERAS_HOME"] = str(BASE_DIR / ".keras")
+
 import numpy as np
 from PIL import Image
 
@@ -35,13 +46,6 @@ from severity import (
     calculate_affected_area,
     classify_severity,
 )
-
-
-# ============================================================
-# PATHS
-# ============================================================
-
-BASE_DIR = Path(__file__).resolve().parent
 
 PLANTSEG_DIR = (
     BASE_DIR.parent /

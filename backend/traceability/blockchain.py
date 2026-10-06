@@ -21,10 +21,15 @@ def file_lock(path: str):
     lock_file = open(lock_path, "w")
     try:
         fcntl.flock(lock_file, fcntl.LOCK_EX)
-        yield
+        try:
+            yield
+        finally:
+            try:
+                fcntl.flock(lock_file, fcntl.LOCK_UN)
+            except Exception:
+                pass
     finally:
         try:
-            fcntl.flock(lock_file, fcntl.LOCK_UN)
             lock_file.close()
         except Exception:
             pass

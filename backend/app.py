@@ -15,6 +15,9 @@ if "KERAS_HOME" not in os.environ:
 import io
 import json
 import uuid
+import copy
+import time
+import asyncio
 import hashlib
 from datetime import datetime, timezone
 from typing import Any, Dict, Optional
@@ -104,17 +107,30 @@ DISEASE_MODEL_VERSION = "plantwild_v2_efficientnetb0"
 SEGMENTATION_MODEL_VERSION = "unet_plantseg"
 CROP_MODEL_VERSION = "crop_efficientnetb0"
 
-HEALTH_MODEL_META = {"name": HEALTH_MODEL_VERSION}
-DISEASE_MODEL_META = {"name": DISEASE_MODEL_VERSION}
-CROP_MODEL_META = {"name": CROP_MODEL_VERSION}
+HEALTH_MODEL_META = {
+    "name": HEALTH_MODEL_VERSION,
+    "model_hash": "bb961155086400507012b3d5202c585ee54289bcbbffcbc3baa4abed585689f5",
+    "classes_hash": "3a0a1395512d4753f9fa5547a1b12561a9262620ea00d711a42f9961b4f074a1",
+    "calibration_hash": "4eb30d1025624d8bc5af903bb57fbf5756590ef18e291111e6b401117373d347",
+}
+DISEASE_MODEL_META = {
+    "name": DISEASE_MODEL_VERSION,
+    "model_hash": "411611a0977eaba38ae616635ecb8e7f6c1299cb0e9f89f585896786adb6802c",
+    "classes_hash": "b928d7d8c17fcf143111f4e2aa29b74a3f7e94a4cc15dfa9e4761cc5489a3da6",
+}
+CROP_MODEL_META = {
+    "name": CROP_MODEL_VERSION,
+    "model_hash": "b473ae77ca426e6910ec76d40c640732d30eb02c98cf3cee941b56b573a0d331",
+    "classes_hash": "5b06e356caaf5cca3eb96457e55db60c8d88478530fd435607016e7af71d2a77",
+}
 SEGMENTATION_MODEL_META = {
     "name": SEGMENTATION_MODEL_VERSION,
-    "model_hash": None,
-    "runtime_format": None,
-    "runtime_path": None,
-    "source_model_hash": None,
-    "source_format": None,
-    "source_model_path": None,
+    "model_hash": "622ac75ee8c7c12e7701384946540e1654a7073c111521f7c2cbadb433b895c8",
+    "runtime_format": "SavedModel",
+    "runtime_path": "segmentation_model/unet_plantseg_savedmodel",
+    "source_model_hash": "11eaadaea1723edb86fca13bc4aade6a483f37e75b4d6658390cb63479221145",
+    "source_format": "Keras",
+    "source_model_path": "segmentation_model/unet_plantseg.keras",
 }
 SYSTEM_VERSION = "crop-disease-ai-v2"
 
@@ -123,17 +139,24 @@ SYSTEM_VERSION = "crop-disease-ai-v2"
 # FASTAPI APPLICATION
 # ============================================================
 
+from contextlib import asynccontextmanager
+
+@asynccontextmanager
+async def _lifespan(app_instance):
+    """Run startup logic then yield control to FastAPI."""
+    startup_event()
+    yield
+
 app = FastAPI(
     title="Crop Disease AI",
     description=(
         "AI-powered crop health, disease detection, "
         "segmentation, severity estimation and explainability API."
     ),
-    version=SYSTEM_VERSION
+    version=SYSTEM_VERSION,
+    lifespan=_lifespan,
 )
 
-import time
-import asyncio
 from fastapi import Request
 from fastapi.responses import JSONResponse
 
@@ -196,10 +219,22 @@ async def add_security_headers(request, call_next):
     response.headers["X-Frame-Options"] = "DENY"
     response.headers["X-XSS-Protection"] = "1; mode=block"
     response.headers["Referrer-Policy"] = "strict-origin-when-cross-origin"
-    response.headers["Content-Security-Policy"] = (
-        "default-src 'self'; img-src 'self' data: blob:; script-src 'self'; "
-        "style-src 'self' 'unsafe-inline'; font-src 'self'; connect-src 'self' http: https:; frame-ancestors 'none';"
-    )
+    # Swagger UI (/docs) and ReDoc (/redoc) require assets from jsDelivr and inline init scripts
+    if request.url.path in ("/docs", "/redoc", "/openapi.json"):
+        response.headers["Content-Security-Policy"] = (
+            "default-src 'self'; "
+            "img-src 'self' data: blob: https://fastapi.tiangolo.com; "
+            "script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; "
+            "style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; "
+            "font-src 'self' data: https://cdn.jsdelivr.net; "
+            "connect-src 'self' http: https:; "
+            "frame-ancestors 'none';"
+        )
+    else:
+        response.headers["Content-Security-Policy"] = (
+            "default-src 'self'; img-src 'self' data: blob:; script-src 'self'; "
+            "style-src 'self' 'unsafe-inline'; font-src 'self'; connect-src 'self' http: https:; frame-ancestors 'none';"
+        )
     response.headers["Permissions-Policy"] = "camera=(), microphone=(), geolocation=(), payment=()"
     if request.url.scheme == "https" or request.headers.get("x-forwarded-proto") == "https" or os.getenv("ENABLE_HSTS", "false").lower() in ("true", "1"):
         response.headers["Strict-Transport-Security"] = "max-age=31536000; includeSubDomains; preload"
@@ -219,7 +254,8 @@ from fastapi.responses import FileResponse
 @app.get("/uploads/{filename:path}")
 def get_upload_file(filename: str, user: Dict[str, str] = Depends(require_auth)):
     authorize(user, "view_reports")
-    file_path = UPLOADS_DIR / filename
+    safe_filename = filename.lstrip("/\\")
+    file_path = UPLOADS_DIR / safe_filename
     # Prevent path traversal
     if ".." in filename or not file_path.resolve().is_relative_to(UPLOADS_DIR.resolve()):
         raise HTTPException(status_code=403, detail="Invalid path")
@@ -230,7 +266,8 @@ def get_upload_file(filename: str, user: Dict[str, str] = Depends(require_auth))
 @app.get("/generated/{subpath:path}")
 def get_generated_file(subpath: str, user: Dict[str, str] = Depends(require_auth)):
     authorize(user, "view_reports")
-    file_path = GENERATED_DIR / subpath
+    safe_subpath = subpath.lstrip("/\\")
+    file_path = GENERATED_DIR / safe_subpath
     # Prevent path traversal
     if ".." in subpath or not file_path.resolve().is_relative_to(GENERATED_DIR.resolve()):
         raise HTTPException(status_code=403, detail="Invalid path")
@@ -500,13 +537,15 @@ def determine_human_review(response: Dict[str, Any], report_id: str) -> Dict[str
 
     if reasons:
         priority = "high" if any(r in reasons for r in ["health_prediction_uncertain", "low_disease_confidence"]) else "medium"
-        review_queue.enqueue(report_id, reasons, priority, {
+        raw_summary = {
             "health_prediction": response.get("health_prediction"),
             "crop_prediction": response.get("crop_prediction"),
             "disease_analysis": response.get("disease_analysis"),
             "segmentation": response.get("segmentation"),
             "severity": response.get("severity"),
-        })
+        }
+        sanitized_summary = remove_absolute_path_keys(raw_summary)
+        review_queue.enqueue(report_id, reasons, priority, sanitized_summary)
         human_review = {"required": True, "reasons": reasons}
     else:
         human_review = {"required": False, "reasons": []}
@@ -706,7 +745,6 @@ def get_disease_information(
 # STARTUP
 # ============================================================
 
-@app.on_event("startup")
 def startup_event():
 
     global health_predictor
@@ -1282,11 +1320,11 @@ async def predict(
 
         # IMPORTANT:
         # HealthPredictor expects PIL.Image
+        # Inference is CPU-bound/blocking — run in thread pool to avoid blocking the event loop.
         async with inference_semaphore:
-            health_result = (
-                health_predictor.predict_image(
-                    image
-                )
+            loop = asyncio.get_event_loop()
+            health_result = await loop.run_in_executor(
+                None, health_predictor.predict_image, image
             )
 
         health_result = normalize_prediction_result(
@@ -1316,7 +1354,10 @@ async def predict(
     if crop_predictor is not None:
         try:
             async with inference_semaphore:
-                crop_result = crop_predictor.predict_image(image)
+                loop = asyncio.get_event_loop()
+                crop_result = await loop.run_in_executor(
+                    None, crop_predictor.predict_image, image
+                )
             response["crop_prediction"] = crop_result
         except Exception as e:
             print("[WARNING] Crop prediction failed:", str(e))
@@ -1610,11 +1651,11 @@ async def predict(
 
         # IMPORTANT:
         # PlantPredictor expects PIL.Image
+        # Inference is CPU-bound/blocking — run in thread pool to avoid blocking the event loop.
         async with inference_semaphore:
-            disease_result = (
-                disease_predictor.predict_image(
-                    image
-                )
+            loop = asyncio.get_event_loop()
+            disease_result = await loop.run_in_executor(
+                None, disease_predictor.predict_image, image
             )
 
         disease_result = normalize_prediction_result(
@@ -2153,8 +2194,6 @@ async def predict(
             # ----------------------------------------------
 
             for key in [
-                "heatmap",
-                "overlay",
                 "prediction",
                 "confidence"
             ]:
@@ -2197,10 +2236,10 @@ async def predict(
 
             # IMPORTANT:
             # LeafSegmenter expects PIL.Image
-            segmentation_result = (
-                leaf_segmenter.segment_image(
-                    image
-                )
+            # Inference is CPU-bound/blocking — run in thread pool to avoid blocking the event loop.
+            loop = asyncio.get_event_loop()
+            segmentation_result = await loop.run_in_executor(
+                None, leaf_segmenter.segment_image, image
             )
 
             if not isinstance(
@@ -2280,9 +2319,14 @@ async def predict(
             SEGMENTATION_MODEL_VERSION
         )
 
-        response["segmentation"] = (
-            segmentation_output
-        )
+        for abs_key in [
+            "absolute_leaf_mask_path",
+            "absolute_disease_mask_path",
+            "absolute_mask_path",
+            "absolute_overlay_path",
+            "absolute_composite_path",
+        ]:
+            segmentation_output.pop(abs_key, None)
 
         segmentation_output["confidence"] = estimate_segmentation_confidence(segmentation_output)
         response["segmentation"] = segmentation_output
@@ -2607,7 +2651,6 @@ def get_traceability_report(report_id: str, user: Dict[str, str] = Depends(requi
     
     if resolutions:
         # Create a deep copy to avoid mutating the original block cache
-        import copy
         block = copy.deepcopy(block)
         ev_data = block.get("data") if "data" in block else block.get("evidence_data")
         if ev_data is None:
@@ -2646,25 +2689,46 @@ def submit_for_review(payload: Dict[str, Any], user: Dict[str, str] = Depends(re
     notes = payload.get("notes", "")
     reasons = payload.get("reasons") or ["user_requested_review"]
     priority = payload.get("priority", "medium")
-    summary = payload.get("summary") or {"notes": notes, "submitted_by": user.get("identity", "user")}
-    item = review_queue.enqueue(report_id, reasons, priority, summary)
-    return {"success": True, "message": "Case submitted for expert review", "item": item}
+    summary = payload.get("summary")
+    if not summary:
+        block = evidence_blockchain.find_report(report_id)
+        if block:
+            ev_data = block.get("data") or block.get("evidence_data") or {}
+            snap = ev_data.get("report_snapshot") or {}
+            summary = {
+                "health_prediction": snap.get("health_prediction") or ev_data.get("health"),
+                "crop_prediction": snap.get("crop_prediction") or ev_data.get("crop"),
+                "disease_analysis": snap.get("disease_analysis") or ev_data.get("disease"),
+                "segmentation": snap.get("segmentation"),
+                "severity": snap.get("severity") or ev_data.get("severity"),
+                "notes": notes,
+                "submitted_by": user.get("identity", "user"),
+            }
+        else:
+            summary = {"notes": notes, "submitted_by": user.get("identity", "user")}
+    sanitized_summary = remove_absolute_path_keys(summary)
+    item = review_queue.enqueue(report_id, reasons, priority, sanitized_summary)
+    return {"success": True, "message": "Case submitted for expert review", "item": remove_absolute_path_keys(item)}
 
 
 @app.get("/review-queue")
+@app.get("/reviews")
 def get_review_queue(status: Optional[str] = None, user: Dict[str, str] = Depends(require_auth)):
     authorize(user, "review_reports")
-    return {"success": True, "items": review_queue.list(status=status)}
+    items = review_queue.list(status=status)
+    return {"success": True, "items": remove_absolute_path_keys(items)}
 
 @app.get("/review-queue/{review_id}")
+@app.get("/reviews/{review_id}")
 def get_review_item(review_id: str, user: Dict[str, str] = Depends(require_auth)):
     authorize(user, "review_reports")
     item = review_queue.get(review_id)
     if item is None:
         raise HTTPException(status_code=404, detail="Review item not found.")
-    return {"success": True, "item": item}
+    return {"success": True, "item": remove_absolute_path_keys(item)}
 
 @app.post("/review-queue/{review_id}/resolve")
+@app.post("/reviews/{review_id}/resolve")
 def resolve_review_item(review_id: str, payload: Dict[str, Any], user: Dict[str, str] = Depends(require_auth)):
     authorize(user, "review_reports")
     try:
@@ -2705,7 +2769,7 @@ def resolve_review_item(review_id: str, payload: Dict[str, Any], user: Dict[str,
         raise HTTPException(status_code=404, detail="Review item not found.")
     except ValueError as exc:
         raise HTTPException(status_code=400, detail=str(exc))
-    return {"success": True, "item": item}
+    return {"success": True, "item": remove_absolute_path_keys(item)}
 
 
 # ============================================================

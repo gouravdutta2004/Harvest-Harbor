@@ -59,7 +59,9 @@ export function History() {
   const uniqueCrops = useMemo(() => {
     const crops = new Set();
     blocks.forEach((b) => {
-      const c = b.data?.crop?.prediction || b.data?.report_snapshot?.crop_analysis?.prediction;
+      const d = b.data || b.evidence_data || {};
+      const snap = d.report_snapshot || {};
+      const c = d.crop?.prediction || snap.crop_prediction?.prediction || snap.crop_analysis?.prediction;
       if (c) crops.add(c.toLowerCase());
     });
     return Array.from(crops).sort();
@@ -68,9 +70,9 @@ export function History() {
   // Filtered rows
   const filteredBlocks = useMemo(() => {
     return blocks.filter((b) => {
-      const data = b.data || {};
+      const data = b.data || b.evidence_data || {};
       const snap = data.report_snapshot || {};
-      const crop = (data.crop?.prediction || snap.crop_analysis?.prediction || '').toLowerCase();
+      const crop = (data.crop?.prediction || snap.crop_prediction?.prediction || snap.crop_analysis?.prediction || '').toLowerCase();
       const disease = (data.disease?.prediction || snap.disease_analysis?.prediction || '').toLowerCase();
       const health = (data.health?.prediction || snap.health_prediction?.prediction || '').toLowerCase();
       const severity = (data.severity?.severity || snap.severity?.severity || '').toLowerCase();
@@ -256,10 +258,10 @@ export function History() {
               </thead>
               <tbody className="divide-y divide-gray-100 dark:divide-darkBorder">
                 {filteredBlocks.map((b) => {
-                  const data = b.data || {};
+                  const data = b.data || b.evidence_data || {};
                   const snap = data.report_snapshot || {};
                   const reportId = b.report_id || data.report_id || `BLK-${b.block_index}`;
-                  const crop = data.crop?.prediction || snap.crop_analysis?.prediction || 'Unknown';
+                  const crop = data.crop?.prediction || snap.crop_prediction?.prediction || snap.crop_analysis?.prediction || 'Unknown';
                   const health = (data.health?.prediction || snap.health_prediction?.prediction || 'unknown').toLowerCase();
                   const disease = data.disease?.prediction || snap.disease_analysis?.prediction || 'None detected';
                   const confidence = data.disease?.confidence ?? snap.disease_analysis?.confidence ?? data.health?.confidence;

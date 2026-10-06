@@ -197,6 +197,13 @@ class TestHTTPSecurity(unittest.TestCase):
         self.assertIn("permissions-policy", headers)
         self.assertIn("frame-ancestors 'none'", headers["content-security-policy"])
 
+        # /docs must include jsdelivr and unsafe-inline so Swagger UI executes properly
+        docs_status, docs_headers, docs_body = self.client.get("/docs")
+        self.assertEqual(docs_status, 200)
+        self.assertIn("cdn.jsdelivr.net", docs_headers.get("content-security-policy", ""))
+        self.assertIn("'unsafe-inline'", docs_headers.get("content-security-policy", ""))
+        self.assertIn("SwaggerUIBundle", docs_body.decode("utf-8"))
+
     def test_extension_content_mismatch_rejected(self):
         """Uploading a JPEG image with .png extension or mismatched MIME must be rejected with 400."""
         boundary = "----WebKitFormBoundaryMismatchTest"
@@ -239,6 +246,76 @@ class TestHTTPSecurity(unittest.TestCase):
         self.assertIn("image", data)
         self.assertIn("url", data["image"])
         self.assertTrue(data["image"]["url"].endswith(".jpg"), f"Expected .jpg URL, got {data['image']['url']}")
+
+    def test_reviews_route_aliases_and_rbac(self):
+        """Verify that /reviews provides parity with /review-queue and enforces RBAC."""
+        # Unauthenticated request to /reviews returns 401
+        status, _, _ = self.client.get("/reviews")
+        self.assertEqual(status, 401)
+
+        # Farmer role requesting /reviews returns 403
+        farmer_headers = {
+            "Authorization": "Bearer dev-farmer-key",
+            "X-User-Role": "farmer",
+        }
+        status, _, _ = self.client.get("/reviews", headers=farmer_headers)
+        self.assertEqual(status, 403)
+
+        # Agronomist role requesting /reviews returns 200
+        agronomist_headers = {
+            "Authorization": "Bearer dev-agronomist-key",
+            "X-User-Role": "agronomist",
+        }
+        status, _, resp_body_reviews = self.client.get("/reviews", headers=agronomist_headers)
+        self.assertEqual(status, 200)
+
+        # Parity with /review-queue
+        status, _, resp_body_queue = self.client.get("/review-queue", headers=agronomist_headers)
+        self.assertEqual(status, 200)
+
+        data_reviews = json.loads(resp_body_reviews.decode("utf-8"))
+        data_queue = json.loads(resp_body_queue.decode("utf-8"))
+        self.assertTrue(data_reviews.get("success"))
+        self.assertEqual(len(data_reviews.get("items", [])), len(data_queue.get("items", [])))
+
+    def test_review_queue_api_sanitization_and_no_absolute_paths(self):
+        """Verify that Review Queue API sanitizes all absolute filesystem paths and keys."""
+        agronomist_headers = {
+            "Authorization": "Bearer dev-agronomist-key",
+            "X-User-Role": "agronomist",
+        }
+        status, _, resp_body = self.client.get("/reviews", headers=agronomist_headers)
+        self.assertEqual(status, 200)
+
+        raw_json_str = resp_body.decode("utf-8")
+        # No local absolute user/home paths leaked in JSON
+        self.assertNotIn("/Users/", raw_json_str)
+        self.assertNotIn("/home/", raw_json_str)
+        self.assertNotIn("/crop-disease-ai", raw_json_str)
+
+        data = json.loads(raw_json_str)
+        items = data.get("items", [])
+        self.assertIsInstance(items, list)
+
+        # Check all items for uniqueness and no absolute_ keys
+        seen_ids = set()
+        for it in items:
+            rev_id = it.get("review_id")
+            self.assertIsNotNone(rev_id)
+            self.assertNotIn(rev_id, seen_ids, f"Duplicate review_id found: {rev_id}")
+            seen_ids.add(rev_id)
+
+            # Check recursively for absolute_ keys
+            def check_keys(d):
+                if isinstance(d, dict):
+                    for k, v in d.items():
+                        self.assertFalse(str(k).startswith("absolute_"), f"Found un-sanitized key: {k}")
+                        check_keys(v)
+                elif isinstance(d, list):
+                    for elem in d:
+                        check_keys(elem)
+
+            check_keys(it)
 
 
 if __name__ == "__main__":

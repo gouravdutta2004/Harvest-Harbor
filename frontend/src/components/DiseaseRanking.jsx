@@ -105,7 +105,7 @@ export function DiseaseRanking({
 
           return (
             <div
-              key={index}
+              key={item.class || item.prediction || `${rank}-${classIdx ?? index}`}
               className={`p-4 rounded-2xl border transition-all space-y-2 ${
                 isPrimary
                   ? 'bg-emerald-50/60 dark:bg-emerald-950/30 border-emerald-200 dark:border-emerald-800/80 shadow-subtle'
