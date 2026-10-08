@@ -33,6 +33,7 @@ from calibration import TemperatureScaler, binary_nll, _clip
 MODEL_DIR = BASE_DIR / "health_model"
 SPLIT_PATH = MODEL_DIR / "dataset_split.json"
 MODEL_PATH = MODEL_DIR / "health_disease_efficientnetb0.keras"
+H5_MODEL_PATH = MODEL_DIR / "health_disease_efficientnetb0.h5"
 CALIBRATION_PATH = MODEL_DIR / "calibration.json"
 
 
@@ -130,7 +131,15 @@ def evaluate_calibration(max_samples: int = 100):
     print(f"[INFO] Evaluating on {len(valid_pairs)} held-out validation samples...")
 
     # Load model
-    model = tf.keras.models.load_model(MODEL_PATH, compile=False)
+    load_path = H5_MODEL_PATH if (H5_MODEL_PATH.exists() and getattr(tf, "__version__", "").startswith("2.15")) else MODEL_PATH
+    try:
+        model = tf.keras.models.load_model(load_path, compile=False)
+    except Exception:
+        fallback = H5_MODEL_PATH if load_path != H5_MODEL_PATH else MODEL_PATH
+        if fallback.exists():
+            model = tf.keras.models.load_model(fallback, compile=False)
+        else:
+            raise
 
     # Load calibration parameters if available
     scaler = None

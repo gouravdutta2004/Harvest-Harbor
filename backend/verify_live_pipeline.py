@@ -175,12 +175,14 @@ def main():
         print(f"      Disease Status:    {val_info.get('status')}")
         print(f"      Validated Disease: {disease_analysis.get('prediction')}")
         print(f"      Raw Candidate:     {disease_analysis.get('raw_prediction')}")
-        print(f"      Compatible Top 3:  {[d.get('disease') for d in val_info.get('compatible_top_3', [])]}")
-        print(f"      Raw Top 3:         {[d.get('disease') for d in disease_analysis.get('raw_top_3', [])]}")
+        compat_list = disease_analysis.get('compatible_top_3') or val_info.get('compatible_top_3', [])
+        print(f"      Compatible Top 3:  {[d.get('class') or d.get('disease') for d in compat_list]}")
+        print(f"      Raw Top 3:         {[d.get('class') or d.get('disease') for d in disease_analysis.get('raw_top_3', [])]}")
 
     seg = pred_data.get("segmentation")
     if seg:
-        print(f"      Segmentation Area: {seg.get('affected_area_percent')}%")
+        seg_area = seg.get('affected_percentage', seg.get('affected_area_percent'))
+        print(f"      Segmentation Area: {seg_area}%")
         print(f"      Overlay URL:       {seg.get('overlay_path')}")
 
     expl = pred_data.get("explainability")

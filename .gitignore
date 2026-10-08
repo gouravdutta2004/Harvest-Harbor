@@ -35,6 +35,8 @@ env/
 .keras_home/
 .keras/
 **/.keras/
+.matplotlib/
+**/.matplotlib/
 
 # ------------------------------------------------------------
 # Python Cache, Bytecode & Build Artifacts
@@ -154,3 +156,10 @@ generated/*
 *.save
 *.bak
 *.orig
+
+# ------------------------------------------------------------
+# Research Paper Package & Archives
+# ------------------------------------------------------------
+paper/
+*.zip
+

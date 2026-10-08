@@ -33,7 +33,7 @@ All evaluations were executed on the production model weights packaged with Harv
 
 The dedicated crop classifier was evaluated across all 14 crop families on the held-out test split ($N=140$, balanced 10 test samples per class).
 
-**Figure Reference**: [docs/figures/fig1_crop_confusion_matrix.png](file:///Users/gourav/Harvest-Harbor/docs/figures/fig1_crop_confusion_matrix.png) | [Vector SVG](file:///Users/gourav/Harvest-Harbor/docs/figures/fig1_crop_confusion_matrix.svg)
+**Figure Reference**: [figures/fig1_crop_confusion_matrix.png](figures/fig1_crop_confusion_matrix.png) | [Vector SVG](figures/fig1_crop_confusion_matrix.svg)
 
 ### Empirical Numerical Matrix:
 ```
@@ -95,7 +95,7 @@ Tomato & 10 & 100.0 & 100.0 \\
 
 Evaluated against pixel-level annotated ground-truth masks from the PlantSeg held-out benchmark ($N=50$).
 
-**Figure Reference**: [docs/figures/fig2_severity_confusion_matrix.png](file:///Users/gourav/Harvest-Harbor/docs/figures/fig2_severity_confusion_matrix.png) | [Vector SVG](file:///Users/gourav/Harvest-Harbor/docs/figures/fig2_severity_confusion_matrix.svg)
+**Figure Reference**: [figures/fig2_severity_confusion_matrix.png](figures/fig2_severity_confusion_matrix.png) | [Vector SVG](figures/fig2_severity_confusion_matrix.svg)
 
 | Ground Truth \ Predicted | Healthy (0%) | Early (&lt;15%) | Moderate (15–35%) | Severe (&ge;35%) | Total GT |
 |---|:---:|:---:|:---:|:---:|:---:|
@@ -111,7 +111,7 @@ Evaluated against pixel-level annotated ground-truth masks from the PlantSeg hel
 
 ### 3.2 U-Net Lesion Segmentation Benchmark
 
-**Figure Reference**: [docs/figures/fig4_segmentation_performance.png](file:///Users/gourav/Harvest-Harbor/docs/figures/fig4_segmentation_performance.png)
+**Figure Reference**: [figures/fig4_segmentation_performance.png](figures/fig4_segmentation_performance.png)
 
 - **Mean Intersection-over-Union (IoU / Jaccard Index)**: `44.30%`
 - **Dice Similarity Coefficient ($F_1$)**: `55.52%`
@@ -127,7 +127,7 @@ $$\text{Dice} = \frac{2 |A \cap B|}{|A| + |B|} = \frac{2 TP}{2 TP + FP + FN}$$
 
 Deep neural classifiers frequently suffer from overconfidence. Harvest Harbor incorporates **Temperature Scaling** to calibrate probabilities without modifying model parameters.
 
-**Figure Reference**: [docs/figures/fig5_calibration_reliability_diagram.png](file:///Users/gourav/Harvest-Harbor/docs/figures/fig5_calibration_reliability_diagram.png)
+**Figure Reference**: [figures/fig5_calibration_reliability_diagram.png](figures/fig5_calibration_reliability_diagram.png)
 
 $$\hat{p}_i = \frac{\exp(z_i / T)}{\sum_j \exp(z_j / T)}$$
 
@@ -141,7 +141,7 @@ Where $z$ denotes raw logits and $T$ is the learned temperature parameter ($T = 
 
 ## 5. Pathology Classification Benchmark (18 Validated Classes)
 
-**Figure Reference**: [docs/figures/fig6_disease_per_class_f1.png](file:///Users/gourav/Harvest-Harbor/docs/figures/fig6_disease_per_class_f1.png)
+**Figure Reference**: [figures/fig6_disease_per_class_f1.png](figures/fig6_disease_per_class_f1.png)
 
 Evaluated on the local PlantVillage ground truth benchmark mapping:
 
@@ -158,12 +158,13 @@ Evaluated on the local PlantVillage ground truth benchmark mapping:
 
 ## 6. Publication Figures Index
 
-All generated figures are stored in `docs/figures/` in both 300-DPI Raster PNG and Scalable Vector Graphics (SVG):
+All generated figures are stored in `docs/figures/` in publication-grade high-resolution raster format:
 
-1. **Figure 1**: [fig1_crop_confusion_matrix.png](file:///Users/gourav/Harvest-Harbor/docs/figures/fig1_crop_confusion_matrix.png) | [SVG](file:///Users/gourav/Harvest-Harbor/docs/figures/fig1_crop_confusion_matrix.svg)
-2. **Figure 2**: [fig2_severity_confusion_matrix.png](file:///Users/gourav/Harvest-Harbor/docs/figures/fig2_severity_confusion_matrix.png) | [SVG](file:///Users/gourav/Harvest-Harbor/docs/figures/fig2_severity_confusion_matrix.svg)
-3. **Figure 3**: [fig3_health_confusion_matrix.png](file:///Users/gourav/Harvest-Harbor/docs/figures/fig3_health_confusion_matrix.png) | [SVG](file:///Users/gourav/Harvest-Harbor/docs/figures/fig3_health_confusion_matrix.svg)
-4. **Figure 4**: [fig4_segmentation_performance.png](file:///Users/gourav/Harvest-Harbor/docs/figures/fig4_segmentation_performance.png) | [SVG](file:///Users/gourav/Harvest-Harbor/docs/figures/fig4_segmentation_performance.svg)
-5. **Figure 5**: [fig5_calibration_reliability_diagram.png](file:///Users/gourav/Harvest-Harbor/docs/figures/fig5_calibration_reliability_diagram.png) | [SVG](file:///Users/gourav/Harvest-Harbor/docs/figures/fig5_calibration_reliability_diagram.svg)
-6. **Figure 6**: [fig6_disease_per_class_f1.png](file:///Users/gourav/Harvest-Harbor/docs/figures/fig6_disease_per_class_f1.png) | [SVG](file:///Users/gourav/Harvest-Harbor/docs/figures/fig6_disease_per_class_f1.svg)
-7. **Figure 7**: [fig7_system_architecture_pipeline.png](file:///Users/gourav/Harvest-Harbor/docs/figures/fig7_system_architecture_pipeline.png) | [SVG](file:///Users/gourav/Harvest-Harbor/docs/figures/fig7_system_architecture_pipeline.svg)
+1. **Figure 1**: [fig1_crop_confusion_matrix.png](figures/fig1_crop_confusion_matrix.png) — 14×14 Dedicated Crop Classifier Confusion Matrix
+2. **Figure 2**: [fig2_severity_confusion_matrix.png](figures/fig2_severity_confusion_matrix.png) — 4×4 Foliar Severity Tier Confusion Matrix
+3. **Figure 3**: [fig3_health_confusion_matrix.png](figures/fig3_health_confusion_matrix.png) — 2×2 Binary Health Screening Confusion Matrix
+4. **Figure 4**: [fig4_segmentation_performance.png](figures/fig4_segmentation_performance.png) — U-Net Lesion Segmentation Benchmark Metrics
+5. **Figure 5**: [fig5_calibration_reliability_diagram.png](figures/fig5_calibration_reliability_diagram.png) — Expected Calibration Error (ECE) Temperature Scaling
+6. **Figure 6**: [fig6_disease_per_class_f1.png](figures/fig6_disease_per_class_f1.png) — Per-Class $F_1$-Scores across Pathologies
+7. **Figure 7**: [system_block_diagram.png](figures/system_block_diagram.png) — Harvest Harbor System Architecture Block Diagram
+8. **Figure 8**: [system_flow_chart.png](figures/system_flow_chart.png) — End-to-End System Flow Chart & Data Lifecycle

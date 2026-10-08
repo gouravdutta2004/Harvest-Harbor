@@ -1,0 +1,24 @@
+HARVEST HARBOR
+14-CLASS CLASSIFICATION REPORT
+======================================================================
+
+                            precision    recall  f1-score   support
+
+                apple scab     0.0000    0.0000    0.0000       110
+           apple black rot     0.2038    1.0000    0.3386        85
+                apple rust     0.1571    0.1833    0.1692        60
+       corn gray leaf spot     0.1658    0.9038    0.2802       104
+ corn northern leaf blight     0.5714    0.0901    0.1556       222
+                 corn rust     0.6143    0.1845    0.2838       233
+           grape black rot     0.9095    0.8227    0.8640       220
+       potato early blight     0.2748    0.5804    0.3730       224
+        potato late blight     0.2672    0.3235    0.2927       204
+     squash powdery mildew     0.9719    0.8206    0.8898       379
+    strawberry leaf scorch     0.3897    0.9430    0.5515       193
+tomato bacterial leaf spot     0.1481    0.0086    0.0163       463
+       tomato early blight     0.2222    0.0109    0.0207       184
+        tomato late blight     0.7087    0.2439    0.3629       369
+
+                  accuracy                         0.3997      3050
+                 macro avg     0.4003    0.4368    0.3285      3050
+              weighted avg     0.4737    0.3997    0.3577      3050

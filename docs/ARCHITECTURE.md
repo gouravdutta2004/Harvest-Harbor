@@ -4,6 +4,12 @@
 
 Harvest Harbor is an AI-powered agricultural decision-support and audit platform. It couples multi-model deep learning inference (health screening, botanical classification, disease classification, visual explainability, and lesion segmentation) with a tamper-evident, SHA-256 parent-hash-linked evidence chain and an auditable human review resolution workflow.
 
+![System Architecture Block Diagram](figures/system_block_diagram.png)
+*Figure: Harvest Harbor System Architecture Block Diagram.*
+
+![System Flow Chart](figures/system_flow_chart.png)
+*Figure: Harvest Harbor System Flow Chart (Operational Dataflow & Lifecycle).*
+
 ```
 ┌────────────────────────────────────────────────────────────────────────┐
 │                        CLIENT / FRONTEND LAYER                         │
