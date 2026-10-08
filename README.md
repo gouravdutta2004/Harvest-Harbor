@@ -79,11 +79,11 @@ The system ingests field leaf photographs and executes an end-to-end, multi-stag
       - 98.00% Top-1, 100.00% Top-3 accuracy across 14 crop families
                        │
                        ▼
-      [Tier 3: Crop-Conditioned Pathology Bayesian Re-ranking]
+      [Tier 3: Crop-Conditioned Pathology Re-ranking]
       - 115-Class PlantWild EfficientNet-B0 backbone
       - Dynamic masking via botanical compatibility matrix M (14 x 115)
       - Prunes search space from 115 to 3-10 host-compatible diseases
-      - Eliminates 100% of cross-botanical hallucinations (accuracy: 39.97% -> >85%)
+      - Mitigates cross-host errors (19.21% unconstrained -> 45.25% Top-1, 78.89% Top-3; 2.36x gain)
       - Cross-species inconsistency metric computed: M_inconsist
                        │
                        ▼
@@ -95,22 +95,22 @@ The system ingests field leaf photographs and executes an end-to-end, multi-stag
                        ▼
       [Tier 5: Quantitative Foliar Severity Grading]
       - Geometric damage ratio: (Lesion Pixels / Total Leaf Pixels) * 100%
-      - Standardized clinical agronomic tier assignment:
-        • Healthy / Trace (<1%)
-        • Early Stage (1-10%)
-        • Moderate Damage (10-25%)
-        • Severe Necrosis (>25%)
-      - 92.00% Accuracy within +/- 1 tier tolerance window
+      - Project-defined foliar severity tiers:
+        • Healthy (<=0.0%)
+        • Early Stage (>0.0% to <15.0%)
+        • Moderate Damage (15.0% to <35.0%)
+        • Severe Necrosis (>=35.0%)
+      - 92.00% Accuracy within +/- 1 tier tolerance window (52.00% exact)
                        │
                        ▼
       [Explainability & Trust Layer]
       - Grad-CAM gradient-weighted activation heatmaps
-      - Temperature Scaling (T = 0.0500) calibrating ECE from 14.82% -> 0.00%
+      - Temperature Scaling (T = 0.0500) calibrating ECE from 0.47% -> 0.00%
       - Automated review escalation if confidence < 50% or M_inconsist > 0.40
                        │
                        ▼
       [Cryptographic Evidence Ledger & Dispatch]
-      - Commit immutable JSON block to append-only SHA-256 Merkle chain
+      - Commit immutable JSON block to append-only SHA-256 hash chain
       - Return consolidated report (Report ID: CR-XXXXXXXXXXXX)
 ```
 
@@ -151,19 +151,19 @@ All performance metrics reflect rigorous evaluations on strictly isolated held-o
 | | | F1-Score | **98.04%** | Harmonic balanced metric |
 | **Tier 2: Botanical Host Classifier** | EfficientNet-B0 (14-Class) | Top-1 Crop Accuracy | **98.00%** | Held-Out Test Split ($N=100$) |
 | | | Top-3 Crop Accuracy | **100.00%** | Correct crop in top 3 candidates |
-| | | Macro F1-Score | **90.62%** | Balanced across all 14 crop families |
-| **Tier 3: Pathology Classifier (Raw)** | PlantWild EfficientNet-B0 | Raw Zero-Shot Top-1 | **39.97%** (1,219/3,050) | In-The-Wild Field Benchmark ($N=3,050$) |
-| **Tier 3: Crop-Conditioned Re-ranking** | Bayesian Host Masking | Conditioned Top-1 Acc | **> 85.00%** | **> 2.1x Accuracy Gain; 0 Cross-Host Errors** |
+| **Tier 3: Pathology Classifier (Unconstrained)** | PlantWild EfficientNet-B0 | Unconstrained 115-Class Top-1 | **19.21%** (586/3,050) | PV Benchmark Split ($N=3,050$) |
+| **Tier 3: Pathology Classifier (Sliced 14-Class)** | PlantWild EfficientNet-B0 | Sliced 14-Class Baseline | **39.97%** (1,219/3,050) | PV Benchmark Split ($N=3,050$) |
+| **Tier 3: Crop-Conditioned Re-ranking** | Botanical Host Masking | Conditioned Top-1 / Top-3 | **45.25% / 78.89%** | **2.36x Relative Gain; 1,872 candidates blocked** |
 | **Tier 4: Lesion Segmentation** | Fully Conv U-Net ($256 \times 256$) | Mean Dice Similarity ($F_1$) | **55.52% $\pm$ 4.12%** | PlantSeg Annotated Masks ($N=50$) |
 | | | Mean IoU (Jaccard) | **44.30% $\pm$ 3.85%** | Pixel-Level Necrotic Overlap |
 | | | Pixel Precision / Recall | **59.81% / 56.74%** | Balanced boundary delineation |
-| **Tier 5: Foliar Severity Tiering** | Geometric Damage Formulation | Within $\pm 1$ Tier Tolerance | **92.00%** (46/50) | Clinical intervention window |
+| **Tier 5: Foliar Severity Tiering** | Geometric Damage Formulation | Within $\pm 1$ Tier Tolerance | **92.00%** (46/50) | Project-defined foliar severity tiers |
 | | | Exact Tier Match Acc | **52.00%** (26/50) | 4-Tier Severity Partitioning |
 | | | Mean Absolute Error (MAE) | **13.95 percentage pts** | Total leaf surface area deviation |
-| **Confidence Calibration** | Temperature Scaling ($T=0.05$) | Expected Calibration Error | **0.00%** | Reduced from **14.82%** uncalibrated |
-| | | Maximum Calibration Error | **< 0.01%** | Reduced from **28.45%** uncalibrated |
-| **Cryptographic Evidence Ledger** | Append-Only SHA-256 Chain | Chain Integrity Rate | **100.00%** | **613+ consecutive blocks validated** |
-| | | Full Traversal Latency | **14.2 $\pm$ 0.8 ms** | Sub-15 ms forensic verification |
+| **Confidence Calibration** | Temperature Scaling ($T=0.05$) | Expected Calibration Error | **0.00%** | Reduced from **0.47%** uncalibrated |
+| | | Maximum Calibration Error | **0.00%** | Reduced from **19.79%** uncalibrated |
+| **Cryptographic Evidence Ledger** | Append-Only SHA-256 Chain | Chain Integrity Rate | **100.00%** | **613 diagnostic blocks + genesis verified** |
+| | | Full Traversal Latency | **33.5 $\pm$ 2.2 ms** | 614 sequential SHA-256 blocks verified |
 
 ---
 
